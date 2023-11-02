@@ -67,7 +67,7 @@ namespace SOSResources.Pages.Instructors
                                 newInstructor,
                                 "Instructor",
                                 i => i.Name, i => i.Type,
-                                i => i.Description, i => i.OfficeAssignment))
+                                i => i.Description, i => i.Quantity))
                 {
                     _context.Instructors.Add(newInstructor);
                     await _context.SaveChangesAsync();

@@ -19,13 +19,13 @@ namespace SOSResources.Pages.Instructors
             _context = context;
         }
         public IList<Instructor> Instructor { get;set; } = default!;
-        public InstructorIndexData InstructorData { get; set; }
+       
         public int InstructorID { get; set; }
-        public int CourseID { get; set; }
+       
 
-        public async Task OnGetAsync(int? id, int? courseID)
+        public async Task OnGetAsync()
         {
-            if (_context.Departments != null){
+            if (_context.Instructors != null){
                 Instructor = await _context.Instructors
                     .OrderBy(i => i.Name)
                     .ToListAsync();    
