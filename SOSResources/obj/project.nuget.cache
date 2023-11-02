@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NsoAMbnksqFvLLlZtpzbfAapRm12o7f7vNW+6eYL++W8cz/jQCyDOmok3+YvsDr5Tw7DjKmwu+jKjaisz5Ph6A==",
+  "dgSpecHash": "zxn2wgUrqBMKDJ7wA3B5xl5VB5B5Hb7V9UN4r8HE6fQTufR2Zf/5voBpW16rOa29Qj1BcRT15uiJToAe6BHZGw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Sarah\\WebDev\\Hendrix-SOS-Resources\\SOSResources\\SOSResources.csproj",
+  "projectFilePath": "c:\\Users\\Sarah\\WebDev\\Hendrix-SOS-Resources\\SOSResources\\SOSResources.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sarah\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
