@@ -4,14 +4,12 @@
     ViewData["Title"] = "Edit";
 }
 <h2>Edit</h2>
-<h4>Department</h4>
+<h4>Textbook</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Department.DepartmentID" />
-            <input type="hidden" asp-for="Department.ConcurrencyToken" />
             <div class="form-group">
                 <label>Version</label>
                 @Utility.GetLastChars(Model.Department.ConcurrencyToken)
@@ -33,12 +31,12 @@
                 </span>
             </div>
             <div class="form-group">
-                <label class="control-label">Instructor</label>
-                <select asp-for="Department.InstructorID" class="form-control"
-                        asp-items="@Model.InstructorNameSL"></select>
-                <span asp-validation-for="Department.InstructorID" class="text-danger">
+                <label asp-for="Department.Quantity" class="control-label"></label>
+                <input asp-for="Department.Quantity" class="form-control" />
+                <span asp-validation-for="Department.Quantity" class="text-danger">
                 </span>
             </div>
+            
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

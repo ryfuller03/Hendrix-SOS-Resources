@@ -27,7 +27,6 @@ namespace SOSResources.Pages.Departments
         public async Task<IActionResult> OnGetAsync(int id)
         {
             Department = await _context.Departments
-                .Include(d => d.Administrator)  // eager loading
                 .AsNoTracking()                 // tracking not required
                 .FirstOrDefaultAsync(m => m.DepartmentID == id);
 
@@ -53,7 +52,6 @@ namespace SOSResources.Pages.Departments
             // Fetch current department from DB.
             // ConcurrencyToken may have changed.
             var departmentToUpdate = await _context.Departments
-                .Include(i => i.Administrator)
                 .FirstOrDefaultAsync(m => m.DepartmentID == id);
 
             if (departmentToUpdate == null)
@@ -138,13 +136,6 @@ namespace SOSResources.Pages.Departments
             {
                 ModelState.AddModelError("Department.StartDate",
                     $"Current value: {dbValues.Quantity:d}");
-            }
-            if (dbValues.InstructorID != clientValues.InstructorID)
-            {
-                Instructor dbInstructor = await _context.Instructors
-                   .FindAsync(dbValues.InstructorID);
-                ModelState.AddModelError("Department.InstructorID",
-                    $"Current value: {dbInstructor?.FullName}");
             }
 
             ModelState.AddModelError(string.Empty,

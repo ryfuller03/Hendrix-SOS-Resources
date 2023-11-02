@@ -22,7 +22,6 @@ namespace SOSResources.Pages.Departments
         public async Task<IActionResult> OnGetAsync(int id, bool? concurrencyError)
         {
             Department = await _context.Departments
-                .Include(d => d.Administrator)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.DepartmentID == id);
 

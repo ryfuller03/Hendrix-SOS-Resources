@@ -152,14 +152,18 @@ namespace SOSResources.Data
                 Author = "Bruce Knauft",
                 Edition = 5,
                 Quantity = 3,
-                Administrator = abercrombie
             };
 
-           
+           var caseHealth = new Department{
+            Title = "Case Studies for Health, Research and Practice in Australia and New Zealand",
+            Author = "Nicola Whiteing",
+            Quantity = 1
+           };
 
             var departments = new Department[]
             {
-                gebusi
+                gebusi,
+                caseHealth
             };
 
             context.AddRange(departments);

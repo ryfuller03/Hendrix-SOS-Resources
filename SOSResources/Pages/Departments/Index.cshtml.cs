@@ -25,8 +25,7 @@ namespace SOSResources.Pages.Departments
         {
             if (_context.Departments != null)
             {
-                Department = await _context.Departments
-                .Include(d => d.Administrator).ToListAsync();
+                Department = await _context.Departments.ToListAsync();
             }
         }
     }
