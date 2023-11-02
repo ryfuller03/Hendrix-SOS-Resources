@@ -87,64 +87,31 @@ namespace SOSResources.Data
 
             var abercrombie = new Instructor
             {
-                FirstMidName = "Kim",
-                LastName = "Abercrombie",
-                HireDate = DateTime.Parse("1995-03-11")
+                Name = "Sewing Supplies",
+                Type = "Type",
+                Description = "Some sewing supplies."
             };
 
             var fakhouri = new Instructor
             {
-                FirstMidName = "Fadi",
-                LastName = "Fakhouri",
-                HireDate = DateTime.Parse("2002-07-06")
+                Name = "Resource",
+                Type = "Type",
+                Description = "A resource."
             };
 
-            var harui = new Instructor
-            {
-                FirstMidName = "Roger",
-                LastName = "Harui",
-                HireDate = DateTime.Parse("1998-07-01")
-            };
+           
 
-            var kapoor = new Instructor
-            {
-                FirstMidName = "Candace",
-                LastName = "Kapoor",
-                HireDate = DateTime.Parse("2001-01-15")
-            };
-
-            var zheng = new Instructor
-            {
-                FirstMidName = "Roger",
-                LastName = "Zheng",
-                HireDate = DateTime.Parse("2004-02-12")
-            };
 
             var instructors = new Instructor[]
             {
                 abercrombie,
                 fakhouri,
-                harui,
-                kapoor,
-                zheng
+               
             };
 
             context.AddRange(instructors);
 
-            var officeAssignments = new OfficeAssignment[]
-            {
-                new OfficeAssignment {
-                    Instructor = fakhouri,
-                    Location = "Smith 17" },
-                new OfficeAssignment {
-                    Instructor = harui,
-                    Location = "Gowan 27" },
-                new OfficeAssignment {
-                    Instructor = kapoor,
-                    Location = "Thompson 304" }
-            };
-
-            context.AddRange(officeAssignments);
+            
 
             var gebusi = new Department
             {
@@ -173,7 +140,7 @@ namespace SOSResources.Data
                 CourseID = 1050,
                 Title = "Chemistry",
                 Credits = 3,
-                Instructors = new List<Instructor> { kapoor, harui }
+                Instructors = new List<Instructor> { fakhouri }
             };
 
             var microeconomics = new Course
@@ -182,7 +149,7 @@ namespace SOSResources.Data
                 Title = "Microeconomics",
                 Credits = 3,
 
-                Instructors = new List<Instructor> { zheng }
+                Instructors = new List<Instructor> { fakhouri }
             };
 
             var macroeconmics = new Course
@@ -191,7 +158,7 @@ namespace SOSResources.Data
                 Title = "Macroeconomics",
                 Credits = 3,
 
-                Instructors = new List<Instructor> { zheng }
+                Instructors = new List<Instructor> { fakhouri }
             };
 
             var calculus = new Course
@@ -209,7 +176,7 @@ namespace SOSResources.Data
                 Title = "Trigonometry",
                 Credits = 4,
 
-                Instructors = new List<Instructor> { harui }
+                Instructors = new List<Instructor> { fakhouri }
             };
 
             var composition = new Course

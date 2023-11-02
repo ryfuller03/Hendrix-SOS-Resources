@@ -66,8 +66,8 @@ namespace SOSResources.Pages.Instructors
                 if (await TryUpdateModelAsync<Instructor>(
                                 newInstructor,
                                 "Instructor",
-                                i => i.FirstMidName, i => i.LastName,
-                                i => i.HireDate, i => i.OfficeAssignment))
+                                i => i.Name, i => i.Type,
+                                i => i.Description, i => i.OfficeAssignment))
                 {
                     _context.Instructors.Add(newInstructor);
                     await _context.SaveChangesAsync();

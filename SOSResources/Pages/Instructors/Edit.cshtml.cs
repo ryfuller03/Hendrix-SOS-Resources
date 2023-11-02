@@ -61,8 +61,8 @@ namespace SOSResources.Pages.Instructors
             if (await TryUpdateModelAsync<Instructor>(
                 instructorToUpdate,
                 "Instructor",
-                i => i.FirstMidName, i => i.LastName,
-                i => i.HireDate, i => i.OfficeAssignment))
+                i => i.Name, i => i.Type,
+                i => i.Description, i => i.OfficeAssignment))
             {
                 if (String.IsNullOrWhiteSpace(
                     instructorToUpdate.OfficeAssignment?.Location))
