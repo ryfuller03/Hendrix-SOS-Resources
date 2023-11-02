@@ -11,10 +11,6 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label>Version</label>
-                @Utility.GetLastChars(Model.Department.ConcurrencyToken)
-            </div>
-            <div class="form-group">
                 <label asp-for="Department.Title" class="control-label"></label>
                 <input asp-for="Department.Title" class="form-control" />
                 <span asp-validation-for="Department.Title" class="text-danger"></span>
