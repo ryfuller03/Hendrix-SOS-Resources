@@ -12,9 +12,11 @@ a {
 }
 
 header{
-  background-color: orange;
+  background-color: #e76c05;
 }
-
+.navbar {
+  background-color: #e76c05;
+}
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
