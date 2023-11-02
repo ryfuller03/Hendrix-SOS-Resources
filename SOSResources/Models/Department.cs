@@ -10,18 +10,15 @@ namespace SOSResources.Models
         public int DepartmentID { get; set; }
 
         [StringLength(50, MinimumLength = 3)]
-        public string Name { get; set; }
+        public string Title { get; set; }
 
-        [DataType(DataType.Currency)]
-        [Column(TypeName = "money")]
-        public decimal Budget { get; set; }
+        [StringLength(50, MinimumLength = 3)]
+        public string Author {get; set;}
 
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}",
-                       ApplyFormatInEditMode = true)]
-        [Display(Name = "Start Date")]
-        public DateTime StartDate { get; set; }
+        public int? Edition {get; set;}
 
+        public int Quantity {get; set;}
+        
         public int? InstructorID { get; set; }
 
         public Guid ConcurrencyToken { get; set; } = Guid.NewGuid();

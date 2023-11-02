@@ -14,16 +14,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Department[0].Name)
+                @Html.DisplayNameFor(model => model.Department[0].Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Department[0].Budget)
+                @Html.DisplayNameFor(model => model.Department[0].Author)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Department[0].StartDate)
+                @Html.DisplayNameFor(model => model.Department[0].Edition)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Department[0].Administrator)
+                @Html.DisplayNameFor(model => model.Department[0].Quantity)
             </th>
             <th>
                 Token
@@ -36,16 +36,16 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Budget)
+                    @Html.DisplayFor(modelItem => item.Author)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.StartDate)
+                    @Html.DisplayFor(modelItem => item.Edition)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Administrator.FullName)
+                    @Html.DisplayFor(modelItem => item.Quantity)
                 </td>
                 <td>
                     @Utility.GetLastChars(item.ConcurrencyToken)

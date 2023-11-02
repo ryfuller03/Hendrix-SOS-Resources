@@ -70,7 +70,7 @@ namespace SOSResources.Pages.Departments
             if (await TryUpdateModelAsync<Department>(
                 departmentToUpdate,
                 "Department",
-                s => s.Name, s => s.StartDate, s => s.Budget, s => s.InstructorID))
+                s => s.Title, s => s.Author, s => s.Edition, s => s.Quantity))
             {
                 try
                 {
@@ -120,20 +120,24 @@ namespace SOSResources.Pages.Departments
                 Department clientValues, SchoolContext context)
         {
 
-            if (dbValues.Name != clientValues.Name)
+            if (dbValues.Title != clientValues.Title)
             {
                 ModelState.AddModelError("Department.Name",
-                    $"Current value: {dbValues.Name}");
+                    $"Current value: {dbValues.Title}");
             }
-            if (dbValues.Budget != clientValues.Budget)
+            if (dbValues.Author != clientValues.Author)
             {
                 ModelState.AddModelError("Department.Budget",
-                    $"Current value: {dbValues.Budget:c}");
+                    $"Current value: {dbValues.Author:c}");
             }
-            if (dbValues.StartDate != clientValues.StartDate)
+            if (dbValues.Edition != clientValues.Edition)
             {
                 ModelState.AddModelError("Department.StartDate",
-                    $"Current value: {dbValues.StartDate:d}");
+                    $"Current value: {dbValues.Edition:d}");
+            }if (dbValues.Quantity != clientValues.Quantity)
+            {
+                ModelState.AddModelError("Department.StartDate",
+                    $"Current value: {dbValues.Quantity:d}");
             }
             if (dbValues.InstructorID != clientValues.InstructorID)
             {

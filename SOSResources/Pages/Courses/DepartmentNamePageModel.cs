@@ -15,12 +15,12 @@ namespace SOSResources.Pages.Courses
             object selectedDepartment = null)
         {
             var departmentsQuery = from d in _context.Departments
-                                   orderby d.Name // Sort by name.
+                                   orderby d.Title // Sort by name.
                                    select d;
 
             DepartmentNameSL = new SelectList(departmentsQuery.AsNoTracking(),
                 nameof(Department.DepartmentID),
-                nameof(Department.Name),
+                nameof(Department.Title),
                 selectedDepartment);
         }
     }

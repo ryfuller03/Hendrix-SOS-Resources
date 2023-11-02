@@ -146,44 +146,20 @@ namespace SOSResources.Data
 
             context.AddRange(officeAssignments);
 
-            var english = new Department
+            var gebusi = new Department
             {
-                Name = "English",
-                Budget = 350000,
-                StartDate = DateTime.Parse("2007-09-01"),
+                Title = "The Gebusi: Rainforest Living",
+                Author = "Bruce Knauft",
+                Edition = 5,
+                Quantity = 3,
                 Administrator = abercrombie
             };
 
-            var mathematics = new Department
-            {
-                Name = "Mathematics",
-                Budget = 100000,
-                StartDate = DateTime.Parse("2007-09-01"),
-                Administrator = fakhouri
-            };
-
-            var engineering = new Department
-            {
-                Name = "Engineering",
-                Budget = 350000,
-                StartDate = DateTime.Parse("2007-09-01"),
-                Administrator = harui
-            };
-
-            var economics = new Department
-            {
-                Name = "Economics",
-                Budget = 100000,
-                StartDate = DateTime.Parse("2007-09-01"),
-                Administrator = kapoor
-            };
+           
 
             var departments = new Department[]
             {
-                english,
-                mathematics,
-                engineering,
-                economics
+                gebusi
             };
 
             context.AddRange(departments);
@@ -193,7 +169,6 @@ namespace SOSResources.Data
                 CourseID = 1050,
                 Title = "Chemistry",
                 Credits = 3,
-                Department = engineering,
                 Instructors = new List<Instructor> { kapoor, harui }
             };
 
@@ -202,7 +177,7 @@ namespace SOSResources.Data
                 CourseID = 4022,
                 Title = "Microeconomics",
                 Credits = 3,
-                Department = economics,
+
                 Instructors = new List<Instructor> { zheng }
             };
 
@@ -211,7 +186,7 @@ namespace SOSResources.Data
                 CourseID = 4041,
                 Title = "Macroeconomics",
                 Credits = 3,
-                Department = economics,
+
                 Instructors = new List<Instructor> { zheng }
             };
 
@@ -220,7 +195,7 @@ namespace SOSResources.Data
                 CourseID = 1045,
                 Title = "Calculus",
                 Credits = 4,
-                Department = mathematics,
+
                 Instructors = new List<Instructor> { fakhouri }
             };
 
@@ -229,7 +204,7 @@ namespace SOSResources.Data
                 CourseID = 3141,
                 Title = "Trigonometry",
                 Credits = 4,
-                Department = mathematics,
+
                 Instructors = new List<Instructor> { harui }
             };
 
@@ -238,7 +213,7 @@ namespace SOSResources.Data
                 CourseID = 2021,
                 Title = "Composition",
                 Credits = 3,
-                Department = english,
+                Department = gebusi,
                 Instructors = new List<Instructor> { abercrombie }
             };
 
@@ -247,7 +222,7 @@ namespace SOSResources.Data
                 CourseID = 2042,
                 Title = "Literature",
                 Credits = 4,
-                Department = english,
+                Department = gebusi,
                 Instructors = new List<Instructor> { abercrombie }
             };
 
