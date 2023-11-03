@@ -28,7 +28,6 @@ namespace SOSResources.Pages.Instructors
             }
 
             Instructor = await _context.Instructors
-                .Include(i => i.OfficeAssignment)
                 .Include(i => i.Courses)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
