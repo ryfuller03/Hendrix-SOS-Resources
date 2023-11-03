@@ -1,7 +1,5 @@
 using SOSResources.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace SOSResources.Data
 {
@@ -85,33 +83,6 @@ namespace SOSResources.Data
 
             context.AddRange(students);
 
-            var abercrombie = new Instructor
-            {
-                Name = "Sewing Supplies",
-                Type = "Type",
-                Description = "Some sewing supplies."
-            };
-
-            var fakhouri = new Instructor
-            {
-                Name = "Resource",
-                Type = "Type",
-                Description = "A resource."
-            };
-
-           
-
-
-            var instructors = new Instructor[]
-            {
-                abercrombie,
-                fakhouri,
-               
-            };
-
-            context.AddRange(instructors);
-
-            
 
             var gebusi = new Department
             {
@@ -140,7 +111,6 @@ namespace SOSResources.Data
                 CourseID = 1050,
                 Title = "Chemistry",
                 Credits = 3,
-                Instructors = new List<Instructor> { fakhouri }
             };
 
             var microeconomics = new Course
@@ -149,7 +119,6 @@ namespace SOSResources.Data
                 Title = "Microeconomics",
                 Credits = 3,
 
-                Instructors = new List<Instructor> { fakhouri }
             };
 
             var macroeconmics = new Course
@@ -158,7 +127,6 @@ namespace SOSResources.Data
                 Title = "Macroeconomics",
                 Credits = 3,
 
-                Instructors = new List<Instructor> { fakhouri }
             };
 
             var calculus = new Course
@@ -167,7 +135,6 @@ namespace SOSResources.Data
                 Title = "Calculus",
                 Credits = 4,
 
-                Instructors = new List<Instructor> { fakhouri }
             };
 
             var trigonometry = new Course
@@ -176,7 +143,6 @@ namespace SOSResources.Data
                 Title = "Trigonometry",
                 Credits = 4,
 
-                Instructors = new List<Instructor> { fakhouri }
             };
 
             var composition = new Course
@@ -185,7 +151,6 @@ namespace SOSResources.Data
                 Title = "Composition",
                 Credits = 3,
                 Department = gebusi,
-                Instructors = new List<Instructor> { abercrombie }
             };
 
             var literature = new Course
@@ -194,7 +159,6 @@ namespace SOSResources.Data
                 Title = "Literature",
                 Credits = 4,
                 Department = gebusi,
-                Instructors = new List<Instructor> { abercrombie }
             };
 
             var courses = new Course[]
