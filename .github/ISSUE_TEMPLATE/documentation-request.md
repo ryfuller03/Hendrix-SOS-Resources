@@ -18,3 +18,6 @@ A clear, concise description of what needs to be documented about the project. T
 
 **Additional information**
 Any additional information that might be useful. Screenshots, links to existing docs, etc...
+
+**Date Due By (if applicable)**
+Put the date you want this done by here

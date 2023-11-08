@@ -15,3 +15,6 @@ A clear, concise description of how the project could be changed to conform with
 
 **Additional information**
 Any useful additional information. Screenshots, wiki pages, style guides, etc...
+
+**Date Due By (if applicable)**
+Put the date you want this done by here
