@@ -11569,19 +11569,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/zach/.nuget/packages/": {}
+    "C:\\Users\\ameow\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/zach/Library/CloudStorage/OneDrive-HendrixCollege/School/Senior/Fall/Databases and Web Systems/Final Project/Hendrix-SOS-Resources/SOSResources/SOSResources.csproj",
+      "projectUniqueName": "C:\\Users\\ameow\\Documents\\CSCI 340\\SOS\\Hendrix-SOS-Resources\\SOSResources\\SOSResources.csproj",
       "projectName": "SOSResources",
-      "projectPath": "/Users/zach/Library/CloudStorage/OneDrive-HendrixCollege/School/Senior/Fall/Databases and Web Systems/Final Project/Hendrix-SOS-Resources/SOSResources/SOSResources.csproj",
-      "packagesPath": "/Users/zach/.nuget/packages/",
-      "outputPath": "/Users/zach/Library/CloudStorage/OneDrive-HendrixCollege/School/Senior/Fall/Databases and Web Systems/Final Project/Hendrix-SOS-Resources/SOSResources/obj/",
+      "projectPath": "C:\\Users\\ameow\\Documents\\CSCI 340\\SOS\\Hendrix-SOS-Resources\\SOSResources\\SOSResources.csproj",
+      "packagesPath": "C:\\Users\\ameow\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ameow\\Documents\\CSCI 340\\SOS\\Hendrix-SOS-Resources\\SOSResources\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/zach/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\ameow\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -11653,7 +11653,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.401/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }
