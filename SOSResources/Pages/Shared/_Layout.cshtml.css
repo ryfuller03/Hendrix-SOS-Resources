@@ -11,12 +11,10 @@ a {
   color: #0077cc;
 }
 
-header{
+#mainnav {
   background-color: #CB4F0D;
 }
-.navbar {
-  background-color: #CB4F0D;
-}
+
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
