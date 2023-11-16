@@ -12,14 +12,33 @@ namespace SOSResources.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Departments",
+                columns: table => new
+                {
+                    DepartmentID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Title = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true),
+                    Author = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true),
+                    Edition = table.Column<int>(type: "INTEGER", nullable: true),
+                    Quantity = table.Column<int>(type: "INTEGER", nullable: false),
+                    InstructorID = table.Column<int>(type: "INTEGER", nullable: true),
+                    ConcurrencyToken = table.Column<Guid>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Departments", x => x.DepartmentID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Instructor",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    LastName = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
-                    FirstName = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
-                    HireDate = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    Name = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true),
+                    Type = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
+                    Quantity = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,24 +61,23 @@ namespace SOSResources.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Departments",
+                name: "Course",
                 columns: table => new
                 {
+                    CourseID = table.Column<int>(type: "INTEGER", nullable: false),
+                    Title = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true),
+                    Credits = table.Column<int>(type: "INTEGER", nullable: false),
                     DepartmentID = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true),
-                    Budget = table.Column<decimal>(type: "money", nullable: false),
-                    StartDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    InstructorID = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Departments", x => x.DepartmentID);
+                    table.PrimaryKey("PK_Course", x => x.CourseID);
                     table.ForeignKey(
-                        name: "FK_Departments_Instructor_InstructorID",
-                        column: x => x.InstructorID,
-                        principalTable: "Instructor",
-                        principalColumn: "ID");
+                        name: "FK_Course_Departments_DepartmentID",
+                        column: x => x.DepartmentID,
+                        principalTable: "Departments",
+                        principalColumn: "DepartmentID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -77,26 +95,6 @@ namespace SOSResources.Migrations
                         column: x => x.InstructorID,
                         principalTable: "Instructor",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Course",
-                columns: table => new
-                {
-                    CourseID = table.Column<int>(type: "INTEGER", nullable: false),
-                    Title = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true),
-                    Credits = table.Column<int>(type: "INTEGER", nullable: false),
-                    DepartmentID = table.Column<int>(type: "INTEGER", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Course", x => x.CourseID);
-                    table.ForeignKey(
-                        name: "FK_Course_Departments_DepartmentID",
-                        column: x => x.DepartmentID,
-                        principalTable: "Departments",
-                        principalColumn: "DepartmentID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -162,11 +160,6 @@ namespace SOSResources.Migrations
                 column: "InstructorsID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Departments_InstructorID",
-                table: "Departments",
-                column: "InstructorID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Enrollments_CourseID",
                 table: "Enrollments",
                 column: "CourseID");
@@ -196,10 +189,10 @@ namespace SOSResources.Migrations
                 name: "Student");
 
             migrationBuilder.DropTable(
-                name: "Departments");
+                name: "Instructor");
 
             migrationBuilder.DropTable(
-                name: "Instructor");
+                name: "Departments");
         }
     }
 }

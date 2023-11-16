@@ -11,8 +11,8 @@ using SOSResources.Data;
 namespace SOSResources.Migrations
 {
     [DbContext(typeof(SchoolContext))]
-    [Migration("20231102051110_Description")]
-    partial class Description
+    [Migration("20231116224831_CreateIdentitySchema")]
+    partial class CreateIdentitySchema
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

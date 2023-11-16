@@ -11,7 +11,7 @@ using SOSResources.Data;
 namespace SOSResources.Migrations
 {
     [DbContext(typeof(SchoolContext))]
-    [Migration("20231102030102_InitialCreate")]
+    [Migration("20231116224810_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -63,22 +63,28 @@ namespace SOSResources.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("Budget")
-                        .HasColumnType("money");
+                    b.Property<string>("Author")
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("ConcurrencyToken")
+                        .IsConcurrencyToken()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("Edition")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("InstructorID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Name")
+                    b.Property<int>("Quantity")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Title")
                         .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("DepartmentID");
-
-                    b.HasIndex("InstructorID");
 
                     b.ToTable("Departments");
                 });
@@ -113,17 +119,18 @@ namespace SOSResources.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("FirstMidName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("FirstName");
-
-                    b.Property<DateTime>("HireDate")
+                    b.Property<string>("Description")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
+                    b.Property<string>("Name")
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Type")
                         .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
@@ -189,21 +196,12 @@ namespace SOSResources.Migrations
             modelBuilder.Entity("SOSResources.Models.Course", b =>
                 {
                     b.HasOne("SOSResources.Models.Department", "Department")
-                        .WithMany("Courses")
+                        .WithMany()
                         .HasForeignKey("DepartmentID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Department");
-                });
-
-            modelBuilder.Entity("SOSResources.Models.Department", b =>
-                {
-                    b.HasOne("SOSResources.Models.Instructor", "Administrator")
-                        .WithMany()
-                        .HasForeignKey("InstructorID");
-
-                    b.Navigation("Administrator");
                 });
 
             modelBuilder.Entity("SOSResources.Models.Enrollment", b =>
@@ -239,11 +237,6 @@ namespace SOSResources.Migrations
             modelBuilder.Entity("SOSResources.Models.Course", b =>
                 {
                     b.Navigation("Enrollments");
-                });
-
-            modelBuilder.Entity("SOSResources.Models.Department", b =>
-                {
-                    b.Navigation("Courses");
                 });
 
             modelBuilder.Entity("SOSResources.Models.Instructor", b =>
