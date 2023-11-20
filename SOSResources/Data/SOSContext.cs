@@ -12,14 +12,16 @@ namespace SOSResources.Data
     public DbSet<Textbook> Textbooks { get; set; }
     public DbSet<Resource> Resources { get; set; }
     public DbSet<Participant> Participants { get; set; }
-    public DbSet<TextbookRequest> textbookRequests { get; set; }
+    public DbSet<TextbookRequest> TextbookRequests { get; set; }
+    public DbSet<ResourceRequest> ResourceRequests { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Textbook>().ToTable(nameof(Textbook));
         modelBuilder.Entity<Resource>().ToTable(nameof(Resource));
         modelBuilder.Entity<Participant>().ToTable(nameof(Participant));
-        modelBuilder.Entity<TextbookRequest>().ToTable(nameof(Participant));
+        modelBuilder.Entity<TextbookRequest>().ToTable(nameof(textbookRequest));
+        modelBuilder.Entity<ResourceRequest>().ToTable(nameof(resourceRequest));
     }
     
     // public DbSet<Course> Courses { get; set; }
