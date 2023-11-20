@@ -20,7 +20,7 @@ namespace SOSResources.Models
         public string LastName { get; set; }
         [Required]
         [StringLength(100)]
-        [Column("FirstName")]
+        // [Column("FirstName")]
         [Display(Name = "Legal First Name")]
         public string FirstName { get; set; }
 

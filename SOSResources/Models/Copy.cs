@@ -8,8 +8,8 @@ namespace SOSResources.Models
     public class Textbook
     {
         public int ID { get; set; }
-        public int TextbookID { get; set; }
-        public Textbook textbook { get; set; }
+        [Required]
+        public Textbook Textbook { get; set; }
         public ICollection<TextbookRequest> TextbookRequests { get; set; }
         public bool CheckedOut { get; set; }
     }
