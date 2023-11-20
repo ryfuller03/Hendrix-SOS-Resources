@@ -19,9 +19,6 @@ namespace SOSResources.Models
 
         [StringLength(100)]
         public string Edition { get; set; }
-
-        public bool CheckedOut { get; set;}
-
-        public ICollection<TextbookRequest> TextbookRequests { get; set; }
+        public ICollection<Copy> Copies { get; set; }
     }
 }

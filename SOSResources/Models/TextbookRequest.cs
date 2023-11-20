@@ -18,6 +18,7 @@ namespace SOSResources.Models
         public Participant Participant {get; set;}
 
         [Required]
-        public ICollection<Textbook> Textbook { get; set; }
+        [Display(Name = "Copy")]
+        public ICollection<Copy> Copy { get; set; }
     }
 }

@@ -10,6 +10,7 @@ namespace SOSResources.Data
     }
 
     public DbSet<Textbook> Textbooks { get; set; }
+    public DbSet<Copy> Copies { get; set; }
     public DbSet<Resource> Resources { get; set; }
     public DbSet<Participant> Participants { get; set; }
     public DbSet<TextbookRequest> TextbookRequests { get; set; }
@@ -18,10 +19,11 @@ namespace SOSResources.Data
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Textbook>().ToTable(nameof(Textbook));
+        modelBuilder.Entity<Copy>().ToTable(nameof(Copy));
         modelBuilder.Entity<Resource>().ToTable(nameof(Resource));
         modelBuilder.Entity<Participant>().ToTable(nameof(Participant));
-        modelBuilder.Entity<TextbookRequest>().ToTable(nameof(textbookRequest));
-        modelBuilder.Entity<ResourceRequest>().ToTable(nameof(resourceRequest));
+        modelBuilder.Entity<TextbookRequest>().ToTable(nameof(TextbookRequest));
+        modelBuilder.Entity<ResourceRequest>().ToTable(nameof(ResourceRequest));
     }
     
     // public DbSet<Course> Courses { get; set; }
