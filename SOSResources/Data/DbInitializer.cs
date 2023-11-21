@@ -85,8 +85,8 @@ namespace SOSResources.Data
             {
                 new TextbookRequest {
                     copy = c2,
-                    Participant = zach
-                    Active = true;
+                    Participant = zach,
+                    Active = true
                 }
             };
 
