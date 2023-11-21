@@ -20,5 +20,12 @@ namespace SOSResources.Models
         [StringLength(100)]
         public string Edition { get; set; }
         public ICollection<Copy> Copies { get; set; }
+
+        [Display(Name = "Copies")]
+        public int Count {
+            get {
+                return Copies.Count;
+            }
+        }
     }
 }

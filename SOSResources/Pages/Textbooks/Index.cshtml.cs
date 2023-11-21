@@ -25,7 +25,7 @@ namespace SOSResources.Pages.Textbooks
         {
             if (_context.Textbooks != null)
             {
-                Textbook = await _context.Textbooks.ToListAsync();
+                Textbook = await _context.Textbooks.Include(t => t.Copies).ToListAsync();
             }
         }
     }
