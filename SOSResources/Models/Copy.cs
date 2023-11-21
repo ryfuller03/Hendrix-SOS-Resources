@@ -10,6 +10,7 @@ namespace SOSResources.Models
         public int ID { get; set; }
         [Required]
         public Textbook textbook { get; set; }
+        public TextbookRequest activeRequest { get; set;}
         public ICollection<TextbookRequest> textbookRequests { get; set; }
         public bool CheckedOut { get; set; }
     }

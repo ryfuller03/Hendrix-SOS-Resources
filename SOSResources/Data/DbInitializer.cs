@@ -60,15 +60,15 @@ namespace SOSResources.Data
             context.AddRange(textbooks);
 
             var c1 = new Copy{
-                Textbook = gebusi,
+                textbook = gebusi,
                 CheckedOut = false
             };
             var c2 = new Copy{
-                Textbook = gebusi,
+                textbook = gebusi,
                 CheckedOut = true
             };
             var c3 = new Copy{
-                Textbook = caseHealth,
+                textbook = caseHealth,
                 CheckedOut = false
             };
 
@@ -84,8 +84,8 @@ namespace SOSResources.Data
             var textbookRequests = new TextbookRequest[]
             {
                 new TextbookRequest {
-                    Copy = c2,
-                    Participant = Zach
+                    copy = c2,
+                    Participant = zach
                 }
             };
 

@@ -19,6 +19,6 @@ namespace SOSResources.Models
 
         [Required]
         [Display(Name = "Copy")]
-        public ICollection<Copy> Copy { get; set; }
+        public Copy copy { get; set; }
     }
 }
