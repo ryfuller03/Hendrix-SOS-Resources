@@ -9,8 +9,8 @@ namespace SOSResources.Models
     {
         public int ID { get; set; }
         [Required]
-        public Textbook Textbook { get; set; }
-        public ICollection<TextbookRequest> TextbookRequests { get; set; }
+        public Textbook textbook { get; set; }
+        public ICollection<TextbookRequest> textbookRequests { get; set; }
         public bool CheckedOut { get; set; }
     }
 }

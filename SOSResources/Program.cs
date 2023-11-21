@@ -29,8 +29,8 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
 
-    //var context = services.GetRequiredService<SchoolContext>();
-    //DbInitializer.Initialize(context);
+    var context = services.GetRequiredService<SOSContext>();
+    DbInitializer.Initialize(context);
 }
 
 app.UseHttpsRedirection();
