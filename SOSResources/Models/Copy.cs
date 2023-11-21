@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SOSResources.Models
 {
-    public class Textbook
+    public class Copy
     {
         public int ID { get; set; }
         [Required]
