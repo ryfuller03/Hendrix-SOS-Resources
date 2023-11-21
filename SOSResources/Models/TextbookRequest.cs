@@ -14,6 +14,8 @@ namespace SOSResources.Models
         [Display(Name = "Date Submitted")]
         public DateTime RequestDate { get; set; }
 
+        public bool Active { get; set; }
+
         [Required]
         public Participant Participant {get; set;}
 

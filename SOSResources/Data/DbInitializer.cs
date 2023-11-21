@@ -65,6 +65,7 @@ namespace SOSResources.Data
             var c2 = new Copy{
                 textbook = gebusi,
                 CheckedOut = true
+
             };
             var c3 = new Copy{
                 textbook = caseHealth,
@@ -85,6 +86,7 @@ namespace SOSResources.Data
                 new TextbookRequest {
                     copy = c2,
                     Participant = zach
+                    Active = true;
                 }
             };
 
