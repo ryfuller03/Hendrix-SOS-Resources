@@ -47,7 +47,7 @@ namespace SOSResources.Data
            var caseHealth = new Textbook
            {
                 Title = "Case Studies for Health, Research and Practice in Australia and New Zealand",
-                Author = "Nicola Whiteing";
+                Author = "Nicola Whiteing"
            };
 
             var textbooks = new Textbook[]
