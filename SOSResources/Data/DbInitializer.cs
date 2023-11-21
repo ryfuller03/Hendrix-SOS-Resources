@@ -34,7 +34,7 @@ namespace SOSResources.Data
                 bob
             };
 
-            context.AddRange(participants);
+            context.Participants.AddRange(participants);
 
 
             var gebusi = new Textbook
@@ -56,7 +56,7 @@ namespace SOSResources.Data
                 caseHealth
             };
 
-            context.AddRange(textbooks);
+            context.Textbooks.AddRange(textbooks);
 
             var c1 = new Copy{
                 textbook = gebusi,
@@ -79,18 +79,19 @@ namespace SOSResources.Data
                 c3
             };
 
-            context.AddRange(copies);
+            context.Copies.AddRange(copies);
 
+            var request1 = new TextbookRequest {
+                copy = c2,
+                participant = zach,
+                Active = true
+            };
             var textbookRequests = new TextbookRequest[]
             {
-                new TextbookRequest {
-                    copy = c2,
-                    Participant = zach,
-                    Active = true
-                }
+                request1
             };
 
-            context.AddRange(textbookRequests);
+            context.TextbookRequests.AddRange(textbookRequests);
             context.SaveChanges();
         }
     }

@@ -17,7 +17,7 @@ namespace SOSResources.Models
         public bool Active { get; set; }
 
         [Required]
-        public Participant Participant {get; set;}
+        public Participant participant {get; set;}
 
         [Required]
         [Display(Name = "Copy")]
