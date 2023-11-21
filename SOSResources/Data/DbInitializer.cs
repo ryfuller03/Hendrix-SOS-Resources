@@ -11,21 +11,21 @@ namespace SOSResources.Data
             if (context.Participants.Any())
             {
                 return;   // DB has been seeded
-            }
+            };
 
 
             var zach = new Participant
             {
                 Name = "Zach",
                 FirstName = "Zachary",
-                LastName = "Bernheimer",
+                LastName = "Bernheimer"
             };
 
             var bob = new Participant
             {
                 Name = "Bob",
                 FirstName = "Robert",
-                LastName = "Smith",
+                LastName = "Smith"
             };
 
             var participants = new Participant[]
@@ -37,17 +37,18 @@ namespace SOSResources.Data
             context.AddRange(participants);
 
 
-            var gebusi = new Textbook;
+            var gebusi = new Textbook
             {
                 Title = "The Gebusi: Rainforest Living",
                 Author = "Bruce Knauft",
-                Edition = 5,
+                Edition = 5
             };
 
-           var caseHealth = new Textbook{
-            Title = "Case Studies for Health, Research and Practice in Australia and New Zealand",
-            Author = "Nicola Whiteing",
-            Quantity = 1
+           var caseHealth = new Textbook
+           {
+                Title = "Case Studies for Health, Research and Practice in Australia and New Zealand",
+                Author = "Nicola Whiteing",
+                Quantity = 1
            };
 
             var textbooks = new Textbook[]
@@ -59,17 +60,17 @@ namespace SOSResources.Data
             context.AddRange(textbooks);
 
             var c1 = new Copy{
-                Textbook = gebusi
+                Textbook = gebusi,
                 CheckedOut = false
-            }
+            };
             var c2 = new Copy{
-                Textbook = gebusi
+                Textbook = gebusi,
                 CheckedOut = true
-            }
+            };
             var c3 = new Copy{
-                Textbook = caseHealth
+                Textbook = caseHealth,
                 CheckedOut = false
-            }
+            };
 
             var copies = new Copy[]
             {
