@@ -2,10 +2,10 @@
 @model SOSResources.Pages.TextbookRequests.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Textbook Requests";
 }
 
-<h1>Index</h1>
+<h1>Textbook Requests</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -15,6 +15,9 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.TextbookRequest[0].RequestDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TextbookRequest[0].Requester)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TextbookRequest[0].Active)
@@ -27,6 +30,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.RequestDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Requester.FullName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Active)

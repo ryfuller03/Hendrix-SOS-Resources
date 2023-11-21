@@ -83,7 +83,7 @@ namespace SOSResources.Data
 
             var request1 = new TextbookRequest {
                 copy = c2,
-                participant = zach,
+                Requester = zach,
                 Active = true
             };
             var textbookRequests = new TextbookRequest[]

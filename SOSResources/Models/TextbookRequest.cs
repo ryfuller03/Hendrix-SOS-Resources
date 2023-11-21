@@ -15,9 +15,10 @@ namespace SOSResources.Models
         public DateTime RequestDate { get; set; }
 
         public bool Active { get; set; }
+        
 
         [Required]
-        public Participant participant {get; set;}
+        public Participant Requester {get; set;}
 
         [Required]
         [Display(Name = "Copy")]

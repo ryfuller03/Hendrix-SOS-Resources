@@ -28,7 +28,11 @@ namespace SOSResources.Pages.Textbooks
                 return NotFound();
             }
 
-            var textbook = await _context.Textbooks.FirstOrDefaultAsync(m => m.ID == id);
+            var textbook = await _context.Textbooks
+                .Include(t => t.Copies)
+                .ThenInclude(c => c.textbookRequests)
+                .ThenInclude(r => r.Requester)
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (textbook == null)
             {
                 return NotFound();
