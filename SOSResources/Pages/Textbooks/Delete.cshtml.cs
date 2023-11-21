@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -29,7 +30,7 @@ namespace SOSResources.Pages.Textbooks
                 return NotFound();
             }
 
-            var textbook = await _context.Textbooks.FirstOrDefaultAsync(m => m.ID == id);
+            var textbook = await _context.Textbooks.Include(t => t.Copies).FirstOrDefaultAsync(m => m.ID == id);
 
             if (textbook == null)
             {
@@ -48,13 +49,19 @@ namespace SOSResources.Pages.Textbooks
             {
                 return NotFound();
             }
-            var textbook = await _context.Textbooks.FindAsync(id);
+            var textbook = await _context.Textbooks
+                .Include(t => t.Copies)
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (textbook != null)
             {
                 Textbook = textbook;
+                if (textbook.Copies.Any()){
+                    return Page();
+                }
                 _context.Textbooks.Remove(Textbook);
                 await _context.SaveChangesAsync();
+                
             }
 
             return RedirectToPage("./Index");
