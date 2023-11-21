@@ -41,14 +41,13 @@ namespace SOSResources.Data
             {
                 Title = "The Gebusi: Rainforest Living",
                 Author = "Bruce Knauft",
-                Edition = 5
+                Edition = "5th"
             };
 
            var caseHealth = new Textbook
            {
                 Title = "Case Studies for Health, Research and Practice in Australia and New Zealand",
-                Author = "Nicola Whiteing",
-                Quantity = 1
+                Author = "Nicola Whiteing";
            };
 
             var textbooks = new Textbook[]
