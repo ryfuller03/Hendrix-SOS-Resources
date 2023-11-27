@@ -10,17 +10,17 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SOS_ResourcesUser.Areas.Identity.Data;
-
+ 
 namespace SOS_Resources.Areas.Identity.Pages.Account.Manage
 {
     public class IndexModel : PageModel
     {
-        private readonly UserManager<SOS_ResourcesUser> _userManager;
-        private readonly SignInManager<SOS_ResourcesUser> _signInManager;
+        private readonly UserManager<SOS_User> _userManager;
+        private readonly SignInManager<SOS_User> _signInManager;
 
         public IndexModel(
-            UserManager<SOS_ResourcesUser> userManager,
-            SignInManager<SOS_ResourcesUser> signInManager)
+            UserManager<SOS_User> userManager,
+            SignInManager<SOS_User> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -61,7 +61,7 @@ namespace SOS_Resources.Areas.Identity.Pages.Account.Manage
             public string PhoneNumber { get; set; }
         }
 
-        private async Task LoadAsync(SOS_ResourcesUser user)
+        private async Task LoadAsync(SOS_User user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);

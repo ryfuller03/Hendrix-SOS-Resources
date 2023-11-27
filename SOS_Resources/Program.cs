@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SOS_Resources.Data;
-using SOS_Resources.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -67,7 +66,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
+app.UseAuthorization(); 
 app.UseAuthentication();
 
 app.MapRazorPages();
