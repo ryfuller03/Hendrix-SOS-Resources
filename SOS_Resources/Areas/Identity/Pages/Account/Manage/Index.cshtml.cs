@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using SOS_ResourcesUser.Areas.Identity.Data;
+using SOS_Resources.Areas.Identity.Data;
  
 namespace SOS_Resources.Areas.Identity.Pages.Account.Manage
 {

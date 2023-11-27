@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace SOS_ResourcesUser.Areas.Identity.Data;
+namespace SOS_Resources.Areas.Identity.Data;
 
 public class SOS_User : IdentityUser
 {

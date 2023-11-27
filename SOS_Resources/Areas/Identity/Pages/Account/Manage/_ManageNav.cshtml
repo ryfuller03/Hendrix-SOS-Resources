@@ -1,4 +1,5 @@
-@inject SignInManager<SOS_ResourcesUser> SignInManager
+@using SOS_Resources.Areas.Identity.Data
+@inject SignInManager<SOS_User> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
