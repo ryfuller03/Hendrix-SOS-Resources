@@ -57,6 +57,18 @@ namespace SOS_Resources.Areas.Identity.Pages.Account.Manage
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
+
+            [Required]
+            [StringLength(20)]
+            [DataType(DataType.Text)]
+            [Display(Name = "Pronouns*")]
+            public string Pronouns { get; set; }
+
+            [Required]
+            [StringLength(20)]
+            [DataType(DataType.Text)]
+            [Display(Name = "Preferred Name")]
+            public string PrefName { get; set; }
             
             [Required]
             [DataType(DataType.Text)]
@@ -151,6 +163,8 @@ namespace SOS_Resources.Areas.Identity.Pages.Account.Manage
                 FName = user.FName,
                 LName = user.LName,
                 Email = user.Email,
+                Pronouns = user.Pronouns,
+                PrefName = user.PrefName,
                 PhoneNumber = user.PhoneNumber,
                 Class = user.Class,
                 CampusAdd = user.CampusAdd,
@@ -221,6 +235,12 @@ namespace SOS_Resources.Areas.Identity.Pages.Account.Manage
         }
         if (Input.PhoneNumber != user.PhoneNumber){
             user.PhoneNumber = Input.PhoneNumber;
+        }
+        if (Input.PrefName != user.PrefName){
+            user.PrefName = Input.PrefName;
+        }
+        if (Input.Pronouns != user.Pronouns){
+            user.Pronouns = Input.Pronouns;
         }
 
 

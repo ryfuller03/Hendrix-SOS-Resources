@@ -15,6 +15,11 @@ public class SOS_User : IdentityUser
     [PersonalData]
     public string? UserPhoneNum { get; set; }
 
+    [PersonalData]
+    public string? Pronouns { get; set; }
+    [PersonalData]
+    public string? PrefName { get; set; }
+
 
     [PersonalData]
     public string? Class { get; set; }
