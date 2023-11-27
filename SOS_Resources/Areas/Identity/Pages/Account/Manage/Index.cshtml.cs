@@ -26,65 +26,148 @@ namespace SOS_Resources.Areas.Identity.Pages.Account.Manage
             _signInManager = signInManager;
         }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
+
         public string Username { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
+
         [TempData]
         public string StatusMessage { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         [BindProperty]
         public InputModel Input { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public class InputModel
-        {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
-            /// 
-            
-        [Required]
-        [DataType(DataType.Text)]
-        [Display(Name = "Full name")]
-        public string Name { get; set; }
+        {            
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Hendrix ID")]
+            public string HendrixID { get; set; }
 
-        [Required]
-        [Display(Name = "Birth Date")]
-        [DataType(DataType.Date)]
-        public DateTime DOB { get; set; }
-            [Phone]
-            [Display(Name = "Phone number")]
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "First Name")]
+            public string FName { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Last Name")]
+            public string LName { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Email")]
+            public string Email { get; set; }
+            
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Classification")]
+            public string Class { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Phone Number")]
             public string PhoneNumber { get; set; }
+
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Campus Address")]
+            public string CampusAdd { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Campus Email")]
+            public string CampusEmail { get; set; }
+
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Emergency Contact First Name")]
+            public string EmergFName { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Emergency Contact Last Name")]
+            public string EmergLName { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Emergency Contact Email")]
+            public string EmergEmail { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Emergency Contact Relationship")]
+            public string EmergRelation { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Emergency Contact Phone Number")]
+            public string EmergPhone { get; set; }
+
+
+            [DataType(DataType.Text)]
+            [Display(Name = "Employer Name")]
+            public string Employer { get; set; }
+
+            [DataType(DataType.Text)]
+            [Display(Name = "Employer Phone Number")]
+            public string EmployerPhone { get; set; }
+
+            [DataType(DataType.Text)]
+            [Display(Name = "Job Position")]
+            public string JobPosition { get; set; }
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Pay Type")]
+            public bool PayType { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Pay Frequency")]
+            public string PayFreq { get; set; }
+
+            [DataType(DataType.Text)]
+            [Display(Name = "Monthly Wage Amount")]
+            public string MonthlyWages { get; set; }
+
+            [DataType(DataType.Text)]
+            [Display(Name = "Referred By")]
+            public string ReferredBy { get; set; }
+                    
         }
 
         private async Task LoadAsync(SOS_User user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            var
 
             Username = userName;
 
             Input = new InputModel
             {
+                HendrixID = user.HendrixID,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                Class = user.Class,
+                CampusAdd = user.CampusAdd,
+                CampusEmail = user.CampusEmail,
+                EmergFName = user.EmergFName,
+                EmergLName = user.EmergLName,
+                EmergEmail = user.EmergEmail,
+                EmergRelation = user.EmergRelation,
+                EmergPhone = user.EmergPhone,
+                Employer = user.Employer,
+                EmployerPhone = user.EmployerPhone,
+                JobPosition = user.JobPosition,
+                PayType = user.PayType,
+                PayFreq = user.PayFreq,
+                MonthlyWages = user.MonthlyWages,
+                ReferredBy = user.ReferredBy
                 
-                Name = user.Name,
-                DOB = user.DOB,
-                PhoneNumber = phoneNumber
             };
         }
 

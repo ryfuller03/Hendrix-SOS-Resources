@@ -53,8 +53,4 @@ public class SOS_User : IdentityUser
 
     [PersonalData]
     public string? ReferredBy { get; set; }
-
-    public string? Name { get; set; }
-    [PersonalData]
-    public DateTime DOB { get; set; }
 }
