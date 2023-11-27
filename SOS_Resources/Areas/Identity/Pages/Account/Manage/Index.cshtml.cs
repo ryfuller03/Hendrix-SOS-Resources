@@ -56,6 +56,17 @@ namespace SOS_Resources.Areas.Identity.Pages.Account.Manage
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
+            /// 
+            
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Full name")]
+        public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "Birth Date")]
+        [DataType(DataType.Date)]
+        public DateTime DOB { get; set; }
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
@@ -70,6 +81,9 @@ namespace SOS_Resources.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
+                
+                Name = user.Name,
+                DOB = user.DOB,
                 PhoneNumber = phoneNumber
             };
         }
