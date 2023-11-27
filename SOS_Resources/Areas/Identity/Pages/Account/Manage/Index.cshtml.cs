@@ -129,7 +129,7 @@ namespace SOS_Resources.Areas.Identity.Pages.Account.Manage
 
             [DataType(DataType.Text)]
             [Display(Name = "Monthly Wage Amount")]
-            public string MonthlyWages { get; set; }
+            public int MonthlyWages { get; set; }
 
             [DataType(DataType.Text)]
             [Display(Name = "Referred By")]
@@ -225,7 +225,7 @@ namespace SOS_Resources.Areas.Identity.Pages.Account.Manage
 
 
         if (Input.Class != user.Class){
-            user.Class = Input.Class
+            user.Class = Input.Class;
         }
         if(Input.CampusAdd != user.CampusAdd){
             user.CampusAdd = Input.CampusAdd;
