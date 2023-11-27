@@ -78,82 +78,93 @@ namespace SOS_Resources.Areas.Identity.Pages.Account
             /// </summary>
 
             [Required]
-            [StringLength(6, ErrorMessage = "Hendrix IDs should only be 6 digits in length")]
+            [StringLength(6)]
             [DataType(DataType.Text)]
-            [Display(Name = "Hendrix ID")]
+            [Display(Name = "Hendrix ID*")]
             public string HendrixID { get; set; }
 
             [Required]
             [StringLength(20)]
             [DataType(DataType.Text)]
-            [Display(Name = "First Name")]
+            [Display(Name = "First Name*")]
             public string FName { get; set; }
 
             [Required]
             [StringLength(20)]
             [DataType(DataType.Text)]
-            [Display(Name = "Last Name")]
+            [Display(Name = "Last Name*")]
             public string LName { get; set; }
 
             [Required]
             [EmailAddress]
-            [Display(Name = "Email")]
+            [Display(Name = "Email*")]
             public string Email { get; set; }
+
+            [Required]
+            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [DataType(DataType.Password)]
+            [Display(Name = "Password*")]
+            public string Password { get; set; }
+
+            [DataType(DataType.Password)]
+            [Display(Name = "Confirm password*")]
+            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            public string ConfirmPassword { get; set; }
             
             [Required]
             [StringLength(20)]
             [DataType(DataType.Text)]
-            [Display(Name = "Classification")]
+            [Display(Name = "Classification*")]
             public string Class { get; set; }
 
             [Required]
             [StringLength(15)]
             [DataType(DataType.Text)]
-            [Display(Name = "Phone Number")]
+            [Display(Name = "Phone Number*")]
             public string PhoneNumber { get; set; }
 
 
             [Required]
             [StringLength(70)]
             [DataType(DataType.Text)]
-            [Display(Name = "Campus Address")]
+            [Display(Name = "Campus Address*")]
             public string CampusAdd { get; set; }
 
             [Required]
             [EmailAddress]
             [DataType(DataType.Text)]
-            [Display(Name = "Campus Email")]
+            [Display(Name = "Campus Email*")]
             public string CampusEmail { get; set; }
 
 
             [Required]
             [StringLength(20)]
             [DataType(DataType.Text)]
-            [Display(Name = "Emergency Contact First Name")]
+            [Display(Name = "Emergency Contact First Name*")]
             public string EmergFName { get; set; }
 
             [Required]
             [StringLength(20)]
             [DataType(DataType.Text)]
-            [Display(Name = "Emergency Contact Last Name")]
+            [Display(Name = "Emergency Contact Last Name*")]
             public string EmergLName { get; set; }
 
             [Required]
             [EmailAddress]
             [DataType(DataType.Text)]
-            [Display(Name = "Emergency Contact Email")]
+            [Display(Name = "Emergency Contact Email*")]
             public string EmergEmail { get; set; }
 
             [Required]
             [StringLength(20)]
             [DataType(DataType.Text)]
-            [Display(Name = "Emergency Contact Relationship")]
+            [Display(Name = "Emergency Contact Relationship*")]
             public string EmergRelation { get; set; }
 
             [Required]
             [StringLength(15)]
             [DataType(DataType.Text)]
-            [Display(Name = "Emergency Contact Phone Number")]
+            [Display(Name = "Emergency Contact Phone Number*")]
             public string EmergPhone { get; set; }
 
 
@@ -174,13 +185,13 @@ namespace SOS_Resources.Areas.Identity.Pages.Account
 
             [Required]
             [DataType(DataType.Text)]
-            [Display(Name = "Pay Type")]
+            [Display(Name = "Pay Type*")]
             public bool PayType { get; set; }
 
             [Required]
             [StringLength(20)]
             [DataType(DataType.Text)]
-            [Display(Name = "Pay Frequency")]
+            [Display(Name = "Pay Frequency*")]
             public string PayFreq { get; set; }
 
             [DataType(DataType.Text)]
@@ -192,25 +203,7 @@ namespace SOS_Resources.Areas.Identity.Pages.Account
             [Display(Name = "Referred By")]
             public string ReferredBy { get; set; }
 
-
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
-            [DataType(DataType.Password)]
-            [Display(Name = "Password")]
-            public string Password { get; set; }
-
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
-            [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-            public string ConfirmPassword { get; set; }
+            
         }
 
 
