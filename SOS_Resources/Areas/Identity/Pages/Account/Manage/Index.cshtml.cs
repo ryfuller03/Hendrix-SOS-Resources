@@ -207,14 +207,69 @@ namespace SOS_Resources.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
-            if (Input.Name != user.Name)
-        {
-            user.Name = Input.Name;
+        if (Input.HendrixID != user.HendrixID){
+            user.HendrixID = Input.HendrixID;
+        }
+        if (Input.FName != user.FName){
+            user.FName = Input.FName;
+        }
+        if (Input.LName != user.LName){
+            user.LName = Input.LName;
+        }
+        if (Input.Email != user.Email){
+            user.Email = Input.Email;
+        }
+        if (Input.PhoneNumber != user.PhoneNumber){
+            user.PhoneNumber = Input.PhoneNumber;
         }
 
-        if (Input.DOB != user.DOB)
-        {
-            user.DOB = Input.DOB;
+
+        if (Input.Class != user.Class){
+            user.Class = Input.Class
+        }
+        if(Input.CampusAdd != user.CampusAdd){
+            user.CampusAdd = Input.CampusAdd;
+        }
+        if(Input.CampusEmail != user.CampusEmail){
+            user.CampusEmail = Input.CampusEmail;
+        }
+
+
+        if (Input.EmergFName != user.EmergFName){
+            user.EmergFName = Input.EmergFName;
+        }
+        if (Input.EmergLName != user.EmergLName){
+            user.EmergLName = Input.EmergLName;
+        }
+        if (Input.EmergEmail != user.EmergEmail){
+            user.EmergEmail = Input.EmergEmail;
+        }
+        if (Input.EmergPhone != user.EmergPhone){
+            user.EmergPhone = Input.EmergPhone;
+        }
+
+
+        if (Input.Employer != user.Employer){
+            user.Employer = Input.Employer;
+        }
+        if (Input.EmployerPhone != user.EmployerPhone){
+            user.EmployerPhone = Input.EmployerPhone;
+        }
+        if (Input.JobPosition != user.JobPosition){
+            user.JobPosition = Input.JobPosition;
+        }
+        if (Input.PayType != user.PayType){
+            user.PayType = Input.PayType;
+        }
+        if (Input.PayFreq != user.PayFreq) {
+            user.PayFreq = Input.PayFreq;
+        }
+        if (Input.MonthlyWages != user.MonthlyWages){
+            user.MonthlyWages = Input.MonthlyWages;
+        }
+
+        if (Input.ReferredBy != user.ReferredBy){
+            user.ReferredBy = Input.ReferredBy;
         }
 
         await _userManager.UpdateAsync(user);
