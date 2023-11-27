@@ -54,7 +54,7 @@ namespace SOS_Resources.Areas.Identity.Pages.Account.Manage
             public string LName { get; set; }
 
             [Required]
-            [DataType(DataType.Text)]
+            [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
             
@@ -75,7 +75,7 @@ namespace SOS_Resources.Areas.Identity.Pages.Account.Manage
             public string CampusAdd { get; set; }
 
             [Required]
-            [DataType(DataType.Text)]
+            [EmailAddress]
             [Display(Name = "Campus Email")]
             public string CampusEmail { get; set; }
 
@@ -91,7 +91,7 @@ namespace SOS_Resources.Areas.Identity.Pages.Account.Manage
             public string EmergLName { get; set; }
 
             [Required]
-            [DataType(DataType.Text)]
+            [EmailAddress]
             [Display(Name = "Emergency Contact Email")]
             public string EmergEmail { get; set; }
 
@@ -148,8 +148,8 @@ namespace SOS_Resources.Areas.Identity.Pages.Account.Manage
             Input = new InputModel
             {
                 HendrixID = user.HendrixID,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
+                FName = user.FName,
+                LName = user.LName,
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
                 Class = user.Class,
