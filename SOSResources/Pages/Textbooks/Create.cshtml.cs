@@ -35,9 +35,22 @@ namespace SOSResources.Pages.Textbooks
             {
                 return Page();
             }
-
             _context.Textbooks.Add(Textbook);
+
+            int.TryParse(Request.Form["copies"].ToString(), out int copies);
+
+            Console.WriteLine("------- "+copies);
+
+            for (int i = 0; i < copies; i++) {
+                Copy c = new Copy{
+                    textbook = Textbook,
+                    CheckedOut = false
+                };
+                _context.Copies.Add(c);
+            };
+
             await _context.SaveChangesAsync();
+
 
             return RedirectToPage("./Index");
         }
