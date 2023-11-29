@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SOS_Resources.Data;
 
@@ -10,9 +11,11 @@ using SOS_Resources.Data;
 namespace SOSResources.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231129182031_addCampus")]
+    partial class addCampus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.11");
@@ -233,7 +236,7 @@ namespace SOSResources.Data.Migrations
                     b.Property<string>("PayFreq")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("PayType")
+                    b.Property<string>("PayType")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PhoneNumber")

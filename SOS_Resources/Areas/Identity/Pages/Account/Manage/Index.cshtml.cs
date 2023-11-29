@@ -129,10 +129,11 @@ namespace SOS_Resources.Areas.Identity.Pages.Account.Manage
             [DataType(DataType.Text)]
             [Display(Name = "Job Position")]
             public string JobPosition { get; set; }
+
             [Required]
             [DataType(DataType.Text)]
             [Display(Name = "Pay Type")]
-            public bool PayType { get; set; }
+            public string PayType { get; set; }
 
             [Required]
             [DataType(DataType.Text)]

@@ -48,7 +48,7 @@ public class SOS_User : IdentityUser
     [PersonalData]
     public string? JobPosition { get; set; }
     [PersonalData]
-    public bool PayType { get; set; }
+    public string? PayType { get; set; }
     [PersonalData]
     public string? PayFreq { get; set; }
     [PersonalData]
