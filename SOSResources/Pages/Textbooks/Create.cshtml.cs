@@ -36,10 +36,8 @@ namespace SOSResources.Pages.Textbooks
                 return Page();
             }
             _context.Textbooks.Add(Textbook);
-
+            
             int.TryParse(Request.Form["copies"].ToString(), out int copies);
-
-            Console.WriteLine("------- "+copies);
 
             for (int i = 0; i < copies; i++) {
                 Copy c = new Copy{

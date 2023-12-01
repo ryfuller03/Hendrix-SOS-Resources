@@ -50,6 +50,16 @@ namespace SOSResources.Pages.Textbooks
 
             _context.Attach(Textbook).State = EntityState.Modified;
 
+            int.TryParse(Request.Form["copies"].ToString(), out int copies);
+
+            for (int i = 0; i < copies; i++) {
+                Copy c = new Copy{
+                    textbook = Textbook,
+                    CheckedOut = false
+                };
+                _context.Copies.Add(c);
+            };
+
             try
             {
                 await _context.SaveChangesAsync();

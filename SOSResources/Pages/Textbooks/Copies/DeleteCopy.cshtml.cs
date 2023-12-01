@@ -9,63 +9,63 @@ using Microsoft.EntityFrameworkCore;
 using SOSResources.Data;
 using SOSResources.Models;
 
-namespace SOSResources.Pages.Textbooks
+namespace SOSResources.Pages.Textbooks.Copies
 {
-    public class DeleteModel : PageModel
+    public class CopyDeleteModel : PageModel
     {
         private readonly SOSResources.Data.SOSContext _context;
 
-        public DeleteModel(SOSResources.Data.SOSContext context)
+        public CopyDeleteModel(SOSResources.Data.SOSContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-      public Textbook Textbook { get; set; }
+        public Copy Copy { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Textbooks == null)
+            if (id == null || _context.Copies == null)
             {
                 return NotFound();
             }
 
-            var textbook = await _context.Textbooks
-                .Include(t => t.Copies)
-                .ThenInclude(c => c.textbookRequests)
+            var copy = await _context.Copies
+                .Include(c => c.textbook)
+                .Include(c => c.textbookRequests)
                 .ThenInclude(r => r.Requester)
                 .FirstOrDefaultAsync(m => m.ID == id);
                 
-            if (textbook == null)
+            if (copy == null)
             {
                 return NotFound();
             }
             else 
             {
-                Textbook = textbook;
+                Copy = copy;
             }
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.Textbooks == null)
+            if (id == null || _context.Copies == null)
             {
                 return NotFound();
             }
-            var textbook = await _context.Textbooks
-                .Include(t => t.Copies)
-                .ThenInclude(c => c.textbookRequests)
+            var copy = await _context.Copies
+                .Include(c => c.textbook)
+                .Include(c => c.textbookRequests)
                 .ThenInclude(r => r.Requester)
                 .FirstOrDefaultAsync(m => m.ID == id);
 
-            if (textbook != null)
+            if (copy != null)
             {
-                Textbook = textbook;
-                if (textbook.Copies.Any()){
+                Copy = copy;
+                if (copy.textbookRequests.Any()){
                     return Page();
                 }
-                _context.Textbooks.Remove(Textbook);
+                _context.Copies.Remove(Copy);
                 await _context.SaveChangesAsync();
                 
             }
