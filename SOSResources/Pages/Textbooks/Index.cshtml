@@ -10,14 +10,33 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <h3>Search:</h3>
+        <p>
+            Title: 
+            <input type="text" name="TitleSearchString" value="@Model.TitleFilter" placeholder="Title"/>
+            Author:
+            <input type="text" name="AuthorSearchString" value="@Model.AuthorFilter" placeholder="Author"/>  
+            <input type="submit" value="Search" class="btn btn-primary" /> | 
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Textbook[0].Title)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.TitleSort">
+                    @Html.DisplayNameFor(model => model.Textbook[0].Title)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Textbook[0].Author)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.AuthorSort">
+                    @Html.DisplayNameFor(model => model.Textbook[0].Author)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Textbook[0].Edition)
@@ -30,26 +49,26 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Textbook) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Edition)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Copies.Where(c => c.CheckedOut.Equals(false)).ToList().Count)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+    @foreach (var item in Model.Textbook) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Edition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Copies.Where(c => c.CheckedOut.Equals(false)).ToList().Count)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+    }
     </tbody>
 </table>
