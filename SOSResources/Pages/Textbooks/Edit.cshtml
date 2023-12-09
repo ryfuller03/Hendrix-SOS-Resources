@@ -31,8 +31,7 @@
             </div>
             <div class="form-group">
                 <label for="copies" class="control-label">Add Copies</label>
-                <input name="copies" type="number" step="1" value="1" />
-                <span id="copy_validation" class="text-danger"></span>
+                <input name="copies" type="number" step="1" value="@Model.Copies" max="10" min="0"/>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
