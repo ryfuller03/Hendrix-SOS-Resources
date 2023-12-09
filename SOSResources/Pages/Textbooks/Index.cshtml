@@ -25,41 +25,41 @@
     </div>
 </form>
 
-<table class="table table-striped" style="table-layout: fixed; width: 100%">
+<table class="table">
     <thead>
         <tr>
-            <th style="width: 35%">
+            <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.TitleSort" asp-route-titleFilter="@Model.TitleFilter" asp-route-authorFilter="@Model.AuthorFilter">
                     @Html.DisplayNameFor(model => model.Textbooks[0].Title)
                 </a>
             </th>
-            <th style="width: 25%>
+            <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.AuthorSort" asp-route-titleFilter="@Model.TitleFilter" asp-route-authorFilter="@Model.AuthorFilter">
                     @Html.DisplayNameFor(model => model.Textbooks[0].Author)
                 </a>
             </th>
-            <th  style="width: 15%">
+            <th>
                 @Html.DisplayNameFor(model => model.Textbooks[0].Edition)
             </th>
-            <th style="width: 10%">
+            <th>
                 Copies Available
             </th>
-            <th style="width: 15%">Actions</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
     @foreach (var item in Model.Textbooks) {
             <tr>
-                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">
+                <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
-                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">
+                <td>
                     @Html.DisplayFor(modelItem => item.Author)
                 </td>
-                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">
+                <td>
                     @Html.DisplayFor(modelItem => item.Edition)
                 </td>
-                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">
+                <td>
                     @Html.DisplayFor(modelItem => item.Copies.Where(c => c.CheckedOut.Equals(false)).ToList().Count)
                 </td>
                 <td>
