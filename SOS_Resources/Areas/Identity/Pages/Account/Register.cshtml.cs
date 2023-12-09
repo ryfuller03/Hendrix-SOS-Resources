@@ -72,44 +72,146 @@ namespace SOS_Resources.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
-            /// 
-            [Required]
-            [DataType(DataType.Text)]
-            [Display(Name = "Full name")]
-            public string Name { get; set; }
+
 
             [Required]
-            [Display(Name = "Birth Date")]
-            [DataType(DataType.Date)]
-            public DateTime DOB { get; set; }
+            [StringLength(6)]
+            [DataType(DataType.Text)]
+            [Display(Name = "Hendrix ID*")]
+            public string HendrixID { get; set; }
+
+            [Required]
+            [StringLength(20)]
+            [DataType(DataType.Text)]
+            [Display(Name = "First Name*")]
+            public string FName { get; set; }
+
+            [Required]
+            [StringLength(20)]
+            [DataType(DataType.Text)]
+            [Display(Name = "Last Name*")]
+            public string LName { get; set; }
+
+            [Required]
+            [StringLength(20)]
+            [DataType(DataType.Text)]
+            [Display(Name = "Pronouns*")]
+            public string Pronouns { get; set; }
+
+            [Required]
+            [StringLength(20)]
+            [DataType(DataType.Text)]
+            [Display(Name = "Preferred Name*")]
+            public string PrefName { get; set; }
+
 
             [Required]
             [EmailAddress]
-            [Display(Name = "Email")]
+            [Display(Name = "Email*")]
             public string Email { get; set; }
 
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Password*")]
             public string Password { get; set; }
 
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
+            [Display(Name = "Confirm password*")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+            
+            [Required]
+            [StringLength(20)]
+            [DataType(DataType.Text)]
+            [Display(Name = "Classification*")]
+            public string Class { get; set; }
+
+            [Required]
+            [StringLength(15)]
+            [DataType(DataType.Text)]
+            [Display(Name = "Phone Number*")]
+            public string PhoneNumber { get; set; }
+
+
+            [Required]
+            [StringLength(70)]
+            [DataType(DataType.Text)]
+            [Display(Name = "Campus Address*")]
+            public string CampusAdd { get; set; }
+
+            [Required]
+            [EmailAddress]
+            [Display(Name = "Campus Email*")]
+            public string CampusEmail { get; set; }
+
+
+            [Required]
+            [StringLength(20)]
+            [DataType(DataType.Text)]
+            [Display(Name = "Emergency Contact First Name*")]
+            public string EmergFName { get; set; }
+
+            [Required]
+            [StringLength(20)]
+            [DataType(DataType.Text)]
+            [Display(Name = "Emergency Contact Last Name*")]
+            public string EmergLName { get; set; }
+
+            [Required]
+            [EmailAddress]
+            [Display(Name = "Emergency Contact Email*")]
+            public string EmergEmail { get; set; }
+
+            [Required]
+            [StringLength(20)]
+            [DataType(DataType.Text)]
+            [Display(Name = "Emergency Contact Relationship*")]
+            public string EmergRelation { get; set; }
+
+            [Required]
+            [StringLength(15)]
+            [DataType(DataType.Text)]
+            [Display(Name = "Emergency Contact Phone Number*")]
+            public string EmergPhone { get; set; }
+
+
+            [DataType(DataType.Text)]
+            [StringLength(30)]
+            [Display(Name = "Employer Name")]
+            public string Employer { get; set; }
+
+            [DataType(DataType.Text)]
+            [StringLength(15)]
+            [Display(Name = "Employer Phone Number")]
+            public string EmployerPhone { get; set; }
+
+            [DataType(DataType.Text)]
+            [StringLength(50)]
+            [Display(Name = "Job Position")]
+            public string JobPosition { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Pay Type*")]
+            public string PayType { get; set; }
+
+            [Required]
+            [StringLength(20)]
+            [DataType(DataType.Text)]
+            [Display(Name = "Pay Frequency*")]
+            public string PayFreq { get; set; }
+
+            [DataType(DataType.Text)]
+            [Display(Name = "Monthly Wage Amount")]
+            public int MonthlyWages { get; set; }
+
+            [DataType(DataType.Text)]
+            [StringLength(50)]
+            [Display(Name = "Referred By")]
+            public string ReferredBy { get; set; }
+
+            
         }
 
 
@@ -126,8 +228,28 @@ namespace SOS_Resources.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
-                user.Name = Input.Name;
-                user.DOB = Input.DOB;
+
+                user.HendrixID = Input.HendrixID;
+                user.FName = Input.FName;
+                user.LName = Input.LName;
+                user.Email = Input.Email;
+                user.PhoneNumber = Input.PhoneNumber;
+                user.Class = Input.Class;
+                user.CampusAdd = Input.CampusAdd;
+                user.CampusEmail = Input.CampusEmail;
+                user.EmergFName = Input.EmergFName;
+                user.EmergLName = Input.EmergLName;
+                user.EmergEmail = Input.EmergEmail;
+                user.EmergRelation = Input.EmergRelation;
+                user.EmergPhone = Input.EmergPhone;
+                user.Employer = Input.Employer;
+                user.EmployerPhone = Input.EmployerPhone;
+                user.JobPosition = Input.JobPosition;
+                user.PayType = Input.PayType;
+                user.PayFreq = Input.PayFreq;
+                user.MonthlyWages = Input.MonthlyWages;
+                user.ReferredBy = Input.ReferredBy;
+
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
