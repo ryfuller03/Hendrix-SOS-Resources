@@ -97,12 +97,12 @@ namespace SOSResources.Pages.Utilities
                     if (String.IsNullOrWhiteSpace(edition)){
                         var editionMatch = matches.Where(t => String.IsNullOrWhiteSpace(t.Edition));
                         if (!editionMatch.IsNullOrEmpty()){
-                            tb = editionMatch.ElementAt(0);
+                            tb = editionMatch.ToArray()[0];
                         }
                     } else {
                         var editionMatch = matches.Where(t => t.Edition.Equals(edition));
                         if (!editionMatch.IsNullOrEmpty()){
-                            tb = editionMatch.ElementAt(0);
+                            tb = editionMatch.ToArray()[0];
                         }
                     }
                     
