@@ -25,8 +25,6 @@ namespace SOSResources.Pages.Textbooks
         public string AuthorFilter { get; set; }
         public string CurrentSort { get; set; }
 
-        //public IList<Textbook> Textbook { get;set; } = default!;
-
         public PaginatedList<Textbook> Textbooks { get; set; }
 
         public async Task OnGetAsync(string sortOrder, string titleSearchString, string authorSearchString, string titleFilter, string authorFilter, int? pageIndex, int pageSize = 10)

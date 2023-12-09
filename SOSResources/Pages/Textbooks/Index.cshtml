@@ -73,6 +73,7 @@
     </tbody>
 </table>
 
+<div style="text-align: center">Page @Model.Textbooks.PageIndex of @Model.Textbooks.TotalPages</div>
 @{
     var prevDisabled = !Model.Textbooks.HasPreviousPage ? "disabled" : "";
     var nextDisabled = !Model.Textbooks.HasNextPage ? "disabled" : "";
@@ -83,6 +84,7 @@
    asp-route-pageIndex="@(Model.Textbooks.PageIndex - 1)"
    asp-route-titleFilter="@Model.TitleFilter"
    asp-route-authorFilter="@Model.AuthorFilter"
+   asp-route-pageSize="@Model.Textbooks.PageSize"
    class="btn btn-primary @prevDisabled">
     Previous
 </a>
@@ -91,6 +93,47 @@
    asp-route-pageIndex="@(Model.Textbooks.PageIndex + 1)"
    asp-route-titleFilter="@Model.TitleFilter"
    asp-route-authorFilter="@Model.AuthorFilter"
+   asp-route-pageSize="@Model.Textbooks.PageSize"
    class="btn btn-primary @nextDisabled">
     Next
 </a>
+
+<div>
+    <p>Textbooks per page: 
+    <a asp-page="./Index"
+    asp-route-sortOrder="@Model.CurrentSort"
+    asp-route-pageIndex="1"
+    asp-route-titleFilter="@Model.TitleFilter"
+    asp-route-authorFilter="@Model.AuthorFilter"
+    asp-route-pageSize="10">
+    10 </a> | 
+    <a asp-page="./Index"
+    asp-route-sortOrder="@Model.CurrentSort"
+    asp-route-pageIndex="1"
+    asp-route-titleFilter="@Model.TitleFilter"
+    asp-route-authorFilter="@Model.AuthorFilter"
+    asp-route-pageSize="20">
+    25 </a> | 
+    <a asp-page="./Index"
+    asp-route-sortOrder="@Model.CurrentSort"
+    asp-route-pageIndex="1"
+    asp-route-titleFilter="@Model.TitleFilter"
+    asp-route-authorFilter="@Model.AuthorFilter"
+    asp-route-pageSize="40">
+    50 </a> | 
+    <a asp-page="./Index"
+    asp-route-sortOrder="@Model.CurrentSort"
+    asp-route-pageIndex="1"
+    asp-route-titleFilter="@Model.TitleFilter"
+    asp-route-authorFilter="@Model.AuthorFilter"
+    asp-route-pageSize="100">
+    100 </a> | 
+    <a asp-page="./Index"
+    asp-route-sortOrder="@Model.CurrentSort"
+    asp-route-pageIndex="1"
+    asp-route-titleFilter="@Model.TitleFilter"
+    asp-route-authorFilter="@Model.AuthorFilter"
+    asp-route-pageSize="-1">
+    All </a>
+    </p>
+</div>
