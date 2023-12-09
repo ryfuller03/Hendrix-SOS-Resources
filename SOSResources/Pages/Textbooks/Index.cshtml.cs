@@ -25,18 +25,26 @@ namespace SOSResources.Pages.Textbooks
         public string AuthorFilter { get; set; }
         public string CurrentSort { get; set; }
 
-        public IList<Textbook> Textbook { get;set; } = default!;
+        //public IList<Textbook> Textbook { get;set; } = default!;
 
-        public async Task OnGetAsync(string sortOrder, string titleSearchString, string authorSearchString)
+        public PaginatedList<Textbook> Textbooks { get; set; }
+
+        public async Task OnGetAsync(string sortOrder, string titleSearchString, string authorSearchString, string titleFilter, string authorFilter, int? pageIndex, int pageSize = 10)
         {
             TitleSort = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
             AuthorSort = sortOrder == "Author" ? "author_desc" : "Author";
+            if (titleSearchString != null || authorSearchString != null)
+            {
+                pageIndex = 1;
+            }
+            titleSearchString = titleSearchString != null ? titleSearchString : titleFilter;
+            authorSearchString = authorSearchString != null ? authorSearchString : authorFilter;
+
             TitleFilter = titleSearchString;
             AuthorFilter = authorSearchString;
-
+            
             IQueryable<Textbook> TextbookIQ = from tb in _context.Textbooks
                                             select tb;
-
             if (!String.IsNullOrEmpty(authorSearchString) && !String.IsNullOrWhiteSpace(titleSearchString))
             {
                 TextbookIQ = TextbookIQ.Where(tb => tb.Author.Contains(authorSearchString)
@@ -65,7 +73,7 @@ namespace SOSResources.Pages.Textbooks
 
             if (_context.Textbooks != null)
             {
-                Textbook = await TextbookIQ.Include(t => t.Copies).ToListAsync();
+                Textbooks = await PaginatedList<Textbook>.CreateAsync(TextbookIQ.AsNoTracking().Include(t => t.Copies), pageIndex ?? 1, pageSize);
             }
         }
     }
