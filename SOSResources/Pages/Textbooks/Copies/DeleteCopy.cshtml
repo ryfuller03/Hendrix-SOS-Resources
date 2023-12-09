@@ -64,7 +64,7 @@
     <form method="post">
         <input type="hidden" asp-for="Copy.ID" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
+        <a asp-page="/Textbooks/Delete" asp-route-id="@Model.Copy.textbook.ID">Back to List</a>
     </form>
 </div>
 

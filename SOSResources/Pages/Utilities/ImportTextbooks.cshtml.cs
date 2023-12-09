@@ -51,11 +51,31 @@ namespace SOSResources.Pages.Utilities
             //parse lines and convert duplicate textbooks to copies
             foreach (string l in lines){
                 var vals = l.Split(",");
+                List<string> parsed = new List<string>();
+                bool inString = false;
+                string currentString = "";
+                foreach (string v in vals){
+                    if (v.StartsWith('\"')){
+                        inString = true;
+                        currentString = v[1..];
+                    } else if (inString){
+                        currentString = String.Join(",", currentString, v);
+                        if (v.EndsWith('\"')){
+                            inString=false;
+                            currentString = currentString[..^1];
+                        }
+                    } else {
+                        currentString = v;
+                    }
+                    if (!inString){
+                        parsed.Add(currentString);
+                    }
+                }
 
-                string title = vals[0];
-                string author = vals[1];
-                string edition = vals[2];
-                bool checkedOut = vals[3] == "YES" ? true : false;
+                string title = parsed[0];
+                string author = parsed[1];
+                string edition = parsed[2];
+                bool checkedOut = parsed[3] == "YES" ? true : false;
 
                 var tbVals = (title, author, edition, checkedOut);
 

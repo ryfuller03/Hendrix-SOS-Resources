@@ -59,18 +59,21 @@ namespace SOSResources.Pages.Textbooks.Copies
                 .ThenInclude(r => r.Requester)
                 .FirstOrDefaultAsync(m => m.ID == id);
 
+            int tbID = copy.textbook.ID;
+
             if (copy != null)
             {
                 Copy = copy;
                 if (copy.textbookRequests.Any()){
                     return Page();
                 }
+                //tbID = Copy.textbook.ID;
                 _context.Copies.Remove(Copy);
                 await _context.SaveChangesAsync();
                 
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Textbooks/Delete", new{id = tbID.ToString()});
         }
     }
 }
