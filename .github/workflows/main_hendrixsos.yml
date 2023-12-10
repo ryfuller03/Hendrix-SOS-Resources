@@ -16,8 +16,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: LS
+        run: ls
+
       - name: Move
         run: cd SOS_Resources
+
+      - name: LS
+        run: ls
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
