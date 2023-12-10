@@ -54,4 +54,4 @@ jobs:
           app-name: 'HendrixSOS'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_27C5F4063F9A42EE8C3CEC762AACFCA2 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A5D93EC866EB4BC1B570BDF25E13237E }}
