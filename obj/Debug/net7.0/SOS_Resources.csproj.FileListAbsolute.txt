@@ -1,7 +1,5 @@
 C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\obj\Debug\net7.0\SOS_Resources.csproj.AssemblyReference.cache
 C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\obj\Debug\net7.0\SOS_Resources.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\obj\Debug\net7.0\SOS_Resources.AssemblyInfoInputs.cache
-C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\obj\Debug\net7.0\SOS_Resources.AssemblyInfo.cs
 C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\obj\Debug\net7.0\SOS_Resources.csproj.CoreCompileInputs.cache
 C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\obj\Debug\net7.0\SOS_Resources.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\obj\Debug\net7.0\SOS_Resources.MvcApplicationPartsAssemblyInfo.cache
@@ -312,3 +310,13 @@ C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\obj\Debug\net7.0\refint\SOS_Resource
 C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\obj\Debug\net7.0\SOS_Resources.pdb
 C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\obj\Debug\net7.0\SOS_Resources.genruntimeconfig.cache
 C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\obj\Debug\net7.0\ref\SOS_Resources.dll
+C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\bin\Debug\net7.0\SOS_Resources\bin\Debug\net7.0\appsettings.Development.json
+C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\bin\Debug\net7.0\SOS_Resources\bin\Debug\net7.0\appsettings.json
+C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\bin\Debug\net7.0\SOS_Resources\bin\Debug\net7.0\SOS_Resources.deps.json
+C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\bin\Debug\net7.0\SOS_Resources\bin\Debug\net7.0\SOS_Resources.runtimeconfig.json
+C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\bin\Debug\net7.0\SOS_Resources\bin\Debug\net7.0\SOS_Resources.staticwebassets.runtime.json
+C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\bin\Debug\net7.0\SOS_Resources\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\bin\Debug\net7.0\SOS_Resources\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\bin\Debug\net7.0\SOS_Resources\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\bin\Debug\net7.0\SOS_Resources\obj\project.assets.json
+C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\bin\Debug\net7.0\SOS_Resources\obj\SOS_Resources.csproj.nuget.dgspec.json
