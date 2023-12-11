@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7ymePEg16HK+wsNGJU0gRJl8dtoV9jWtM1fFNOdRY9Vr+JNdq9KHze4dY5i/bo5eT9ulb0Xs06ybH7yQNSq7RA==",
-  "success": false,
-  "projectFilePath": "C:\\Users\\Sarah\\WebDev\\Hendrix-SOS-Resources\\SOS_Resources\\SOS_Resources.csproj",
+  "dgSpecHash": "kPp+HtW2tdekKualRmnJv85cj9IVq2hin/nr6s1FCn7FyeJ8AhG7DMiXs33KMdy4Wf/tvNAl8IxqpMV2716YVA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Sarah\\WebDev\\Hendrix-SOS-Resources\\SOS_Resources.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sarah\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
@@ -12,7 +12,7 @@
     "C:\\Users\\Sarah\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\7.0.0\\microsoft.aspnetcore.cryptography.internal.7.0.0.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\7.0.0\\microsoft.aspnetcore.cryptography.keyderivation.7.0.0.nupkg.sha512",
-    "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\7.0.11\\microsoft.aspnetcore.diagnostics.entityframeworkcore.7.0.11.nupkg.sha512",
+    "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\7.0.0\\microsoft.aspnetcore.diagnostics.entityframeworkcore.7.0.0.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\7.0.0\\microsoft.aspnetcore.identity.entityframeworkcore.7.0.0.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\7.0.0\\microsoft.aspnetcore.identity.ui.7.0.0.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.0\\microsoft.aspnetcore.razor.language.6.0.0.nupkg.sha512",
@@ -37,16 +37,16 @@
     "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.0.1\\microsoft.data.sqlclient.sni.runtime.5.0.1.nupkg.sha512",
-    "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.11\\microsoft.data.sqlite.core.7.0.11.nupkg.sha512",
+    "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.0\\microsoft.data.sqlite.core.7.0.0.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.diasymreader\\1.3.0\\microsoft.diasymreader.1.3.0.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.dotnet.scaffolding.shared\\7.0.0\\microsoft.dotnet.scaffolding.shared.7.0.0.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.0\\microsoft.entityframeworkcore.7.0.0.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.0\\microsoft.entityframeworkcore.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.0\\microsoft.entityframeworkcore.analyzers.7.0.0.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.entityframeworkcore.design\\7.0.0\\microsoft.entityframeworkcore.design.7.0.0.nupkg.sha512",
-    "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.11\\microsoft.entityframeworkcore.relational.7.0.11.nupkg.sha512",
-    "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\7.0.11\\microsoft.entityframeworkcore.sqlite.7.0.11.nupkg.sha512",
-    "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\7.0.11\\microsoft.entityframeworkcore.sqlite.core.7.0.11.nupkg.sha512",
+    "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.0\\microsoft.entityframeworkcore.relational.7.0.0.nupkg.sha512",
+    "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\7.0.0\\microsoft.entityframeworkcore.sqlite.7.0.0.nupkg.sha512",
+    "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\7.0.0\\microsoft.entityframeworkcore.sqlite.core.7.0.0.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\7.0.0\\microsoft.entityframeworkcore.sqlserver.7.0.0.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\7.0.0\\microsoft.entityframeworkcore.tools.7.0.0.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
@@ -116,10 +116,10 @@
     "C:\\Users\\Sarah\\.nuget\\packages\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
-    "C:\\Users\\Sarah\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.4\\sqlitepclraw.bundle_e_sqlite3.2.1.4.nupkg.sha512",
-    "C:\\Users\\Sarah\\.nuget\\packages\\sqlitepclraw.core\\2.1.4\\sqlitepclraw.core.2.1.4.nupkg.sha512",
-    "C:\\Users\\Sarah\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.4\\sqlitepclraw.lib.e_sqlite3.2.1.4.nupkg.sha512",
-    "C:\\Users\\Sarah\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.4\\sqlitepclraw.provider.e_sqlite3.2.1.4.nupkg.sha512",
+    "C:\\Users\\Sarah\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.2\\sqlitepclraw.bundle_e_sqlite3.2.1.2.nupkg.sha512",
+    "C:\\Users\\Sarah\\.nuget\\packages\\sqlitepclraw.core\\2.1.2\\sqlitepclraw.core.2.1.2.nupkg.sha512",
+    "C:\\Users\\Sarah\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.2\\sqlitepclraw.lib.e_sqlite3.2.1.2.nupkg.sha512",
+    "C:\\Users\\Sarah\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.2\\sqlitepclraw.provider.e_sqlite3.2.1.2.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\stackexchange.redis\\2.2.4\\stackexchange.redis.2.2.4.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
@@ -207,24 +207,5 @@
     "C:\\Users\\Sarah\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Sarah\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Warning As Error: Detected package downgrade: Microsoft.EntityFrameworkCore from 7.0.11 to 7.0.0. Reference the package directly from the project to select a different version. \r\n SOS_Resources -> Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore 7.0.11 -> Microsoft.EntityFrameworkCore.Relational 7.0.11 -> Microsoft.EntityFrameworkCore (>= 7.0.11) \r\n SOS_Resources -> Microsoft.EntityFrameworkCore (>= 7.0.0)",
-      "libraryId": "Microsoft.EntityFrameworkCore",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    },
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Warning As Error: Detected package downgrade: Microsoft.EntityFrameworkCore from 7.0.11 to 7.0.0. Reference the package directly from the project to select a different version. \r\n SOS_Resources -> Microsoft.EntityFrameworkCore.Sqlite 7.0.11 -> Microsoft.EntityFrameworkCore.Sqlite.Core 7.0.11 -> Microsoft.EntityFrameworkCore.Relational 7.0.11 -> Microsoft.EntityFrameworkCore (>= 7.0.11) \r\n SOS_Resources -> Microsoft.EntityFrameworkCore (>= 7.0.0)",
-      "libraryId": "Microsoft.EntityFrameworkCore",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    }
-  ]
+  "logs": []
 }
