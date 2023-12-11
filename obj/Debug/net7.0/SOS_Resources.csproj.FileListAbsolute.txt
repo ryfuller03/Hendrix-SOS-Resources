@@ -312,4 +312,3 @@ C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\obj\Debug\net7.0\refint\SOS_Resource
 C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\obj\Debug\net7.0\SOS_Resources.pdb
 C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\obj\Debug\net7.0\SOS_Resources.genruntimeconfig.cache
 C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\obj\Debug\net7.0\ref\SOS_Resources.dll
-C:\Users\Sarah\WebDev\Hendrix-SOS-Resources\bin\Debug\net7.0\SOSResources\appsettings.json
