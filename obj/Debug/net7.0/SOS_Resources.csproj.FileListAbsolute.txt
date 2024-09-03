@@ -332,8 +332,8 @@ C:/Users/Sarah/WebDev/Hendrix-SOS-Resources/bin/Debug/net7.0/SOS_Resources/obj/S
 /Users/ryanfuller/Documents/Hendrix 24 25/Disco Tray/Hendrix-SOS-Resources/bin/Debug/net7.0/SOS_Resources/obj/Debug/net7.0/staticwebassets.pack.json
 /Users/ryanfuller/Documents/Hendrix 24 25/Disco Tray/Hendrix-SOS-Resources/bin/Debug/net7.0/SOS_Resources/obj/project.assets.json
 /Users/ryanfuller/Documents/Hendrix 24 25/Disco Tray/Hendrix-SOS-Resources/bin/Debug/net7.0/SOS_Resources/obj/SOS_Resources.csproj.nuget.dgspec.json
-/Users/ryanfuller/Documents/Hendrix 24 25/Disco Tray/Hendrix-SOS-Resources/bin/Debug/net7.0/app.db
 /Users/ryanfuller/Documents/Hendrix 24 25/Disco Tray/Hendrix-SOS-Resources/bin/Debug/net7.0/SOS_Resources.staticwebassets.runtime.json
+/Users/ryanfuller/Documents/Hendrix 24 25/Disco Tray/Hendrix-SOS-Resources/bin/Debug/net7.0/app.db
 /Users/ryanfuller/Documents/Hendrix 24 25/Disco Tray/Hendrix-SOS-Resources/bin/Debug/net7.0/SOS_Resources
 /Users/ryanfuller/Documents/Hendrix 24 25/Disco Tray/Hendrix-SOS-Resources/bin/Debug/net7.0/Azure.Core.dll
 /Users/ryanfuller/Documents/Hendrix 24 25/Disco Tray/Hendrix-SOS-Resources/bin/Debug/net7.0/Azure.Identity.dll
