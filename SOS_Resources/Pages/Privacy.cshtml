@@ -1,8 +1,39 @@
 ﻿@page
 @model PrivacyModel
 @{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Miscellaneous Request Form";
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<p>Use the below fields to submit a request for a resource not listed on
+    the other pages.
+</p>
+
+<style>
+    .submit-button {
+            background-color: #CB4F0D; /* Green background */
+            color: white; /* White text */
+            border: none; /* Remove border */
+            text-align: center; /* Center the text */
+            text-decoration: none; /* Remove underline */
+            display: inline-block; /* Make it inline-block */
+            margin-top: 10px;
+            cursor: pointer; /* Add a pointer cursor on hover */
+            }
+    .reason-label {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <form>
+        <label for="requestInput">What would you like to request?</label>
+        <input style="margin: 10px" type="text" id="requestInput" name="requestInput" size="50">
+    </form>
+    <p>For what reason do you need this resource?
+            Be as specific as you are able.</p>
+    <form>
+        <textarea id="reasonInput" name="reasonInput" rows="10" cols="50"></textarea><br>
+        <input type="submit" value="Submit" class="submit-button">
+    </form>
+</body>
