@@ -5,14 +5,17 @@ a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
+  color: null; /* the color for the mainnav 
+  wasn't changing until I added a color property to this section*/
 }
 
-a {
+a { /* what is a??? */
   color: #0077cc;
 }
 
 #mainnav {
-  background-color: #CB4F0D;
+  background-color: #E96B10;
+  font-weight: bolder; /* all text in main nav now becomes bolder weight*/
 }
 
 .btn-primary {

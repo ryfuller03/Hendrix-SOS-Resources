@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/ryanfuller/Documents/Hendrix 24 25/Disco Tray/Hendrix-SOS-Resources/SOS_Resources.csproj": {}
+    "c:\\Users\\roses\\Desktop\\Coding\\repos\\Hendrix-SOS-Resources\\SOS_Resources.csproj": {}
   },
   "projects": {
-    "/Users/ryanfuller/Documents/Hendrix 24 25/Disco Tray/Hendrix-SOS-Resources/SOS_Resources.csproj": {
+    "c:\\Users\\roses\\Desktop\\Coding\\repos\\Hendrix-SOS-Resources\\SOS_Resources.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ryanfuller/Documents/Hendrix 24 25/Disco Tray/Hendrix-SOS-Resources/SOS_Resources.csproj",
+        "projectUniqueName": "c:\\Users\\roses\\Desktop\\Coding\\repos\\Hendrix-SOS-Resources\\SOS_Resources.csproj",
         "projectName": "SOS_Resources",
-        "projectPath": "/Users/ryanfuller/Documents/Hendrix 24 25/Disco Tray/Hendrix-SOS-Resources/SOS_Resources.csproj",
-        "packagesPath": "/Users/ryanfuller/.nuget/packages/",
-        "outputPath": "/Users/ryanfuller/Documents/Hendrix 24 25/Disco Tray/Hendrix-SOS-Resources/obj/",
+        "projectPath": "c:\\Users\\roses\\Desktop\\Coding\\repos\\Hendrix-SOS-Resources\\SOS_Resources.csproj",
+        "packagesPath": "C:\\Users\\roses\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\roses\\Desktop\\Coding\\repos\\Hendrix-SOS-Resources\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/ryanfuller/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\roses\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -102,7 +102,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.410\\RuntimeIdentifierGraph.json"
         }
       }
     }
