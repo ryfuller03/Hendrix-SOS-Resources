@@ -2,8 +2,19 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SOS_Resources.Data;
 using SOS_Resources.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//microsoft authentication log-in
+var services = builder.Services;
+var configuration = builder.Configuration;
+
+services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
+    {
+        microsoftOptions.ClientId = configuration["Authentication:Microsoft:ClientId"];
+        microsoftOptions.ClientSecret = configuration["Authentication:Microsoft:ClientSecret"];
+    });
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");

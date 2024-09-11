@@ -955,3 +955,5 @@ c:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\obj\Debug\net7.0\refin
 c:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\obj\Debug\net7.0\SOS_Resources.pdb
 c:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\obj\Debug\net7.0\SOS_Resources.genruntimeconfig.cache
 c:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\obj\Debug\net7.0\ref\SOS_Resources.dll
+C:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\obj\Debug\net7.0\SOS_Resources.sourcelink.json
+C:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\obj\Debug\net7.0\SOS_Reso.29A842C3.Up2Date
