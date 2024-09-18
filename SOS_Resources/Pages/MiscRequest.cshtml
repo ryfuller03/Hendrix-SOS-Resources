@@ -3,34 +3,28 @@
 @{
     ViewData["Title"] = "Miscellaneous Request Form";
 }
-<h1>@ViewData["Title"]</h1>
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script src="~/js/site.js"></script>
+</head>
 
-<p>Use the below fields to submit a request for a resource not listed on
-    the other pages.
-</p>
+<body style="text-align: center;">
 
-<style>
-    .submit-button {
-            background-color: #e96b10;
-            color: white;
-            border: none;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 10px;
-            cursor: pointer;
-            }
-</style>
+    <h1 class="fade-in" style="text-align: center; color: #e96b10;">@ViewData["Title"]</h1>
 
-<body>
+    <p class="fade-in" style="text-align: center;">Use the below fields to submit a request for a resource not listed on
+        the other pages.
+    </p>
+
+    <p class="fade-in">Please enter your requested resource below:</p>
     <form>
-        <label for="requestInput">What would you like to request?</label>
-        <input style="margin: 10px" type="text" id="requestInput" name="requestInput" size="48">
+        <textarea class="fade-in" style="margin-bottom: 10px;" id="requestInput" name="requestInput" rows="1" cols="36"></textarea>
     </form>
-    <p>For what reason do you need this resource?
-            Be as specific as you are able.</p>
+
+    <p class="fade-in" style="margin-top: 10px">For what reason do you need this resource?
+            Be as specific as you are able:</p>
     <form>
-        <textarea id="reasonInput" name="reasonInput" rows="10" cols="72"></textarea><br>
-        <input type="submit" value="Submit" class="submit-button">
+        <textarea class="fade-in" style="margin-bottom: 10px;" id="reasonInput" name="reasonInput" rows="10" cols="72"></textarea><br>
+        <input type="submit" value="Submit" class="submit-button fade-in">
     </form>
-</body>
+ </body>
