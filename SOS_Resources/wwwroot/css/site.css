@@ -22,7 +22,7 @@ body {
 }
 
 .background {
-  background-image: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('../../images/background.jpg');
+  background-image: linear-gradient( rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65) ), url('../../images/background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -34,4 +34,8 @@ body {
 
 .orangeheader {
   color: #e96b10;
+}
+
+a:hover {
+  color:#e96b10;
 }
