@@ -39,3 +39,13 @@ body {
 a:hover {
   color:#e96b10;
 }
+
+.indeximagebutton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color:antiquewhite;
+  background-color:#e96b10;
+  border: none;
+  z-index: 100;
+}
