@@ -17,14 +17,34 @@
     </p>
 
     <p class="fade-in">Please enter your requested resource below:</p>
-    <form>
+    <form id="requestForm">
         <textarea class="fade-in" style="margin-bottom: 10px;" id="requestInput" name="requestInput" rows="1" cols="36"></textarea>
     </form>
 
     <p class="fade-in" style="margin-top: 10px">For what reason do you need this resource?
             Be as specific as you are able:</p>
-    <form>
+    <form id="reasonForm">
         <textarea class="fade-in" style="margin-bottom: 10px;" id="reasonInput" name="reasonInput" rows="10" cols="72"></textarea><br>
         <input type="submit" value="Submit" class="submit-button fade-in">
     </form>
+
+    <p id="successMessage">Thank you for sending your request! We will get back to you as soon as
+        we possibly can.
+    </p>
+
+    <script>
+        document.getElementById('reasonForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var requestInput = document.getElementById('requestInput').value;
+            var reasonInput = document.getElementById('reasonInput').value;
+            var successMessage = document.getElementById('successMessage');
+            successMessage.style.opacity = 1;
+
+            var emailBody = "Student's request: " + requestInput + '%0D%0A' + "\nStudent's reason: " + reasonInput;
+
+            // Create a mailto link and simulate a click
+            window.location.href = 'mailto:ryfuller03@gmail.com?subject=Request for Resource&body=' + emailBody;
+        });
+    </script>
  </body>
