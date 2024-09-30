@@ -1,7 +1,7 @@
 ﻿@page
 @model RequestModel
 @{
-    ViewData["Title"] = "Miscellaneous Request Form";
+    ViewData["Title"] = "SOS Request Form";
 }
 <head>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -16,10 +16,29 @@
         the other pages.
     </p>
 
-    <p class="fade-in">Please enter your requested resource below:</p>
-    <form id="requestForm">
-        <textarea class="fade-in" style="margin-bottom: 10px;" id="requestInput" name="requestInput" rows="1" cols="36"></textarea>
-    </form>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <form style="display: flex; align-items: center; margin-bottom: 10px;">
+                <p class="fade-in" style="margin-right: 10px; white-space: nowrap; padding-top: 15px;">Full Name:</p>
+                <input class="fade-in" id="firstName" name="firstName" style="margin-right: 10px; border: 1px solid black; width: 75%;">
+                <input class="fade-in" id="lastName" name="lastName" style="border: 1px solid black; width: 75%;">
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+
+    <div class="row" style="display: flex; align-items; center;">
+        <div class="col"></div>
+        <div class="col" style="display: flex;">
+            <p class="fade-in" style="white-space: nowrap; margin-right: 10px; padding-top: 2px;">Please enter your requested resource:</p>
+            <form id="requestForm">
+                <input class="fade-in" style="margin-bottom: 10px; border: 1px solid black;" id="requestInput" name="requestInput">
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+
 
     <p class="fade-in" style="margin-top: 10px">For what reason do you need this resource?
             Be as specific as you are able:</p>
