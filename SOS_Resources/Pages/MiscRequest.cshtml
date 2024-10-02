@@ -12,23 +12,32 @@
 
     <h1 class="fade-in" style="text-align: center; color: #e96b10;">@ViewData["Title"]</h1>
 
-    <p class="fade-in" style="text-align: center;">Use the below fields to submit a request for a resource not listed on
-        the other pages.
-    </p>
+    <p class="fade-in" style="text-align: center;">Use the below fields to submit a request for a resource you need.</p>
 
-    <div class="row">
+    <div class="row" style="display: flex; align-items: center;">
         <div class="col"></div>
-        <div class="col">
-            <form style="display: flex; align-items: center; margin-bottom: 10px;">
-                <p class="fade-in" style="margin-right: 10px; white-space: nowrap; padding-top: 15px;">Full Name:</p>
-                <input class="fade-in" id="firstName" name="firstName" style="margin-right: 10px; border: 1px solid black; width: 75%;">
-                <input class="fade-in" id="lastName" name="lastName" style="border: 1px solid black; width: 75%;">
-            </form>
+        <div class="col fade-in" style="display: flex;">
+            <p style="white-space: nowrap; margin-right: 20px; padding-top: 2px;">Please pick a request category:</p>
+            <select id="supplyCategory" name="supplyCategory" style="margin-top: 5px;">
+                <option value="First Aid">First Aid Supplies</option>
+                <option value="Medications">Over-the-Counter Medications</option>
+                <option value="Hygiene">Hygiene Supplies</option>
+                <option value="Personal Care">Personal Care Supplies</option>
+            </select>
         </div>
         <div class="col"></div>
     </div>
 
-    <div class="row" style="display: flex; align-items; center;">
+    <div class="row" style="display: flex; align-items: center;">
+        <div class="col"></div>
+        <div class="col fade-in" style="display: flex; margin-bottom: 20px;">
+            <label for="twentyFourHours" style="margin-right: 100px; white-space: nowrap;">I need this within 24 hours:</label>
+            <input type="checkbox" id="twentyFourHours" value="Yes" style="display: flex; margin-top: 6.5px; outline: 1px solid black; margin-left: 45px; accent-color: #e96b10">
+        </div>
+        <div class="col"></div>
+    </div>
+
+    <div class="row" style="display: flex; align-items: center;">
         <div class="col"></div>
         <div class="col" style="display: flex;">
             <p class="fade-in" style="white-space: nowrap; margin-right: 10px; padding-top: 2px;">Please enter your requested resource:</p>
@@ -38,7 +47,6 @@
         </div>
         <div class="col"></div>
     </div>
-
 
     <p class="fade-in" style="margin-top: 10px">For what reason do you need this resource?
             Be as specific as you are able:</p>
@@ -57,10 +65,12 @@
 
             var requestInput = document.getElementById('requestInput').value;
             var reasonInput = document.getElementById('reasonInput').value;
+            var supplyCategory = document.getElementById('supplyCategory').value;
+            var twentyFourHours = document.getElementById('twentyFourHours').value;
             var successMessage = document.getElementById('successMessage');
             successMessage.style.opacity = 1;
 
-            var emailBody = "Student's request: " + requestInput + '%0D%0A' + "\nStudent's reason: " + reasonInput;
+            var emailBody = "Request Category: " + supplyCategory + '%0D%0A' + "Student's Request: " + requestInput + '%0D%0A' + "Need within 24 hours: " + twentyFourHours + '%0D%0A' +  "Student's Reason: " + reasonInput;
 
             // Create a mailto link and simulate a click
             window.location.href = 'mailto:ryfuller03@gmail.com?subject=Request for Resource&body=' + emailBody;
