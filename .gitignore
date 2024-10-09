@@ -11,5 +11,5 @@ SOSResources/bin/
 .Trashes
 ehthumbs.db
 Thumbs.db
-*.dll
-*.pdb
+.dll
+.pdb
