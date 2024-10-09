@@ -1,5 +1,10 @@
 C:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\bin\Debug\net8.0\appsettings.json
+C:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\bin\Debug\net8.0\SOS_Resources\bin\Debug\net7.0\appsettings.Development.json
+C:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\bin\Debug\net8.0\SOS_Resources\bin\Debug\net7.0\appsettings.json
+C:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\bin\Debug\net8.0\SOS_Resources\bin\Debug\net7.0\SOS_Resources.deps.json
+C:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\bin\Debug\net8.0\SOS_Resources\bin\Debug\net7.0\SOS_Resources.runtimeconfig.json
+C:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\bin\Debug\net8.0\SOS_Resources\bin\Debug\net7.0\SOS_Resources.staticwebassets.runtime.json
 C:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\bin\Debug\net8.0\SOS_Resources\obj\Debug\net7.0\staticwebassets.build.json
 C:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\bin\Debug\net8.0\SOS_Resources\obj\Debug\net7.0\staticwebassets.development.json
 C:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\bin\Debug\net8.0\SOS_Resources\obj\Debug\net7.0\staticwebassets.pack.json
