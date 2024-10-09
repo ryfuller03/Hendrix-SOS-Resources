@@ -9247,11 +9247,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\roses\\Desktop\\Coding\\repos\\Hendrix-SOS-Resources\\SOS_Resources.csproj",
+      "projectUniqueName": "c:\\Users\\roses\\Desktop\\Coding\\repos\\Hendrix-SOS-Resources\\SOS_Resources.csproj",
       "projectName": "SOS_Resources",
-      "projectPath": "C:\\Users\\roses\\Desktop\\Coding\\repos\\Hendrix-SOS-Resources\\SOS_Resources.csproj",
+      "projectPath": "c:\\Users\\roses\\Desktop\\Coding\\repos\\Hendrix-SOS-Resources\\SOS_Resources.csproj",
       "packagesPath": "C:\\Users\\roses\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\roses\\Desktop\\Coding\\repos\\Hendrix-SOS-Resources\\obj\\",
+      "outputPath": "c:\\Users\\roses\\Desktop\\Coding\\repos\\Hendrix-SOS-Resources\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\roses\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -9382,5 +9382,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Text.Json' 8.0.4 has a known high severity vulnerability, https://github.com/advisories/GHSA-8g4q-xg66-9fp4",
+      "libraryId": "System.Text.Json",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

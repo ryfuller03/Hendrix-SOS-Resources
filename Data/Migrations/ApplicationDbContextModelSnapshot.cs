@@ -15,7 +15,7 @@ namespace SOSResources.Data.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.11");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -233,7 +233,7 @@ namespace SOSResources.Data.Migrations
                     b.Property<string>("PayFreq")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("PayType")
+                    b.Property<bool>("PayType")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PhoneNumber")
