@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "v2hSwNSuwXU=",
+  "dgSpecHash": "XzirxMAiGsE=",
   "success": true,
-  "projectFilePath": "c:\\Users\\roses\\Desktop\\Coding\\repos\\Hendrix-SOS-Resources\\SOS_Resources.csproj",
+  "projectFilePath": "C:\\Users\\roses\\Desktop\\Coding\\repos\\Hendrix-SOS-Resources\\SOS_Resources.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\roses\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\roses\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
@@ -202,16 +202,5 @@
     "C:\\Users\\roses\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\roses\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.Text.Json' 8.0.4 has a known high severity vulnerability, https://github.com/advisories/GHSA-8g4q-xg66-9fp4",
-      "libraryId": "System.Text.Json",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  "logs": []
 }
