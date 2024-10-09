@@ -54,6 +54,17 @@
         <div class="col"></div>
     </div>
 
+    <div class="row fade-in" style="display: none; align-items: center;" id="textbookRow">
+        <div class="col"></div>
+        <div class="col" style="display: flex;">
+            <p style="white-space: nowrap; padding-top: 2px; margin-left: 35px;">Select a textbook:</p>
+            <select id="textbookSelect" name="textbookSelect" style="margin-top: 5px; margin-left: 55px;">
+                <option value="Textbook 1">Textbooks Entered Here</option>
+            </select>
+        </div>
+        <div class="col"></div>
+    </div>
+
     <p class="fade-in" style="margin-top: 10px">For what reason do you need this resource?
             Be as specific as you are able:</p>
     <form id="reasonForm">
@@ -68,10 +79,13 @@
     <script>
         document.getElementById('supplyCategory').addEventListener('change', function() {
             var requestRow = document.getElementById('requestRow');
+            var textbookRow = document.getElementById('textbookRow');
             if (this.value === 'Textbook') {
                 requestRow.style.display = 'none';
+                textbookRow.style.display = 'flex';
             } else {
                 requestRow.style.display = 'flex';
+                textbookRow.style.display = 'none';
             }
         });
 
