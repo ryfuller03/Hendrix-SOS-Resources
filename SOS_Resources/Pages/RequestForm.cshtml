@@ -1,0 +1,118 @@
+﻿@page
+@model RequestModel
+@{
+    ViewData["Title"] = "SOS Request Form";
+}
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script src="~/js/site.js"></script>
+</head>
+
+<body style="text-align: center;">
+
+    <h1 class="fade-in" style="text-align: center; color: #e96b10;">@ViewData["Title"]</h1>
+
+    <p class="fade-in" style="text-align: center;">
+        <b>Use the below fields to submit a request for a resource you need.</b>
+    </p>
+
+    <div class="row" style="display: flex; align-items: center;">
+        <div class="col"></div>
+        <div class="col fade-in" style="display: flex; margin-bottom: 10px;">
+            <p style="white-space: nowrap; margin-right: 20px; padding-top: 2px;">Please pick a request category:</p>
+            <select id="supplyCategory" name="supplyCategory" style="margin-top: 5px;">
+                <option value="First Aid">First Aid Supplies</option>
+                <option value="Medications">Over-the-Counter Medications</option>
+                <option value="Hygiene">Hygiene Supplies</option>
+                <option value="Personal Care">Personal Care Supplies</option>
+                <option value="Textbook">Textbook</option>
+            </select>
+        </div>
+        <div class="col"></div>
+    </div>
+
+    <div class="row" style="display: flex; align-items: center;">
+        <div class="col"></div>
+        <div class="col fade-in" style="display: flex; margin-bottom: 10px;">
+            <p style="margin-right: 100px; white-space: nowrap;">I need this within 24 hours:</p>
+            <label for="needHours" style="margin-right: 5px;">Yes</label>
+            <input type="radio" id="needHours" name="twentyFourHours" value="Yes" style="display: flex; margin-top: 6.5px; margin-right: 45px; accent-color: #e96b10">
+            <label for="notNeedHours" style="margin-right: 5px;">No</label>
+            <input type="radio" id="notNeedHours" name="twentyFourHours" value="No" style="display: flex; margin-top: 6.5px; accent-color: #e96b10">
+        </div>
+        <div class="col"></div>
+    </div>
+
+    <div class="row" style="display: flex; align-items: center;" id="requestRow">
+        <div class="col"></div>
+        <div class="col" style="display: flex;">
+            <p class="fade-in" style="white-space: nowrap; margin-right: 10px; padding-top: 2px;">Please enter your requested resource:</p>
+            <form id="requestForm">
+                <input class="fade-in" style="margin-bottom: 10px; border: 1px solid black;" id="requestInput" name="requestInput">
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+
+    <div class="row fade-in" style="display: none; align-items: center;" id="textbookRow">
+        <div class="col"></div>
+        <div class="col" style="display: flex;">
+            <p style="white-space: nowrap; padding-top: 2px; margin-left: 35px;">Select a textbook:</p>
+            <select id="textbookSelect" name="textbookSelect" style="margin-top: 5px; margin-left: 55px;">
+                <option value="Textbook 1">Textbooks Entered Here</option>
+            </select>
+        </div>
+        <div class="col"></div>
+    </div>
+
+    <p class="fade-in" style="margin-top: 10px">For what reason do you need this resource?
+            Be as specific as you are able:</p>
+    <form id="reasonForm">
+        <textarea class="fade-in" style="margin-bottom: 10px;" id="reasonInput" name="reasonInput" rows="10" cols="72"></textarea><br>
+        <input type="submit" value="Submit" class="submit-button fade-in">
+    </form>
+
+    <p id="successMessage">Thank you for sending your request! We will get back to you as soon as
+        we possibly can.
+    </p>
+
+    <script>
+        document.getElementById('supplyCategory').addEventListener('change', function() {
+            var requestRow = document.getElementById('requestRow');
+            var textbookRow = document.getElementById('textbookRow');
+            if (this.value === 'Textbook') {
+                requestRow.style.display = 'none';
+                textbookRow.style.display = 'flex';
+            } else {
+                requestRow.style.display = 'flex';
+                textbookRow.style.display = 'none';
+            }
+        });
+
+        document.getElementById('reasonForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var requestInput = document.getElementById('requestInput').value;
+            var reasonInput = document.getElementById('reasonInput').value;
+            var supplyCategory = document.getElementById('supplyCategory').value;
+            var successMessage = document.getElementById('successMessage');
+            successMessage.style.opacity = 1;
+
+            var hoursAnswer = "";
+            var needHours = document.getElementById('needHours');
+            var notNeedHours = document.getElementById('notNeedHours');
+            if (needHours.checked) {
+                hoursAnswer = "Yes";
+            } else if (notNeedHours.checked) {
+                hoursAnswer = "No";
+            } else {
+                hoursAnswer = "No";
+            }
+
+            var emailBody = "Request Category: " + supplyCategory + '%0D%0A' + "Student's Request: " + requestInput + '%0D%0A' + "Need within 24 hours: " + hoursAnswer + '%0D%0A' +  "Student's Reason: " + reasonInput;
+
+            // Create a mailto link and simulate a click
+            window.location.href = 'mailto:ryfuller03@gmail.com?subject=Request for Resource&body=' + emailBody;
+        });
+    </script>
+ </body>
