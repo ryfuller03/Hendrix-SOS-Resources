@@ -9247,11 +9247,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\roses\\Desktop\\Coding\\repos\\Hendrix-SOS-Resources\\SOS_Resources.csproj",
+      "projectUniqueName": "C:\\Users\\roses\\Desktop\\Coding\\repos\\Hendrix-SOS-Resources\\SOS_Resources.csproj",
       "projectName": "SOS_Resources",
-      "projectPath": "c:\\Users\\roses\\Desktop\\Coding\\repos\\Hendrix-SOS-Resources\\SOS_Resources.csproj",
+      "projectPath": "C:\\Users\\roses\\Desktop\\Coding\\repos\\Hendrix-SOS-Resources\\SOS_Resources.csproj",
       "packagesPath": "C:\\Users\\roses\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\roses\\Desktop\\Coding\\repos\\Hendrix-SOS-Resources\\obj\\",
+      "outputPath": "C:\\Users\\roses\\Desktop\\Coding\\repos\\Hendrix-SOS-Resources\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\roses\\AppData\\Roaming\\NuGet\\NuGet.Config"
