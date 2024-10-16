@@ -1,13 +1,19 @@
 using System;
-using System.Collections.Generic;
+using System.Collections.Generic;//doesnt exist?
+using System.Collections; //newly added
+using System.Data; //newly added
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.Rendering; // doesnt exist?
 using Microsoft.IdentityModel.Tokens;
 using SOSResources.Data;
+using System.IO; //newly added
 using SOSResources.Models;
+using static System.Linq.Queryable;
+using System.Linq.Dynamic.Core; //newly added
+using System.Core;
 
 namespace SOSResources.Pages.Textbooks
 {
