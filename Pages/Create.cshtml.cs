@@ -13,7 +13,7 @@ using System.IO; //newly added
 using SOSResources.Models;
 using static System.Linq.Queryable;
 using System.Linq.Dynamic.Core; //newly added
-using System.Core;
+
 
 namespace SOSResources.Pages.Textbooks
 {
