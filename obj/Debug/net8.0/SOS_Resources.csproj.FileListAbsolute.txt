@@ -319,3 +319,4 @@ C:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\bin\Debug\net8.0\Micro
 C:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\bin\Debug\net8.0\Microsoft.IdentityModel.Validators.dll
 C:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\bin\Debug\net8.0\System.ClientModel.dll
 C:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\bin\Debug\net8.0\System.Security.Cryptography.Xml.dll
+c:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\bin\Debug\net8.0\System.Linq.Dynamic.Core.dll

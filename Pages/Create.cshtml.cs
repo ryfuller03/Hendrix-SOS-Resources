@@ -48,15 +48,15 @@ namespace SOSResources.Pages.Textbooks
             //Check if the textbook already exists and only create it if not.
             var matches = _context.Textbooks.Where(t => t.Title.ToUpper().Equals(Textbook.Title.ToUpper()) && t.Author.ToUpper().Equals(Textbook.Author.ToUpper()));
             Textbook tb = null;
-            if (!matches.IsNullOrEmpty()){
-                if (Textbook.Edition.IsNullOrEmpty()){
+            if (matches != null){ //WE ARE NO LONGER USING ISNULLOREMPTY, BUG CHECK THIS?
+                if (Textbook.Edition == null){
                     var editionMatch = matches.Where(t => String.IsNullOrWhiteSpace(t.Edition));
-                    if (!editionMatch.IsNullOrEmpty()){
+                    if (editionMatch != null){
                         tb = editionMatch.ToArray()[0];
                     }
                 } else {
                     var editionMatch = matches.Where(t => t.Edition.Equals(Textbook.Edition));
-                    if (!editionMatch.IsNullOrEmpty()){
+                    if (editionMatch != null){
                         tb = editionMatch.ToArray()[0];
                     }
                 }
