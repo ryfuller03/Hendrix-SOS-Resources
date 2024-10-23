@@ -17,139 +17,119 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SOS_Resources
 build_property.RootNamespace = SOS_Resources
-build_property.ProjectDir = C:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\
+build_property.ProjectDir = c:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources
+build_property.MSBuildProjectDirectory = c:\Users\roses\Desktop\Coding\repos\Hendrix-SOS-Resources
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/Account/Login.cshtml]
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/Account/Logout.cshtml]
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/Account/Manage/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/Account/Register.cshtml]
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3RlckNvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/_ViewImports.cshtml]
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/_ViewStart.cshtml]
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/Error.cshtml]
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/Copies/DeleteCopy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29waWVzXERlbGV0ZUNvcHkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/Copies/HideCopy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29waWVzXEhpZGVDb3B5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/Index.cshtml]
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/Index copy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXggY29weS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/Privacy.cshtml]
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/Shared/_LoginPartial.cshtml]
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/_ViewImports.cshtml]
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/Utilities/ImportTextbooks.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXRpbGl0aWVzXEltcG9ydFRleHRib29rcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/_ViewStart.cshtml]
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/SOSResources/SOSResources/Pages/TextbookRequests/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = U09TUmVzb3VyY2VzXFNPU1Jlc291cmNlc1xQYWdlc1xUZXh0Ym9va1JlcXVlc3RzXENyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/SOSResources/SOSResources/Pages/TextbookRequests/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = U09TUmVzb3VyY2VzXFNPU1Jlc291cmNlc1xQYWdlc1xUZXh0Ym9va1JlcXVlc3RzXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/SOSResources/SOSResources/Pages/TextbookRequests/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = U09TUmVzb3VyY2VzXFNPU1Jlc291cmNlc1xQYWdlc1xUZXh0Ym9va1JlcXVlc3RzXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/SOSResources/SOSResources/Pages/TextbookRequests/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = U09TUmVzb3VyY2VzXFNPU1Jlc291cmNlc1xQYWdlc1xUZXh0Ym9va1JlcXVlc3RzXEVkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/SOSResources/SOSResources/Pages/TextbookRequests/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = U09TUmVzb3VyY2VzXFNPU1Jlc291cmNlc1xQYWdlc1xUZXh0Ym9va1JlcXVlc3RzXEluZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/SOSResources/SOSResources/Pages/Textbooks/Copies/DeleteCopy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = U09TUmVzb3VyY2VzXFNPU1Jlc291cmNlc1xQYWdlc1xUZXh0Ym9va3NcQ29waWVzXERlbGV0ZUNvcHkuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/SOSResources/SOSResources/Pages/Textbooks/Copies/HideCopy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = U09TUmVzb3VyY2VzXFNPU1Jlc291cmNlc1xQYWdlc1xUZXh0Ym9va3NcQ29waWVzXEhpZGVDb3B5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/SOSResources/SOSResources/Pages/Textbooks/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = U09TUmVzb3VyY2VzXFNPU1Jlc291cmNlc1xQYWdlc1xUZXh0Ym9va3NcQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/SOSResources/SOSResources/Pages/Textbooks/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = U09TUmVzb3VyY2VzXFNPU1Jlc291cmNlc1xQYWdlc1xUZXh0Ym9va3NcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/SOSResources/SOSResources/Pages/Textbooks/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = U09TUmVzb3VyY2VzXFNPU1Jlc291cmNlc1xQYWdlc1xUZXh0Ym9va3NcRGV0YWlscy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/SOSResources/SOSResources/Pages/Textbooks/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = U09TUmVzb3VyY2VzXFNPU1Jlc291cmNlc1xQYWdlc1xUZXh0Ym9va3NcRWRpdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/SOSResources/SOSResources/Pages/Textbooks/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = U09TUmVzb3VyY2VzXFNPU1Jlc291cmNlc1xQYWdlc1xUZXh0Ym9va3NcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/SOSResources/SOSResources/Pages/Utilities/ImportTextbooks.cshtml]
-build_metadata.AdditionalFiles.TargetPath = U09TUmVzb3VyY2VzXFNPU1Jlc291cmNlc1xQYWdlc1xVdGlsaXRpZXNcSW1wb3J0VGV4dGJvb2tzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/Shared/_Layout.cshtml]
+[c:/Users/roses/Desktop/Coding/repos/Hendrix-SOS-Resources/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-6bj0lw3igr

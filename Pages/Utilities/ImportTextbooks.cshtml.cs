@@ -92,16 +92,16 @@ namespace SOSResources.Pages.Utilities
                 (string title, string author, string edition, bool checkedOut) = k;
                 
                 var matches = _context.Textbooks.Where(t => t.Title.ToUpper().Equals(title.ToUpper()) && t.Author.ToUpper().Equals(author.ToUpper()));
-                if (!matches.IsNullOrEmpty()){
+                if (matches != null){
                     Console.WriteLine(matches.Count());
                     if (String.IsNullOrWhiteSpace(edition)){
                         var editionMatch = matches.Where(t => String.IsNullOrWhiteSpace(t.Edition));
-                        if (!editionMatch.IsNullOrEmpty()){
+                        if (editionMatch != null){
                             tb = editionMatch.ToArray()[0];
                         }
                     } else {
                         var editionMatch = matches.Where(t => t.Edition.Equals(edition));
-                        if (!editionMatch.IsNullOrEmpty()){
+                        if (editionMatch != null){ //THESE WERE IS NULLOREMPTY
                             tb = editionMatch.ToArray()[0];
                         }
                     }
