@@ -1,13 +1,19 @@
 using System;
-using System.Collections.Generic;
+using System.Collections.Generic;//doesnt exist?
+using System.Collections; //newly added
+using System.Data; //newly added
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.Rendering; // doesnt exist?
 using Microsoft.IdentityModel.Tokens;
 using SOSResources.Data;
+using System.IO; //newly added
 using SOSResources.Models;
+using static System.Linq.Queryable;
+using System.Linq.Dynamic.Core; //newly added
+
 
 namespace SOSResources.Pages.Textbooks
 {
@@ -42,15 +48,15 @@ namespace SOSResources.Pages.Textbooks
             //Check if the textbook already exists and only create it if not.
             var matches = _context.Textbooks.Where(t => t.Title.ToUpper().Equals(Textbook.Title.ToUpper()) && t.Author.ToUpper().Equals(Textbook.Author.ToUpper()));
             Textbook tb = null;
-            if (!matches.IsNullOrEmpty()){
-                if (Textbook.Edition.IsNullOrEmpty()){
+            if (matches != null){ //WE ARE NO LONGER USING ISNULLOREMPTY, BUG CHECK THIS?
+                if (Textbook.Edition == null){
                     var editionMatch = matches.Where(t => String.IsNullOrWhiteSpace(t.Edition));
-                    if (!editionMatch.IsNullOrEmpty()){
+                    if (editionMatch != null){
                         tb = editionMatch.ToArray()[0];
                     }
                 } else {
                     var editionMatch = matches.Where(t => t.Edition.Equals(Textbook.Edition));
-                    if (!editionMatch.IsNullOrEmpty()){
+                    if (editionMatch != null){
                         tb = editionMatch.ToArray()[0];
                     }
                 }
