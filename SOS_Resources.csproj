@@ -30,7 +30,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="8.0.8" />
     <PackageReference Include="Microsoft.Identity.Abstractions" Version="7.1.0" />
-    <PackageReference Include="Microsoft.Identity.Web" Version="3.2.0" />
+    <PackageReference Include="Microsoft.Identity.Web" Version="3.2.2" />
     <PackageReference Include="Microsoft.Identity.Web.Diagnostics" Version="3.2.0" />
     <PackageReference Include="Microsoft.Identity.Web.DownstreamApi" Version="3.2.0" />
     <PackageReference Include="Microsoft.Identity.Web.UI" Version="3.2.0" />
