@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SOS_Resources.Areas.Identity.Data;
 
-namespace SOS_Resources.Data;
+namespace SOSResources.Data;
 
 public class ApplicationDbContext : IdentityDbContext<SOS_User>
 {

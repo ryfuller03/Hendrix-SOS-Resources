@@ -2,23 +2,20 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SOS_Resources.Data;
+using SOSResources.Data;
 
 #nullable disable
 
 namespace SOSResources.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231129182031_addCampus")]
-    partial class addCampus
+    [DbContext(typeof(SOSContext))]
+    partial class SOSContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.11");
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {

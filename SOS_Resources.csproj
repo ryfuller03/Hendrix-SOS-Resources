@@ -3,7 +3,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-SOS_Resources-e73b6f6b-f535-4f13-92e2-349c88b05deb</UserSecretsId>
+    <UserSecretsId>aspnet-SOSResources-e73b6f6b-f535-4f13-92e2-349c88b05deb</UserSecretsId>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
     <GenerateRazorAssemblyInfo>false</GenerateRazorAssemblyInfo>
