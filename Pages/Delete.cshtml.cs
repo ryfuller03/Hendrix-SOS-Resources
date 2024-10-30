@@ -6,16 +6,16 @@ using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using SOSResources.Data;
+using HendrixSOSResources.Data;
 using SOSResources.Models;
 
 namespace SOSResources.Pages.Textbooks
 {
     public class DeleteModel : PageModel
     {
-        private readonly SOSResources.Data.SOSContext _context;
+        private readonly HendrixSOSResources.Data.SOSContext _context;
 
-        public DeleteModel(SOSResources.Data.SOSContext context)
+        public DeleteModel(HendrixSOSResources.Data.SOSContext context)
         {
             _context = context;
         }

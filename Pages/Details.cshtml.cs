@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using SOSResources.Data;
+using HendrixSOSResources.Data;
 using SOSResources.Models;
 
 namespace SOSResources.Pages.Textbooks
 {
     public class DetailsModel : PageModel
     {
-        private readonly SOSResources.Data.SOSContext _context;
+        private readonly HendrixSOSResources.Data.SOSContext _context;
 
-        public DetailsModel(SOSResources.Data.SOSContext context)
+        public DetailsModel(HendrixSOSResources.Data.SOSContext context)
         {
             _context = context;
         }

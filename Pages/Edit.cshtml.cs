@@ -6,16 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SOSResources.Data;
+using HendrixSOSResources.Data;
 using SOSResources.Models;
 
 namespace SOSResources.Pages.Textbooks
 {
     public class EditModel : PageModel
     {
-        private readonly SOSResources.Data.SOSContext _context;
+        private readonly HendrixSOSResources.Data.SOSContext _context;
 
-        public EditModel(SOSResources.Data.SOSContext context)
+        public EditModel(HendrixSOSResources.Data.SOSContext context)
         {
             _context = context;
         }
@@ -53,13 +53,13 @@ namespace SOSResources.Pages.Textbooks
             _context.Attach(Textbook).State = EntityState.Modified;
 
             
-            for (int i = 0; i < copies; i++) {
-                Copy c = new Copy{
-                    textbook = Textbook,
-                    CheckedOut = false
-                };
-                _context.Copies.Add(c);
-            };
+            // for (int i = 0; i < copies; i++) {
+            //     Copy c = new Copy{
+            //         textbook = Textbook,
+            //         CheckedOut = false
+            //     };
+            //     _context.Copies.Add(c);
+            // };
 
             try
             {
