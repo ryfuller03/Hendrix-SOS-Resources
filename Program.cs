@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using HendrixSOSResources.Data;
+
 // <ms_docref_import_types>
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -10,11 +14,18 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 IEnumerable<string>? initialScopes = builder.Configuration["DownstreamApi:Scopes"]?.Split(' ');
 
 
+// Add services to the container.
+builder.Services.AddRazorPages();
+builder.Services.AddDbContext<SOSContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("SOSContext") ?? throw new InvalidOperationException("Connection string 'SOSContext' not found.")));
+
+
 builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration, "AzureAd")
     .EnableTokenAcquisitionToCallDownstreamApi(initialScopes)
         .AddDownstreamApi("DownstreamApi", builder.Configuration.GetSection("DownstreamApi"))
         .AddInMemoryTokenCaches();
 // </ms_docref_add_msal>
+
 
 // <ms_docref_add_default_controller_for_sign-in-out>
 builder.Services.AddRazorPages().AddMvcOptions(options =>
@@ -26,8 +37,16 @@ builder.Services.AddRazorPages().AddMvcOptions(options =>
     }).AddMicrosoftIdentityUI();
 // </ms_docref_add_default_controller_for_sign-in-out>
 
-// <ms_docref_enable_authz_capabilities>
+
 WebApplication app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+}
 
 app.UseAuthentication();
 app.UseAuthorization();

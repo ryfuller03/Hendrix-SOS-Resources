@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering; // doesnt exist?
 using Microsoft.IdentityModel.Tokens;
-using SOSResources.Data;
+using HendrixSOSResources.Data;
 using System.IO; //newly added
 using SOSResources.Models;
 using static System.Linq.Queryable;
@@ -19,9 +19,9 @@ namespace SOSResources.Pages.Textbooks
 {
     public class CreateModel : PageModel
     {
-        private readonly SOSResources.Data.SOSContext _context;
+        private readonly HendrixSOSResources.Data.SOSContext _context;
 
-        public CreateModel(SOSResources.Data.SOSContext context)
+        public CreateModel(HendrixSOSResources.Data.SOSContext context)
         {
             _context = context;
         }
@@ -71,13 +71,13 @@ namespace SOSResources.Pages.Textbooks
             
             //int.TryParse(Request.Form["copies"].ToString(), out int copies);
 
-            for (int i = 0; i < copies; i++) {
-                Copy c = new Copy{
-                    textbook = Textbook,
-                    CheckedOut = false
-                };
-                _context.Copies.Add(c);
-            };
+            // for (int i = 0; i < copies; i++) {
+            //     Copy c = new Copy{
+            //         textbook = Textbook,
+            //         CheckedOut = false
+            //     };
+            //     _context.Copies.Add(c);
+            // };
 
             await _context.SaveChangesAsync();
 

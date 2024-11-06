@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using SOSResources.Data;
+using HendrixSOSResources.Data;
 using SOSResources.Models;
 
 namespace SOSResources.Pages.Textbooks
 {
     public class IndexModel : PageModel
     {
-        private readonly SOSResources.Data.SOSContext _context;
+        private readonly HendrixSOSResources.Data.SOSContext _context;
 
-        public IndexModel(SOSResources.Data.SOSContext context)
+        public IndexModel(HendrixSOSResources.Data.SOSContext context)
         {
             _context = context;
         }
@@ -25,7 +25,7 @@ namespace SOSResources.Pages.Textbooks
         public string AuthorFilter { get; set; }
         public string CurrentSort { get; set; }
 
-        public PaginatedList<Textbook> Textbooks { get; set; }
+        // public PaginatedList<Textbook> Textbooks { get; set; }
 
         public async Task OnGetAsync(string sortOrder, string titleSearchString, string authorSearchString, string titleFilter, string authorFilter, int? pageIndex, int pageSize = 10)
         {
@@ -69,10 +69,10 @@ namespace SOSResources.Pages.Textbooks
                     break;
             }
 
-            if (_context.Textbooks != null)
-            {
-                Textbooks = await PaginatedList<Textbook>.CreateAsync(TextbookIQ.AsNoTracking().Include(t => t.Copies), pageIndex ?? 1, pageSize);
-            }
+            // if (_context.Textbooks != null)
+            // {
+            //     Textbooks = await PaginatedList<Textbook>.CreateAsync(TextbookIQ.AsNoTracking().Include(t => t.Copies), pageIndex ?? 1, pageSize);
+            // }
         }
     }
 }
