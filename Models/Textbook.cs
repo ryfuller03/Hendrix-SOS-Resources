@@ -20,8 +20,8 @@ namespace SOSResources.Models
         [StringLength(100)]
         public string Edition { get; set; }
 
-        public int Count { get;
-            
-        }
+        public bool LoanStatus { get; set; }
+
+        public int Quantity { get; set; }
     }
 }

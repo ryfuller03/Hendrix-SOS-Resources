@@ -21,5 +21,9 @@ namespace SOSResources.Models
         public string Description { get; set; }
 
         public int Quantity { get; set; }
+
+        public Textbook? TextbookItem { get; set; }
+
+        public string? Notes { get; set; }
     }
 }
