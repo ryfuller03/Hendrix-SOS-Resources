@@ -19,7 +19,6 @@ namespace SOSResources.Models
 
         [StringLength(100)]
         public string Edition { get; set; }
-        public ICollection<Copy> Copies { get; set; }
 
         public int Count { get;
             
