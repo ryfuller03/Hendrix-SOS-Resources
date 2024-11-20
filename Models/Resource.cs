@@ -13,7 +13,6 @@ namespace SOSResources.Models
         public string Name { get; set; }
 
         [Required]
-        [Display(Name = "Type")]
         [StringLength(30)]
         public string Type { get; set; }
 

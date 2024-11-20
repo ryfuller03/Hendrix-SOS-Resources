@@ -20,7 +20,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="Resource.Type" class="control-label"></label>
-                <input asp-for="Resource.Type" class="form-control" />
+                <select asp-for="Resource.Type" class="form-control">
+                    <option value="First Aid">First Aid Supplies</option>
+                    <option value="Medications">Over-the-Counter Medications</option>
+                    <option value="Hygiene">Hygiene Supplies</option>
+                    <option value="Personal Care">Personal Care Supplies</option>
+                    <option value="Textbook">Textbook</option>
+                </select>
                 <span asp-validation-for="Resource.Type" class="text-danger"></span>
             </div>
             <div class="form-group">
