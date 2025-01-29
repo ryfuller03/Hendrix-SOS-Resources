@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using HendrixSOSResources.Data;
 using SOSResources.Models;
 
-namespace HendrixSOSResources.Pages.Textbooks
+namespace HendrixSOSResources.Pages.Resources
 {
     public class EditModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace HendrixSOSResources.Pages.Textbooks
         }
 
         [BindProperty]
-        public Textbook Textbook { get; set; } = default!;
+        public Resource Resource { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,12 +30,12 @@ namespace HendrixSOSResources.Pages.Textbooks
                 return NotFound();
             }
 
-            var textbook =  await _context.Textbooks.FirstOrDefaultAsync(m => m.ID == id);
-            if (textbook == null)
+            var resource =  await _context.Resource.FirstOrDefaultAsync(m => m.ID == id);
+            if (resource == null)
             {
                 return NotFound();
             }
-            Textbook = textbook;
+            Resource = resource;
             return Page();
         }
 
@@ -48,7 +48,7 @@ namespace HendrixSOSResources.Pages.Textbooks
                 return Page();
             }
 
-            _context.Attach(Textbook).State = EntityState.Modified;
+            _context.Attach(Resource).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +56,7 @@ namespace HendrixSOSResources.Pages.Textbooks
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TextbookExists(Textbook.ID))
+                if (!ResourceExists(Resource.ID))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace HendrixSOSResources.Pages.Textbooks
             return RedirectToPage("./Index");
         }
 
-        private bool TextbookExists(int id)
+        private bool ResourceExists(int id)
         {
-            return _context.Textbooks.Any(e => e.ID == id);
+            return _context.Resource.Any(e => e.ID == id);
         }
     }
 }

@@ -13,7 +13,6 @@ namespace SOSResources.Models
         public string Name { get; set; }
 
         [Required]
-        [Display(Name = "Type")]
         [StringLength(30)]
         public string Type { get; set; }
 
@@ -21,6 +20,9 @@ namespace SOSResources.Models
         public string Description { get; set; }
 
         public int Quantity { get; set; }
-        public ICollection<ResourceRequest> ResourceRequests { get; set; }
+
+        public Textbook? TextbookItem { get; set; }
+
+        public string? Notes { get; set; }
     }
 }

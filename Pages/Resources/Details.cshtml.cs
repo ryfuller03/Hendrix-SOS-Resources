@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using HendrixSOSResources.Data;
 using SOSResources.Models;
 
-namespace HendrixSOSResources.Pages.Textbooks
+namespace HendrixSOSResources.Pages.Resources
 {
     public class DetailsModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace HendrixSOSResources.Pages.Textbooks
             _context = context;
         }
 
-        public Textbook Textbook { get; set; } = default!;
+        public Resource Resource { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,14 +28,14 @@ namespace HendrixSOSResources.Pages.Textbooks
                 return NotFound();
             }
 
-            var textbook = await _context.Textbooks.FirstOrDefaultAsync(m => m.ID == id);
-            if (textbook == null)
+            var resource = await _context.Resource.FirstOrDefaultAsync(m => m.ID == id);
+            if (resource == null)
             {
                 return NotFound();
             }
             else
             {
-                Textbook = textbook;
+                Resource = resource;
             }
             return Page();
         }

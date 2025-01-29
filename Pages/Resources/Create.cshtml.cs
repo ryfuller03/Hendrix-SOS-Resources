@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using HendrixSOSResources.Data;
 using SOSResources.Models;
 
-namespace HendrixSOSResources.Pages.Textbooks
+namespace HendrixSOSResources.Pages.Resources
 {
     public class CreateModel : PageModel
     {
@@ -25,7 +25,7 @@ namespace HendrixSOSResources.Pages.Textbooks
         }
 
         [BindProperty]
-        public Textbook Textbook { get; set; } = default!;
+        public Resource Resource { get; set; } = default!;
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
@@ -35,7 +35,7 @@ namespace HendrixSOSResources.Pages.Textbooks
                 return Page();
             }
 
-            _context.Textbooks.Add(Textbook);
+            _context.Resource.Add(Resource);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

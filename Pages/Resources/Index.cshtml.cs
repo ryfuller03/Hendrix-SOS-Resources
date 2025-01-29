@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using HendrixSOSResources.Data;
 using SOSResources.Models;
 
-namespace HendrixSOSResources.Pages.Textbooks
+namespace HendrixSOSResources.Pages.Resources
 {
     public class IndexModel : PageModel
     {
@@ -19,11 +19,11 @@ namespace HendrixSOSResources.Pages.Textbooks
             _context = context;
         }
 
-        public IList<Textbook> Textbook { get;set; } = default!;
+        public IList<Resource> Resource { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            Textbook = await _context.Textbooks.ToListAsync();
+            Resource = await _context.Resource.ToListAsync();
         }
     }
 }

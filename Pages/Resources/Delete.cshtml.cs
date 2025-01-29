@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using HendrixSOSResources.Data;
 using SOSResources.Models;
 
-namespace HendrixSOSResources.Pages.Textbooks
+namespace HendrixSOSResources.Pages.Resources
 {
     public class DeleteModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace HendrixSOSResources.Pages.Textbooks
         }
 
         [BindProperty]
-        public Textbook Textbook { get; set; } = default!;
+        public Resource Resource { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,15 +29,15 @@ namespace HendrixSOSResources.Pages.Textbooks
                 return NotFound();
             }
 
-            var textbook = await _context.Textbooks.FirstOrDefaultAsync(m => m.ID == id);
+            var resource = await _context.Resource.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (textbook == null)
+            if (resource == null)
             {
                 return NotFound();
             }
             else
             {
-                Textbook = textbook;
+                Resource = resource;
             }
             return Page();
         }
@@ -49,11 +49,11 @@ namespace HendrixSOSResources.Pages.Textbooks
                 return NotFound();
             }
 
-            var textbook = await _context.Textbooks.FindAsync(id);
-            if (textbook != null)
+            var resource = await _context.Resource.FindAsync(id);
+            if (resource != null)
             {
-                Textbook = textbook;
-                _context.Textbooks.Remove(Textbook);
+                Resource = resource;
+                _context.Resource.Remove(Resource);
                 await _context.SaveChangesAsync();
             }
 
