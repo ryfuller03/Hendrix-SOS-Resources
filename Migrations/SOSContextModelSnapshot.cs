@@ -33,11 +33,12 @@ namespace HendrixSOSResources.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("RequestedResource")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("ResourceId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ResourceId");
 
                     b.ToTable("Requests");
                 });
@@ -181,6 +182,22 @@ namespace HendrixSOSResources.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Textbooks");
+                });
+
+            modelBuilder.Entity("SOSResources.Models.Request", b =>
+                {
+                    b.HasOne("SOSResources.Models.Resource", "Resource")
+                        .WithMany("Requests")
+                        .HasForeignKey("ResourceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Resource");
+                });
+
+            modelBuilder.Entity("SOSResources.Models.Resource", b =>
+                {
+                    b.Navigation("Requests");
                 });
 #pragma warning restore 612, 618
         }
