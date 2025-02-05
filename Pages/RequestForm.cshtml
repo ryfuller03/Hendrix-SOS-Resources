@@ -99,16 +99,26 @@
             var successMessage = document.getElementById('successMessage');
             successMessage.style.opacity = 1;
 
-            var hoursAnswer = "";
+            var hoursAnswer = false;
             var needHours = document.getElementById('needHours');
             var notNeedHours = document.getElementById('notNeedHours');
             if (needHours.checked) {
-                hoursAnswer = "Yes";
+                hoursAnswer = true;
             } else if (notNeedHours.checked) {
-                hoursAnswer = "No";
+                hoursAnswer = false;
             } else {
-                hoursAnswer = "No";
+                hoursAnswer = false;
             }
+
+            const requestData = 
+                {
+                    Name: "Student",
+                    RequestDate: new Date().toISOString().split('T')[0],
+                    NeedWithinDay: hoursAnswer,
+                    Description: requestInput,
+                    Resource: putsomethinghere, // NEED SOMETHING HERE (a connection to the resources database perhaps?)
+                    Notes: reasonInput
+                }
 
             var emailBody = "Request Category: " + supplyCategory + '%0D%0A' + "Student's Request: " + requestInput + '%0D%0A' + "Need within 24 hours: " + hoursAnswer + '%0D%0A' +  "Student's Reason: " + reasonInput;
 
