@@ -39,8 +39,8 @@ namespace HendrixSOSResources.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("TextbookItemID")
-                        .HasColumnType("INTEGER");
+                    b.Property<bool?>("isTextbook")
+                        .HasColumnType("BOOLEAN");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -49,50 +49,7 @@ namespace HendrixSOSResources.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("TextbookItemID");
-
                     b.ToTable("Resource");
-                });
-
-            modelBuilder.Entity("SOSResources.Models.Textbook", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Author")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Edition")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("LoanStatus")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Textbooks");
-                });
-
-            modelBuilder.Entity("SOSResources.Models.Resource", b =>
-                {
-                    b.HasOne("SOSResources.Models.Textbook", "TextbookItem")
-                        .WithMany()
-                        .HasForeignKey("TextbookItemID");
-
-                    b.Navigation("TextbookItem");
                 });
 #pragma warning restore 612, 618
         }
