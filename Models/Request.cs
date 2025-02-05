@@ -17,6 +17,8 @@ namespace SOSResources.Models
         [DataType(DataType.Date)]
         public DateTime RequestDate { get; set; }
 
+        public bool NeedWithinDay { get; set; }  // need within 24 hours
+
         [StringLength(250)]
         public required string Description { get; set; }
 
