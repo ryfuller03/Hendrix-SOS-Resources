@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HendrixSOSResources.Migrations
 {
     [DbContext(typeof(SOSContext))]
-    [Migration("20250205051745_CreateRequestsTable")]
-    partial class CreateRequestsTable
+    [Migration("20250205060426_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,23 +61,13 @@ namespace HendrixSOSResources.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Notes")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("TextbookItemID")
+                    b.Property<int>("Type")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("TEXT");
-
                     b.HasKey("ID");
-
-                    b.HasIndex("TextbookItemID");
 
                     b.ToTable("Resource");
                 });
@@ -112,15 +102,6 @@ namespace HendrixSOSResources.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Textbooks");
-                });
-
-            modelBuilder.Entity("SOSResources.Models.Resource", b =>
-                {
-                    b.HasOne("SOSResources.Models.Textbook", "TextbookItem")
-                        .WithMany()
-                        .HasForeignKey("TextbookItemID");
-
-                    b.Navigation("TextbookItem");
                 });
 #pragma warning restore 612, 618
         }

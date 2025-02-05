@@ -11,14 +11,39 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HendrixSOSResources.Migrations
 {
     [DbContext(typeof(SOSContext))]
-    [Migration("20241113214106_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250205060217_UpdateResourceSchema")]
+    partial class UpdateResourceSchema
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
+
+            modelBuilder.Entity("SOSResources.Models.Request", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("NeedWithin24Hours")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RequestedResource")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Requests");
+                });
 
             modelBuilder.Entity("SOSResources.Models.Resource", b =>
                 {
@@ -36,23 +61,13 @@ namespace HendrixSOSResources.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Notes")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("TextbookItemID")
+                    b.Property<int>("Type")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("TEXT");
-
                     b.HasKey("ID");
-
-                    b.HasIndex("TextbookItemID");
 
                     b.ToTable("Resource");
                 });
@@ -87,15 +102,6 @@ namespace HendrixSOSResources.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Textbooks");
-                });
-
-            modelBuilder.Entity("SOSResources.Models.Resource", b =>
-                {
-                    b.HasOne("SOSResources.Models.Textbook", "TextbookItem")
-                        .WithMany()
-                        .HasForeignKey("TextbookItemID");
-
-                    b.Navigation("TextbookItem");
                 });
 #pragma warning restore 612, 618
         }
