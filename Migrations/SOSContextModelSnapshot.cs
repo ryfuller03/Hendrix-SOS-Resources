@@ -17,7 +17,7 @@ namespace HendrixSOSResources.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
 
-            modelBuilder.Entity("SOSResources.Models.Resource", b =>
+            modelBuilder.Entity("SOSResources.Models.Request", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -36,11 +36,43 @@ namespace HendrixSOSResources.Migrations
                     b.Property<string>("Notes")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Quantity")
+                    b.Property<DateTime>("RequestDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ResourceID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool?>("isTextbook")
-                        .HasColumnType("BOOLEAN");
+                    b.HasKey("ID");
+
+                    b.HasIndex("ResourceID");
+
+                    b.ToTable("Requests");
+                });
+
+            modelBuilder.Entity("SOSResources.Models.Resource", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsTextbook")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -50,6 +82,17 @@ namespace HendrixSOSResources.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Resource");
+                });
+
+            modelBuilder.Entity("SOSResources.Models.Request", b =>
+                {
+                    b.HasOne("SOSResources.Models.Resource", "Resource")
+                        .WithMany()
+                        .HasForeignKey("ResourceID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Resource");
                 });
 #pragma warning restore 612, 618
         }
