@@ -13,31 +13,21 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Request.ID" />
-            <div class="form-group">
-                <label asp-for="Request.Name" class="control-label"></label>
-                <input asp-for="Request.Name" class="form-control" />
-                <span asp-validation-for="Request.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Request.RequestDate" class="control-label"></label>
-                <input asp-for="Request.RequestDate" class="form-control" />
-                <span asp-validation-for="Request.RequestDate" class="text-danger"></span>
-            </div>
+            <input type="hidden" asp-for="Request.Id" />
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Request.NeedWithinDay" /> @Html.DisplayNameFor(model => model.Request.NeedWithinDay)
+                    <input class="form-check-input" asp-for="Request.NeedWithin24Hours" /> @Html.DisplayNameFor(model => model.Request.NeedWithin24Hours)
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="Request.Description" class="control-label"></label>
-                <input asp-for="Request.Description" class="form-control" />
-                <span asp-validation-for="Request.Description" class="text-danger"></span>
+                <label asp-for="Request.Reason" class="control-label"></label>
+                <input asp-for="Request.Reason" class="form-control" />
+                <span asp-validation-for="Request.Reason" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Request.Notes" class="control-label"></label>
-                <input asp-for="Request.Notes" class="form-control" />
-                <span asp-validation-for="Request.Notes" class="text-danger"></span>
+                <label asp-for="Request.CreatedAt" class="control-label"></label>
+                <input asp-for="Request.CreatedAt" class="form-control" />
+                <span asp-validation-for="Request.CreatedAt" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
