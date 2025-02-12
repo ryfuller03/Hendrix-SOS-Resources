@@ -10,18 +10,18 @@ namespace SOSResources.Models
         public int ID { get; set; }
         [Required]
         [StringLength(50)]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
         [Required]
         [StringLength(30)]
-        public string Type { get; set; }
+        public required string Type { get; set; }
 
         [StringLength(250)]
-        public string Description { get; set; }
+        public required string Description { get; set; }
 
         public int Quantity { get; set; }
 
-        public Textbook? TextbookItem { get; set; }
+        public bool IsTextbook { get; set; }
 
         public string? Notes { get; set; }
     }
