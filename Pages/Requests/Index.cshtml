@@ -2,7 +2,7 @@
 @model HendrixSOSResources.Pages.Requests.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Requests";
 }
 
 <h1>Index</h1>
@@ -14,20 +14,26 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Request[0].NeedWithin24Hours)
+                @Html.DisplayNameFor(model => model.Requests[0].Resource.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Request[0].Reason)
+                @Html.DisplayNameFor(model => model.Requests[0].NeedWithin24Hours)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Request[0].CreatedAt)
+                @Html.DisplayNameFor(model => model.Requests[0].Reason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Requests[0].CreatedAt)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Request) {
+@foreach (var item in Model.Requests) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Resource.Name)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NeedWithin24Hours)
             </td>

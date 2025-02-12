@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using HendrixSOSResources.Data;
@@ -19,11 +18,13 @@ namespace HendrixSOSResources.Pages.Requests
             _context = context;
         }
 
-        public IList<Request> Request { get;set; } = default!;
+        public IList<Request> Requests { get; set; } = new List<Request>();
 
         public async Task OnGetAsync()
         {
-            Request = await _context.Requests.ToListAsync();
+            Requests = await _context.Requests
+                .Include(r => r.Resource)
+                .ToListAsync();
         }
     }
 }
