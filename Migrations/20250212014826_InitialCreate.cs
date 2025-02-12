@@ -14,7 +14,7 @@ namespace HendrixSOSResources.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Resource",
+                name: "Resources",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "INTEGER", nullable: false)
@@ -26,7 +26,7 @@ namespace HendrixSOSResources.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Resource", x => x.ID);
+                    table.PrimaryKey("PK_Resources", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -61,15 +61,15 @@ namespace HendrixSOSResources.Migrations
                 {
                     table.PrimaryKey("PK_Requests", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Requests_Resource_ResourceId",
+                        name: "FK_Requests_Resources_ResourceId",
                         column: x => x.ResourceId,
-                        principalTable: "Resource",
+                        principalTable: "Resources",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
-                table: "Resource",
+                table: "Resources",
                 columns: new[] { "ID", "Description", "Name", "Quantity", "Type" },
                 values: new object[,]
                 {
@@ -101,7 +101,7 @@ namespace HendrixSOSResources.Migrations
                 name: "Textbooks");
 
             migrationBuilder.DropTable(
-                name: "Resource");
+                name: "Resources");
         }
     }
 }

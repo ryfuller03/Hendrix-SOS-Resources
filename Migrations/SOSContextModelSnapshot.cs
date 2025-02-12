@@ -67,7 +67,7 @@ namespace HendrixSOSResources.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Resource");
+                    b.ToTable("Resources");
 
                     b.HasData(
                         new

@@ -29,7 +29,7 @@ namespace HendrixSOSResources.Pages.Resources
                 return NotFound();
             }
 
-            var resource = await _context.Resource.FirstOrDefaultAsync(m => m.ID == id);
+            var resource = await _context.Resources.FirstOrDefaultAsync(m => m.ID == id);
 
             if (resource == null)
             {
@@ -49,11 +49,11 @@ namespace HendrixSOSResources.Pages.Resources
                 return NotFound();
             }
 
-            var resource = await _context.Resource.FindAsync(id);
+            var resource = await _context.Resources.FindAsync(id);
             if (resource != null)
             {
                 Resource = resource;
-                _context.Resource.Remove(Resource);
+                _context.Resources.Remove(Resource);
                 await _context.SaveChangesAsync();
             }
 

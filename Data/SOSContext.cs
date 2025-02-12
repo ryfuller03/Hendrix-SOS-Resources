@@ -15,7 +15,7 @@ namespace HendrixSOSResources.Data
         }
 
         public DbSet<SOSResources.Models.Textbook> Textbooks { get; set; } = default!;
-        public DbSet<SOSResources.Models.Resource> Resource { get; set; } = default!;
+        public DbSet<SOSResources.Models.Resource> Resources { get; set; } = default!;
         public DbSet<SOSResources.Models.Request> Requests { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

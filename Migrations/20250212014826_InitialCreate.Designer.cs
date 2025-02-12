@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HendrixSOSResources.Migrations
 {
     [DbContext(typeof(SOSContext))]
-    [Migration("20250205071918_InitialCreate")]
+    [Migration("20250212014826_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -70,7 +70,7 @@ namespace HendrixSOSResources.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Resource");
+                    b.ToTable("Resources");
 
                     b.HasData(
                         new
