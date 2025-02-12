@@ -30,7 +30,7 @@ namespace HendrixSOSResources.Pages.Requests
                 return NotFound();
             }
 
-            var request =  await _context.Requests.FirstOrDefaultAsync(m => m.ID == id);
+            var request =  await _context.Requests.FirstOrDefaultAsync(m => m.Id == id);
             if (request == null)
             {
                 return NotFound();
@@ -56,7 +56,7 @@ namespace HendrixSOSResources.Pages.Requests
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RequestExists(Request.ID))
+                if (!RequestExists(Request.Id))
                 {
                     return NotFound();
                 }
@@ -71,7 +71,7 @@ namespace HendrixSOSResources.Pages.Requests
 
         private bool RequestExists(int id)
         {
-            return _context.Requests.Any(e => e.ID == id);
+            return _context.Requests.Any(e => e.Id == id);
         }
     }
 }

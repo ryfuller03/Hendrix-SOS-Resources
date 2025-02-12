@@ -2,53 +2,52 @@
 @model HendrixSOSResources.Pages.Requests.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "SOS Request Form";
 }
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script src="~/js/site.js"></script>
+</head>
 
-<h1>Create</h1>
+<body style="text-align: center;">
 
-<h4>Request</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Request.Name" class="control-label"></label>
-                <input asp-for="Request.Name" class="form-control" />
-                <span asp-validation-for="Request.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Request.RequestDate" class="control-label"></label>
-                <input asp-for="Request.RequestDate" class="form-control" />
-                <span asp-validation-for="Request.RequestDate" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Request.NeedWithinDay" /> @Html.DisplayNameFor(model => model.Request.NeedWithinDay)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="Request.Description" class="control-label"></label>
-                <input asp-for="Request.Description" class="form-control" />
-                <span asp-validation-for="Request.Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Request.Notes" class="control-label"></label>
-                <input asp-for="Request.Notes" class="form-control" />
-                <span asp-validation-for="Request.Notes" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+    <h1 class="fade-in" style="text-align: center; color: #e96b10;">@ViewData["Title"]</h1>
 
-<div>
-    <a asp-page="Index">Back to List</a>
-</div>
+    <p class="fade-in" style="text-align: center;">
+        <b>Use the below fields to submit a request for a resource you need.</b>
+    </p>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    <form method="post">
+        <div class="row" style="display: flex; align-items: center;">
+            <div class="col"></div>
+            <div class="col fade-in" style="display: flex; margin-bottom: 10px;">
+                <p style="white-space: nowrap; margin-right: 20px; padding-top: 2px;">Please pick a resource:</p>
+                <select asp-for="Request.ResourceId" style="margin-top: 5px;">
+                    @foreach (var resource in Model.Resources)
+                    {
+                        <option value="@resource.ID">@resource.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <div class="row" style="display: flex; align-items: center;">
+            <div class="col"></div>
+            <div class="col fade-in" style="display: flex; margin-bottom: 10px;">
+                <p style="margin-right: 100px; white-space: nowrap;">I need this within 24 hours:</p>
+                <label for="needHours" style="margin-right: 5px;">Yes</label>
+                <input type="radio" asp-for="Request.NeedWithin24Hours" value="true" style="display: flex; margin-top: 6.5px; margin-right: 45px; accent-color: #e96b10">
+                <label for="notNeedHours" style="margin-right: 5px;">No</label>
+                <input type="radio" asp-for="Request.NeedWithin24Hours" value="false" style="display: flex; margin-top: 6.5px; accent-color: #e96b10">
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <p class="fade-in" style="margin-top: 10px">For what reason do you need this resource? Be as specific as you are able:</p>
+        <textarea class="fade-in" style="margin-bottom: 10px;" asp-for="Request.Reason" rows="10" cols="72"></textarea><br>
+        <input type="submit" value="Submit" class="submit-button fade-in">
+    </form>
+
+    <p id="successMessage">Thank you for sending your request! We will get back to you as soon as we possibly can.</p>
+</body>

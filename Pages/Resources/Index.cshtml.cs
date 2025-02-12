@@ -23,7 +23,7 @@ namespace HendrixSOSResources.Pages.Resources
 
         public async Task OnGetAsync()
         {
-            Resource = await _context.Resource.ToListAsync();
+            Resource = await _context.Resources.ToListAsync();
         }
     }
 }

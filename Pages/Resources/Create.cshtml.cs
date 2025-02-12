@@ -35,7 +35,7 @@ namespace HendrixSOSResources.Pages.Resources
                 return Page();
             }
 
-            _context.Resource.Add(Resource);
+            _context.Resources.Add(Resource);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

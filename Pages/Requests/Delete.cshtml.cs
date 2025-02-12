@@ -29,7 +29,7 @@ namespace HendrixSOSResources.Pages.Requests
                 return NotFound();
             }
 
-            var request = await _context.Requests.FirstOrDefaultAsync(m => m.ID == id);
+            var request = await _context.Requests.FirstOrDefaultAsync(m => m.Id == id);
 
             if (request == null)
             {
