@@ -5,7 +5,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1 style="color: #e96b10">Create</h1>
 
 <h4>Resource</h4>
 <hr />
@@ -20,12 +20,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="Resource.Type" class="control-label"></label>
-                <select asp-for="Resource.Type" class="form-control">
-                    <option value="FirstAidSupplies">First Aid Supplies</option>
-                    <option value="OverTheCounterMedication">Over-the-Counter Medications</option>
-                    <option value="HygieneSupplies">Hygiene Supplies</option>
-                    <option value="PersonalCareSupplies">Personal Care Supplies</option>
-                    <option value="Textbook">Textbook</option>
+                <select asp-for="Resource.Type" class="form-control" asp-items="Model.ResourceTypeList">
+                    <option value="">Select Resource Type</option>
                 </select>
                 <span asp-validation-for="Resource.Type" class="text-danger"></span>
             </div>

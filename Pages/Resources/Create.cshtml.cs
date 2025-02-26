@@ -14,6 +14,8 @@ namespace HendrixSOSResources.Pages.Resources
     {
         private readonly HendrixSOSResources.Data.SOSContext _context;
 
+        public required SelectList ResourceTypeList { get; set; }
+
         public CreateModel(HendrixSOSResources.Data.SOSContext context)
         {
             _context = context;
@@ -36,6 +38,7 @@ namespace HendrixSOSResources.Pages.Resources
             }
 
             _context.Resources.Add(Resource);
+            ResourceTypeList = new SelectList(Enum.GetValues(typeof(ResourceType)).Cast<ResourceType>());
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
