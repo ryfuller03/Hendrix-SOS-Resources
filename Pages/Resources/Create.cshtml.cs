@@ -23,6 +23,7 @@ namespace HendrixSOSResources.Pages.Resources
 
         public IActionResult OnGet()
         {
+            ResourceTypeList = new SelectList(Enum.GetValues(typeof(ResourceType)).Cast<ResourceType>());
             return Page();
         }
 
@@ -38,9 +39,7 @@ namespace HendrixSOSResources.Pages.Resources
             }
 
             _context.Resources.Add(Resource);
-            ResourceTypeList = new SelectList(Enum.GetValues(typeof(ResourceType)).Cast<ResourceType>());
             await _context.SaveChangesAsync();
-
             return RedirectToPage("./Index");
         }
     }
