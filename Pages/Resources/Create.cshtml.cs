@@ -35,6 +35,14 @@ namespace HendrixSOSResources.Pages.Resources
         {
             if (!ModelState.IsValid)
             {
+                foreach (var modelStateKey in ModelState.Keys)
+                {
+                    var value = ModelState[modelStateKey];
+                    foreach (var error in value.Errors)
+                    {
+                        Console.WriteLine($"Key: {modelStateKey}, Error: {error.ErrorMessage}");
+                    }
+                }
                 return Page();
             }
 

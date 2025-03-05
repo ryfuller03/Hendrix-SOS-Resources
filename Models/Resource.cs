@@ -6,10 +6,18 @@ namespace SOSResources.Models
 {
     public enum ResourceType
     {
+        [Display(Name = "First Aid Supplies")]
         FirstAidSupplies,
+
+        [Display(Name = "Over-the-Counter Medication")]
         OverTheCounterMedication,
+
+        [Display(Name = "Hygiene Supplies")]
         HygieneSupplies,
+
+        [Display(Name = "Personal Care Supplies")]
         PersonalCareSupplies,
+        
         Textbook
     }
 
@@ -28,7 +36,5 @@ namespace SOSResources.Models
         public required string Description { get; set; }
 
         public int Quantity { get; set; }
-
-        public ICollection<Request> Requests { get; set; }
     }
 }
