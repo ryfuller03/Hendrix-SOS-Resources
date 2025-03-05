@@ -50,4 +50,12 @@
     </form>
 
     <p id="successMessage">Thank you for sending your request! We will get back to you as soon as we possibly can.</p>
+
+<script>
+    document.getElementById('reasonForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+    });
+</script>
 </body>

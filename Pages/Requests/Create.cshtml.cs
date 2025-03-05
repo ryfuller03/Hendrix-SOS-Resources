@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using HendrixSOSResources.Data;
 using SOSResources.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HendrixSOSResources.Pages.Requests
 {
@@ -71,7 +72,7 @@ namespace HendrixSOSResources.Pages.Requests
 
             Console.WriteLine("Request saved to database");
 
-            return RedirectToPage("./Index");
+            return Page();
         }
     }
 }
