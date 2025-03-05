@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HendrixSOSResources.Migrations
 {
     [DbContext(typeof(SOSContext))]
-    [Migration("20250212014826_InitialCreate")]
+    [Migration("20250305013619_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -153,38 +153,6 @@ namespace HendrixSOSResources.Migrations
                             Quantity = 40,
                             Type = 4
                         });
-                });
-
-            modelBuilder.Entity("SOSResources.Models.Textbook", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Author")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Edition")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("LoanStatus")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Textbooks");
                 });
 
             modelBuilder.Entity("SOSResources.Models.Request", b =>

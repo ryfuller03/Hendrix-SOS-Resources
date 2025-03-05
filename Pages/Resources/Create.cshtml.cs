@@ -14,6 +14,8 @@ namespace HendrixSOSResources.Pages.Resources
     {
         private readonly HendrixSOSResources.Data.SOSContext _context;
 
+        public required SelectList ResourceTypeList { get; set; }
+
         public CreateModel(HendrixSOSResources.Data.SOSContext context)
         {
             _context = context;
@@ -21,6 +23,7 @@ namespace HendrixSOSResources.Pages.Resources
 
         public IActionResult OnGet()
         {
+            ResourceTypeList = new SelectList(Enum.GetValues(typeof(ResourceType)).Cast<ResourceType>());
             return Page();
         }
 
@@ -32,12 +35,19 @@ namespace HendrixSOSResources.Pages.Resources
         {
             if (!ModelState.IsValid)
             {
+                foreach (var modelStateKey in ModelState.Keys)
+                {
+                    var value = ModelState[modelStateKey];
+                    foreach (var error in value.Errors)
+                    {
+                        Console.WriteLine($"Key: {modelStateKey}, Error: {error.ErrorMessage}");
+                    }
+                }
                 return Page();
             }
 
             _context.Resources.Add(Resource);
             await _context.SaveChangesAsync();
-
             return RedirectToPage("./Index");
         }
     }
