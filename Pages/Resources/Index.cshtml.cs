@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using HendrixSOSResources.Data;
 using SOSResources.Models;
 
+
 namespace HendrixSOSResources.Pages.Resources
 {
     public class IndexModel : PageModel
@@ -19,11 +20,21 @@ namespace HendrixSOSResources.Pages.Resources
             _context = context;
         }
 
-        public IList<Resource> Resource { get;set; } = default!;
+        public IList<Resource> Resource { get; set; } = default!;
+
+        [BindProperty(SupportsGet = true)]
+        public ResourceType? SelectedType { get; set; }
 
         public async Task OnGetAsync()
         {
-            Resource = await _context.Resources.ToListAsync();
+            IQueryable<Resource> resources = _context.Resources;
+
+            if (SelectedType.HasValue)
+            {
+                resources = resources.Where(r => r.Type == SelectedType.Value);
+            }
+
+            Resource = await resources.ToListAsync();
         }
     }
 }
