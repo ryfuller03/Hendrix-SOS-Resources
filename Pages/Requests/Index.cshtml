@@ -36,10 +36,14 @@
             <td>@Html.DisplayFor(modelItem => item.Status)</td>
             <td>
                 <form method="post" asp-page-handler="Approve" asp-route-id="@item.Id" style="display:inline;">
-                    <button type="submit" class="btn btn-success">Approve</button>
+                    <button type="submit" class="border-0 bg-transparent text-success p-0">
+                        <i class="bi bi-check-circle-fill fs-6"></i>
+                    </button>
                 </form>
                 <form method="post" asp-page-handler="Deny" asp-route-id="@item.Id" style="display:inline;">
-                    <button type="submit" class="btn btn-danger">Deny</button>
+                    <button type="submit" class="border-0 bg-transparent text-danger p-0">
+                        <i class="bi bi-x-circle-fill fs-6"></i>
+                    </button>
                 </form>
             </td>
         </tr>
