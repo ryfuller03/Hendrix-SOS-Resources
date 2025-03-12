@@ -7,20 +7,18 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using HendrixSOSResources.Data;
 using SOSResources.Models;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace HendrixSOSResources.Pages.Requests
 {
     public class CreateModel : PageModel
     {
-        private readonly HendrixSOSResources.Data.SOSContext _context;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SOSContext _context;
 
-        public CreateModel(HendrixSOSResources.Data.SOSContext context, UserManager<IdentityUser> userManager)
+        public CreateModel(SOSContext context)
         {
             _context = context;
-            _userManager = userManager;
         }
 
         [BindProperty]
@@ -38,47 +36,40 @@ namespace HendrixSOSResources.Pages.Requests
         public async Task<IActionResult> OnPostAsync()
         {
             Console.WriteLine("OnPostAsync called");
+            Console.WriteLine($"IsAuthenticated: {User.Identity?.IsAuthenticated}");
+            Console.WriteLine($"User Name: {User.Identity?.Name}");
+
+            string? userEmail = User.Identity?.Name;
 
             var resource = await _context.Resources.FindAsync(Request.ResourceId);
-            var user = await _userManager.GetUserAsync(User);
-
             if (resource == null)
             {
                 Console.WriteLine("Resource not found");
-                ModelState.AddModelError("Request.ResourceId", "Resource not found.");
-                Resources = await _context.Resources.ToListAsync(); 
+                Resources = await _context.Resources.ToListAsync();
                 return Page();
             }
 
             Console.WriteLine($"Resource found: {resource.Name}");
 
+            Request.Email = userEmail;
             Request.Resource = resource;
-            Request.Email = user.Email;
 
+            ModelState.Remove("Request.Email");
             ModelState.Remove("Request.Resource");
 
             if (!ModelState.IsValid)
             {
                 Console.WriteLine("Model state is invalid");
-                foreach (var state in ModelState)
-                {
-                    if (state.Value.Errors.Count > 0)
-                    {
-                        Console.WriteLine($"Field: {state.Key}, Errors: {string.Join(", ", state.Value.Errors.Select(e => e.ErrorMessage))}");
-                    }
-                }
                 Resources = await _context.Resources.ToListAsync();
                 return Page();
             }
-
-            Console.WriteLine($"Request.ResourceId: {Request.ResourceId}");
 
             _context.Requests.Add(Request);
             await _context.SaveChangesAsync();
 
             Console.WriteLine("Request saved to database");
 
-            return Page();
+            return RedirectToPage("./Index");
         }
     }
 }
