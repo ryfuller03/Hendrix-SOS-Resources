@@ -1,8 +1,9 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace SOS_Resources.Pages;
-
+[Authorize(Policy = "RequireAdministratorRole")]
 public class PrivacyModel : PageModel
 {
     private readonly ILogger<PrivacyModel> _logger;

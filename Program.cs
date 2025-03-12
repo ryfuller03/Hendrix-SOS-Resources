@@ -29,6 +29,12 @@ builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration,
 // </ms_docref_add_msal>
 
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireAdministratorRole",
+         policy => policy.RequireRole("SOS.Admin"));
+});
+
 // <ms_docref_add_default_controller_for_sign-in-out>
 builder.Services.AddRazorPages().AddMvcOptions(options =>
     {
@@ -38,6 +44,7 @@ builder.Services.AddRazorPages().AddMvcOptions(options =>
         options.Filters.Add(new AuthorizeFilter(policy));
     }).AddMicrosoftIdentityUI();
 // </ms_docref_add_default_controller_for_sign-in-out>
+
 
 
 WebApplication app = builder.Build();
@@ -50,6 +57,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseRouting();
+
 app.UseAuthentication();
 app.UseAuthorization();
 // </ms_docref_enable_authz_capabilities>
@@ -57,7 +66,6 @@ app.UseAuthorization();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseRouting();
 
 app.MapRazorPages();
 app.MapControllers();
