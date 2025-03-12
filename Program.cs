@@ -14,6 +14,8 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 IEnumerable<string>? initialScopes = builder.Configuration["DownstreamApi:Scopes"]?.Split(' ');
 
 
+builder.Services.AddScoped<GraphMailService>();
+
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<SOSContext>(options =>

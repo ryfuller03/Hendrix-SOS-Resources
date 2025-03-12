@@ -50,6 +50,9 @@
     </div>
 
     <button id="indeximagebutton" class="indeximagebutton">Disable Background</button>
+    <form method="post" asp-page-handler="SendEmail">
+        <button type="submit" id="emailbutton" class="emailbutton">Send Email</button>
+    </form>
     <script>
         document.getElementById('indeximagebutton').addEventListener('click', function() {
         var background = document.getElementById('background');
