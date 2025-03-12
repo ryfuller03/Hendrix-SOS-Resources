@@ -26,6 +26,10 @@ namespace HendrixSOSResources.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<bool>("NeedWithin24Hours")
                         .HasColumnType("INTEGER");
 
