@@ -7,27 +7,46 @@ using Microsoft.EntityFrameworkCore;
 using HendrixSOSResources.Data;
 using SOSResources.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using System.Linq.Dynamic.Core;
 
 namespace HendrixSOSResources.Pages.Requests
 {
     public class IndexModel : PageModel
     {
         private readonly HendrixSOSResources.Data.SOSContext _context;
+        private readonly IAuthorizationService _authorizationService;
 
-        public IndexModel(HendrixSOSResources.Data.SOSContext context)
+
+        public IndexModel(HendrixSOSResources.Data.SOSContext context, IAuthorizationService authorizationService)
         {
             _context = context;
+            _authorizationService = authorizationService;
         }
 
         public IList<Request> Requests { get; set; } = new List<Request>();
 
         public async Task OnGetAsync()
         {
-            Requests = await _context.Requests
-                .Include(r => r.Resource)
-                .ToListAsync();
+            string? userEmail = User.Identity?.Name;
+            bool isAdmin = (await _authorizationService.AuthorizeAsync(User, "RequireAdministratorRole")).Succeeded;
+
+            if (isAdmin)
+            {
+                Requests = await _context.Requests
+                    .Include(r => r.Resource)
+                    .ToListAsync();
+            }
+            else
+            {
+                Requests = await _context.Requests
+                    .Include(r => r.Resource)
+                    .Where(r => r.Email == userEmail)
+                    .ToListAsync();
+            }
         }
 
+        
         public async Task<IActionResult> OnPostApproveAsync(int id) 
         { 
             var request = await _context.Requests.FindAsync(id); 
