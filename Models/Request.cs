@@ -26,5 +26,9 @@ namespace SOSResources.Models
 
         public int ResourceId { get; set; }
         public Resource Resource { get; set; }
+
+        [Display(Name = "Email Address")]
+        [EmailAddress]
+        public string Email { get; set; }
     }
 }

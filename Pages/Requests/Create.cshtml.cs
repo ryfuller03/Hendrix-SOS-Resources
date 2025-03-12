@@ -8,16 +8,19 @@ using Microsoft.EntityFrameworkCore;
 using HendrixSOSResources.Data;
 using SOSResources.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Identity;
 
 namespace HendrixSOSResources.Pages.Requests
 {
     public class CreateModel : PageModel
     {
         private readonly HendrixSOSResources.Data.SOSContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public CreateModel(HendrixSOSResources.Data.SOSContext context)
+        public CreateModel(HendrixSOSResources.Data.SOSContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         [BindProperty]
@@ -37,17 +40,20 @@ namespace HendrixSOSResources.Pages.Requests
             Console.WriteLine("OnPostAsync called");
 
             var resource = await _context.Resources.FindAsync(Request.ResourceId);
+            var user = await _userManager.GetUserAsync(User);
+
             if (resource == null)
             {
                 Console.WriteLine("Resource not found");
                 ModelState.AddModelError("Request.ResourceId", "Resource not found.");
-                Resources = await _context.Resources.ToListAsync(); // Ensure Resources is populated on postback
+                Resources = await _context.Resources.ToListAsync(); 
                 return Page();
             }
 
             Console.WriteLine($"Resource found: {resource.Name}");
 
             Request.Resource = resource;
+            Request.Email = user.Email;
 
             ModelState.Remove("Request.Resource");
 
@@ -61,7 +67,7 @@ namespace HendrixSOSResources.Pages.Requests
                         Console.WriteLine($"Field: {state.Key}, Errors: {string.Join(", ", state.Value.Errors.Select(e => e.ErrorMessage))}");
                     }
                 }
-                Resources = await _context.Resources.ToListAsync(); // Ensure Resources is populated on postback
+                Resources = await _context.Resources.ToListAsync();
                 return Page();
             }
 
