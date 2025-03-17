@@ -13,9 +13,9 @@ namespace HendrixSOSResources.Pages.Requests
 {
     public class CreateModel : PageModel
     {
-        private readonly HendrixSOSResources.Data.SOSContext _context;
+        private readonly SOSContext _context;
 
-        public CreateModel(HendrixSOSResources.Data.SOSContext context)
+        public CreateModel(SOSContext context)
         {
             _context = context;
         }
@@ -39,7 +39,7 @@ namespace HendrixSOSResources.Pages.Requests
             var resource = await _context.Resources.FindAsync(Request.ResourceId);
             if (resource == null)
             {
-                Console.WriteLine("Resource not found");
+                Console.WriteLine("Resource not found: " + Request.ResourceId);
                 ModelState.AddModelError("Request.ResourceId", "Resource not found.");
                 Resources = await _context.Resources.ToListAsync(); // Ensure Resources is populated on postback
                 return Page();
