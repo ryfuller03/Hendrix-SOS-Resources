@@ -1,4 +1,5 @@
 @page
+@using SOSResources.Models
 @model HendrixSOSResources.Pages.Requests.CreateModel
 
 @{
@@ -22,24 +23,25 @@
             <div class="col"></div>
             <div class="col fade-in" style="display: flex; margin-bottom: 10px;">
                 <p style="white-space: nowrap; margin-right: 20px; padding-top: 2px;">Please pick a resource:</p>
-                <select id="resourceSelect" asp-for="Request.ResourceId" style="margin-top: 5px;">
-                    @foreach (var resource in Model.Resources)
-                    {
-                        if (resource.Type != SOSResources.Models.ResourceType.Textbook) {
-                            <option value="@resource.ID">@resource.Name</option>
-                        }
+
+                @{
+                        var resourceTypes = Enum.GetValues(typeof(ResourceType)).Cast<ResourceType>();
+                }
+
+                <select name="resourceSelect" id="resourceSelect" style="margin-top: 5px;">
+                    @foreach (var type in resourceTypes) {
+                        <option value="@type">@type</option>
                     }
-                <option id="textbookIDOption">Textbook</option>
                 </select>
             </div>
             <div class="col"></div>
         </div>
 
-        <table id="textbookTable" class="table table-striped table-hover fade-in" style="display: none;">
+        <table id="resourceTable" class="table table-striped table-hover fade-in">
             <thead>
                 <tr>
                     <th>
-                        Title
+                        Resources
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Resources[0].Type)
@@ -56,25 +58,23 @@
             </thead>
             <tbody>
                 @foreach (var item in Model.Resources) {
-                    if (item.Type == SOSResources.Models.ResourceType.Textbook) {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Type)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Description)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Quantity)
-                            </td>
-                            <td>
-                                <input type="radio" name="textbookRadio" id="textbookRadio_@item.ID" asp-for="Request.ResourceId" value="@item.ID" style="display: flex; margin-left: 60px; accent-color: #e96b10">
-                            </td>
-                        </tr>
-                    }
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Type)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                        <td>
+                            <input type="radio" name="Request.ResourceId" id="resourceRadio_@item.ID" value="@item.ID" style="display: flex; margin-left: 60px; accent-color: #e96b10">
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>
@@ -95,35 +95,4 @@
         <textarea id="reasonForm" class="fade-in" style="margin-bottom: 10px;" asp-for="Request.Reason" rows="10" cols="72"></textarea><br>
         <input type="submit" id="submitButton" value="Submit" class="submit-button fade-in">
     </form>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var resourceForm = document.getElementById('resourceForm');  // resources dropdown
-        var resourceSelect = document.getElementById('resourceSelect');  // dropdown menu item
-        var textbookTable = document.getElementById('textbookTable');  // self-explanatory
-
-        resourceSelect.addEventListener('change', function() {
-            var selectedOption = this.options[this.selectedIndex].text;
-            if (selectedOption.includes("Textbook")) {
-                textbookTable.style.display = 'table';
-            } else {
-                textbookTable.style.display = 'none';
-                document.querySelectorAll('input[name="textbookRadio"]').forEach(function(radio) {
-                    radio.checked = false;  // resets if something else selected
-                });
-            }
-        });
-
-        resourceForm.addEventListener('submit', function(event) {
-            var selectedOption = resourceSelect.options[resourceSelect.selectedIndex].text;
-            var selectedRadio = document.querySelector('input[name="textbookRadio"]:checked').value;
-                console.log(selectedRadio);
-            if (selectedOption.includes("Textbook")) {
-                var selectedRadio = document.querySelector('input[name="textbookRadio"]:checked').value;
-                console.log(selectedRadio);
-                resourceSelect.value = selectedRadio
-            }
-        });
-    });
-</script>
 </body>
