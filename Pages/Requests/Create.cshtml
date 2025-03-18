@@ -8,6 +8,28 @@
 <head>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <script src="~/js/site.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        var resourceSelect = document.getElementById("resourceSelect");
+        resourceSelect.addEventListener("change", filterTable);
+
+        function filterTable() {
+            var selectedType = resourceSelect.value;
+            console.log("Selected Type: ", selectedType);
+            var rows = document.querySelectorAll("#resourceTable tbody tr");
+
+            rows.forEach(function (row) {
+                var typeCell = row.querySelector("td:nth-child(2)");
+                console.log("Cell loaded: ", typeCell);
+                if (selectedType === "" || typeCell.textContent.trim() === selectedType) {
+                    row.style.display = "flex";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+    });
+    </script>
 </head>
 
 <body style="text-align: center;">
@@ -22,13 +44,14 @@
         <div class="row" style="display: flex; align-items: center;">
             <div class="col"></div>
             <div class="col fade-in" style="display: flex; margin-bottom: 10px;">
-                <p style="white-space: nowrap; margin-right: 20px; padding-top: 2px;">Please pick a resource:</p>
+                <p style="white-space: nowrap; margin-right: 20px; padding-top: 2px;">Filter by type:</p>
 
                 @{
                         var resourceTypes = Enum.GetValues(typeof(ResourceType)).Cast<ResourceType>();
                 }
 
-                <select name="resourceSelect" id="resourceSelect" style="margin-top: 5px;">
+                <select name="resourceSelect" id="resourceSelect" style="margin-top: 5px; display: flex;">
+                    <option value="">All</option>
                     @foreach (var type in resourceTypes) {
                         <option value="@type">@type</option>
                     }
@@ -41,10 +64,10 @@
             <thead>
                 <tr>
                     <th>
-                        Resources
+                        Resource
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Resources[0].Type)
+                            @Html.DisplayNameFor(model => model.Resources[0].Type)
                     </th>
                     <th>
                         Author/Edition
@@ -58,7 +81,7 @@
             </thead>
             <tbody>
                 @foreach (var item in Model.Resources) {
-                    <tr>
+                    <tr id="resourceRow_@item.ID">
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
@@ -78,6 +101,25 @@
                 }
             </tbody>
         </table>
+        @{
+            var prevDisabled = !Model.Resources.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.Resources.HasNextPage ? "disabled" : "";
+        }
+
+        <a asp-page="./Create"
+        asp-route-sortOrder="@Model.CurrentSort"
+        asp-route-pageIndex="@(Model.Resources.PageIndex + 1)"
+        asp-route-currentFilter="@Model.CurrentFilter"
+        class="btn btn-primary fade-in @nextDisabled" style="background-color: #e96b10; color: antiquewhite; outline-width: 0px; float: right">
+            Next
+        </a>
+        <a asp-page="./Create"
+        asp-route-sortOrder="@Model.CurrentSort"
+        asp-route-pageIndex="@(Model.Resources.PageIndex - 1)"
+        asp-route-currentFilter="@Model.CurrentFilter"
+        class="btn btn-primary fade-in @prevDisabled" style="background-color: #e96b10; color: antiquewhite; outline-width: 0px; float: right">
+            Previous
+        </a>
 
         <div class="row" style="display: flex; align-items: center;">
             <div class="col"></div>
