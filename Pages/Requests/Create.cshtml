@@ -1,6 +1,8 @@
 @page
 @using SOSResources.Models
 @model HendrixSOSResources.Pages.Requests.CreateModel
+@using System.ComponentModel.DataAnnotations
+@using System.Reflection
 
 @{
     ViewData["Title"] = "SOS Request Form";
@@ -9,25 +11,31 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <script src="~/js/site.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
         var resourceSelect = document.getElementById("resourceSelect");
         resourceSelect.addEventListener("change", filterTable);
-
+        
         function filterTable() {
             var selectedType = resourceSelect.value;
-            console.log("Selected Type: ", selectedType);
+            console.log("Selected Type: '" + selectedType + "'");
             var rows = document.querySelectorAll("#resourceTable tbody tr");
 
-            rows.forEach(function (row) {
+            rows.forEach(function(row) {
                 var typeCell = row.querySelector("td:nth-child(2)");
-                console.log("Cell loaded: ", typeCell);
-                if (selectedType === "" || typeCell.textContent.trim() === selectedType) {
-                    row.style.display = "flex";
+                var typeValue = typeCell.textContent.trim();
+                console.log("Row type: '" + typeValue + "'");
+                
+                if (selectedType === "" || 
+                selectedType === typeValue ||
+                document.querySelector(`option[value="${selectedType}"]`).textContent === typeValue) {
+                row.style.display = "";
                 } else {
                     row.style.display = "none";
                 }
             });
         }
+        
+        filterTable();
     });
     </script>
 </head>
@@ -53,7 +61,11 @@
                 <select name="resourceSelect" id="resourceSelect" style="margin-top: 5px; display: flex;">
                     <option value="">All</option>
                     @foreach (var type in resourceTypes) {
-                        <option value="@type">@type</option>
+                        var displayName = type.GetType()
+                                            .GetField(type.ToString())
+                                            .GetCustomAttribute<DisplayAttribute>()?
+                                            .GetName() ?? type.ToString();
+                        <option value="@type">@displayName</option>
                     }
                 </select>
             </div>
@@ -81,7 +93,7 @@
             </thead>
             <tbody>
                 @foreach (var item in Model.Resources) {
-                    <tr id="resourceRow_@item.ID">
+                    <tr id="resourceRow_@item.ID" data-resource-type="@item.Type">
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
