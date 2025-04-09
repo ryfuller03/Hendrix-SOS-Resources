@@ -6,42 +6,85 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using HendrixSOSResources.Data;
+using Microsoft.Extensions.Configuration;
 using SOSResources.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using SOSResources;
+using System.Linq.Dynamic.Core;
 
 namespace HendrixSOSResources.Pages.Requests
 {
     public class CreateModel : PageModel
     {
-        private readonly HendrixSOSResources.Data.SOSContext _context;
+        private readonly SOSContext _context;
+        private readonly IConfiguration Configuration;
 
-        public CreateModel(HendrixSOSResources.Data.SOSContext context)
+        public string NameSort { get; set; }
+        public string TypeSort { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
+
+        public CreateModel(SOSContext context, IConfiguration configuration)
         {
             _context = context;
+            Configuration = configuration;
         }
 
         [BindProperty]
         public Request Request { get; set; } = default!;
 
-        public IList<Resource> Resources { get; set; } = new List<Resource>();
+        public PaginatedList<Resource> Resources { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string sortOrder, int? pageIndex)
         {
+            NameSort = string.IsNullOrEmpty(sortOrder) ? "name" : "";
+            TypeSort = sortOrder == "Type" ? "type" : "Type";
+
+            IQueryable<Resource> resourcesIQ = from s in _context.Resources
+                                        select s;
+            switch (sortOrder)
+            {
+                case "name":
+                    resourcesIQ = resourcesIQ.OrderBy(s => s.Name);
+                    break;
+                case "type":
+                    resourcesIQ = resourcesIQ.OrderBy(s => s.Type);
+                    break;
+                default:
+                    resourcesIQ = resourcesIQ.OrderBy(s => s.Name);
+                    break;
+            }
             Console.WriteLine("OnGetAsync called");
-            Resources = await _context.Resources.ToListAsync();
+            var pageSize = Configuration.GetValue("PageSize", 10);
+            Resources = await PaginatedList<Resource>.CreateAsync(resourcesIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
             Console.WriteLine($"Resources loaded: {Resources.Count}");
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string? sortOrder, int? pageIndex)
         {
             Console.WriteLine("OnPostAsync called");
 
             var resource = await _context.Resources.FindAsync(Request.ResourceId);
             if (resource == null)
             {
-                Console.WriteLine("Resource not found");
+                Console.WriteLine("Resource not found: " + Request.ResourceId);
                 ModelState.AddModelError("Request.ResourceId", "Resource not found.");
-                Resources = await _context.Resources.ToListAsync(); // Ensure Resources is populated on postback
+                var pageSize = Configuration.GetValue("PageSize", 10);
+                IQueryable<Resource> resourcesIQ = from s in _context.Resources
+                                           select s;
+                switch (sortOrder)
+                {
+                    case "name":
+                        resourcesIQ = resourcesIQ.OrderBy(s => s.Name);
+                        break;
+                    case "type":
+                        resourcesIQ = resourcesIQ.OrderBy(s => s.Type);
+                        break;
+                    default:
+                        resourcesIQ = resourcesIQ.OrderBy(s => s.Name);
+                        break;
+                }
+                Resources = await PaginatedList<Resource>.CreateAsync(resourcesIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
                 return Page();
             }
 
@@ -61,7 +104,22 @@ namespace HendrixSOSResources.Pages.Requests
                         Console.WriteLine($"Field: {state.Key}, Errors: {string.Join(", ", state.Value.Errors.Select(e => e.ErrorMessage))}");
                     }
                 }
-                Resources = await _context.Resources.ToListAsync(); // Ensure Resources is populated on postback
+                var pageSize = Configuration.GetValue("PageSize", 10);
+                IQueryable<Resource> resourcesIQ = from s in _context.Resources
+                                           select s;
+                switch (sortOrder)
+                {
+                    case "name":
+                        resourcesIQ = resourcesIQ.OrderBy(s => s.Name);
+                        break;
+                    case "type":
+                        resourcesIQ = resourcesIQ.OrderBy(s => s.Type);
+                        break;
+                    default:
+                        resourcesIQ = resourcesIQ.OrderBy(s => s.Name);
+                        break;
+                }
+                Resources = await PaginatedList<Resource>.CreateAsync(resourcesIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
                 return Page();
             }
 
@@ -72,6 +130,22 @@ namespace HendrixSOSResources.Pages.Requests
 
             Console.WriteLine("Request saved to database");
 
+            var _pageSize = Configuration.GetValue("PageSize", 10);
+                IQueryable<Resource> _resourcesIQ = from s in _context.Resources
+                                           select s;
+                switch (sortOrder)
+                {
+                    case "name":
+                        _resourcesIQ = _resourcesIQ.OrderBy(s => s.Name);
+                        break;
+                    case "type":
+                        _resourcesIQ = _resourcesIQ.OrderBy(s => s.Type);
+                        break;
+                    default:
+                        _resourcesIQ = _resourcesIQ.OrderBy(s => s.Name);
+                        break;
+                }
+                Resources = await PaginatedList<Resource>.CreateAsync(_resourcesIQ.AsNoTracking(), pageIndex ?? 1, _pageSize);
             return Page();
         }
     }
