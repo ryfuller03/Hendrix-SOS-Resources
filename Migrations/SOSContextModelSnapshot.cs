@@ -34,7 +34,6 @@ namespace HendrixSOSResources.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Reason")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("ResourceId")
