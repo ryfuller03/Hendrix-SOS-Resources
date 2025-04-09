@@ -26,6 +26,10 @@ namespace HendrixSOSResources.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<bool>("NeedWithin24Hours")
                         .HasColumnType("INTEGER");
 
@@ -34,6 +38,9 @@ namespace HendrixSOSResources.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int>("ResourceId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Status")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -155,17 +162,12 @@ namespace HendrixSOSResources.Migrations
             modelBuilder.Entity("SOSResources.Models.Request", b =>
                 {
                     b.HasOne("SOSResources.Models.Resource", "Resource")
-                        .WithMany("Requests")
+                        .WithMany()
                         .HasForeignKey("ResourceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Resource");
-                });
-
-            modelBuilder.Entity("SOSResources.Models.Resource", b =>
-                {
-                    b.Navigation("Requests");
                 });
 #pragma warning restore 612, 618
         }

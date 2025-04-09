@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using HendrixSOSResources.Data;
 using Microsoft.Extensions.Configuration;
 using SOSResources.Models;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SOSResources;
 using System.Linq.Dynamic.Core;
@@ -63,6 +65,10 @@ namespace HendrixSOSResources.Pages.Requests
         public async Task<IActionResult> OnPostAsync(string? sortOrder, int? pageIndex)
         {
             Console.WriteLine("OnPostAsync called");
+            Console.WriteLine($"IsAuthenticated: {User.Identity?.IsAuthenticated}");
+            Console.WriteLine($"User Name: {User.Identity?.Name}");
+
+            string? userEmail = User.Identity?.Name;
 
             var resource = await _context.Resources.FindAsync(Request.ResourceId);
             if (resource == null)
@@ -90,8 +96,10 @@ namespace HendrixSOSResources.Pages.Requests
 
             Console.WriteLine($"Resource found: {resource.Name}");
 
+            Request.Email = userEmail;
             Request.Resource = resource;
 
+            ModelState.Remove("Request.Email");
             ModelState.Remove("Request.Resource");
 
             if (!ModelState.IsValid)
@@ -122,8 +130,6 @@ namespace HendrixSOSResources.Pages.Requests
                 Resources = await PaginatedList<Resource>.CreateAsync(resourcesIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
                 return Page();
             }
-
-            Console.WriteLine($"Request.ResourceId: {Request.ResourceId}");
 
             _context.Requests.Add(Request);
             await _context.SaveChangesAsync();
