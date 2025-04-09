@@ -1,0 +1,152 @@
+@page
+@using SOSResources.Models
+@model HendrixSOSResources.Pages.Requests.CreateModel
+@using System.ComponentModel.DataAnnotations
+@using System.Reflection
+
+@{
+    ViewData["Title"] = "SOS Request Form";
+}
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script src="~/js/site.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var resourceSelect = document.getElementById("resourceSelect");
+        resourceSelect.addEventListener("change", filterTable);
+        
+        function filterTable() {
+            var selectedType = resourceSelect.value;
+            console.log("Selected Type: '" + selectedType + "'");
+            var rows = document.querySelectorAll("#resourceTable tbody tr");
+
+            rows.forEach(function(row) {
+                var typeCell = row.querySelector("td:nth-child(2)");
+                var typeValue = typeCell.textContent.trim();
+                console.log("Row type: '" + typeValue + "'");
+                
+                if (selectedType === "" || 
+                selectedType === typeValue ||
+                document.querySelector(`option[value="${selectedType}"]`).textContent === typeValue) {
+                row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+        
+        filterTable();
+    });
+    </script>
+</head>
+
+<body style="text-align: center;">
+
+    <h1 class="fade-in" style="text-align: center; color: #e96b10;">@ViewData["Title"]</h1>
+
+    <p class="fade-in" style="text-align: center;">
+        <b>Use the below fields to submit a request for a resource you need.</b>
+    </p>
+
+    <form id="resourceForm" method="post">
+        <div class="row" style="display: flex; align-items: center;">
+            <div class="col"></div>
+            <div class="col fade-in" style="display: flex; margin-bottom: 10px;">
+                <p style="white-space: nowrap; margin-right: 20px; padding-top: 2px;">Filter by type:</p>
+
+                @{
+                        var resourceTypes = Enum.GetValues(typeof(ResourceType)).Cast<ResourceType>();
+                }
+
+                <select name="resourceSelect" id="resourceSelect" style="margin-top: 5px; display: flex;">
+                    <option value="">All</option>
+                    @foreach (var type in resourceTypes) {
+                        var displayName = type.GetType()
+                                            .GetField(type.ToString())
+                                            .GetCustomAttribute<DisplayAttribute>()?
+                                            .GetName() ?? type.ToString();
+                        <option value="@type">@displayName</option>
+                    }
+                </select>
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <table id="resourceTable" class="table table-striped table-hover fade-in">
+            <thead>
+                <tr>
+                    <th>
+                        Resource
+                    </th>
+                    <th>
+                            @Html.DisplayNameFor(model => model.Resources[0].Type)
+                    </th>
+                    <th>
+                        Author/Edition
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Resources[0].Quantity)
+                    </th>
+                    <th>Select</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Resources) {
+                    <tr id="resourceRow_@item.ID" data-resource-type="@item.Type">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Type)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                        <td>
+                            <input type="radio" name="Request.ResourceId" id="resourceRadio_@item.ID" value="@item.ID" style="display: flex; margin-left: 60px; accent-color: #e96b10">
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @{
+            var prevDisabled = !Model.Resources.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.Resources.HasNextPage ? "disabled" : "";
+        }
+
+        <a asp-page="./Create"
+        asp-route-sortOrder="@Model.CurrentSort"
+        asp-route-pageIndex="@(Model.Resources.PageIndex + 1)"
+        asp-route-currentFilter="@Model.CurrentFilter"
+        class="btn btn-primary fade-in @nextDisabled" style="background-color: #e96b10; color: antiquewhite; outline-width: 0px; float: right">
+            Next
+        </a>
+        <a asp-page="./Create"
+        asp-route-sortOrder="@Model.CurrentSort"
+        asp-route-pageIndex="@(Model.Resources.PageIndex - 1)"
+        asp-route-currentFilter="@Model.CurrentFilter"
+        class="btn btn-primary fade-in @prevDisabled" style="background-color: #e96b10; color: antiquewhite; outline-width: 0px; float: right">
+            Previous
+        </a>
+
+        <div class="row" style="display: flex; align-items: center;">
+            <div class="col"></div>
+            <div class="col fade-in" style="display: flex; margin-bottom: 10px;">
+                <p style="margin-right: 100px; white-space: nowrap;">I need this within 24 hours:</p>
+                <label for="needHours" style="margin-right: 5px;">Yes</label>
+                <input type="radio" asp-for="Request.NeedWithin24Hours" value="true" style="display: flex; margin-top: 6.5px; margin-right: 45px; accent-color: #e96b10">
+                <label for="notNeedHours" style="margin-right: 5px;">No</label>
+                <input type="radio" asp-for="Request.NeedWithin24Hours" value="false" checked style="display: flex; margin-top: 6.5px; accent-color: #e96b10">
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <p class="fade-in" style="margin-top: 10px">For what reason do you need this resource? Be as specific as you are able:</p>
+        <textarea id="reasonForm" class="fade-in" style="margin-bottom: 10px;" asp-for="Request.Reason" rows="10" cols="72"></textarea><br>
+        <input type="submit" id="submitButton" value="Submit" class="submit-button fade-in">
+    </form>
+</body>
