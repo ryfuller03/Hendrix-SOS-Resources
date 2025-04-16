@@ -37,6 +37,7 @@ namespace HendrixSOSResources.Pages.Requests
 
         public PaginatedList<Resource> Resources { get; set; }
 
+        public async Task<IActionResult> OnGetAsync()
         public async Task OnGetAsync(string sortOrder, int? pageIndex)
         {
             NameSort = string.IsNullOrEmpty(sortOrder) ? "name" : "";
@@ -57,9 +58,18 @@ namespace HendrixSOSResources.Pages.Requests
                     break;
             }
             Console.WriteLine("OnGetAsync called");
+            var userEmail = User.Identity?.Name;
+            var hasProfile = await _context.Profiles.AnyAsync(p => p.CampusEmail == userEmail);
+                if (!hasProfile)
+                {
+                    return RedirectToPage("/Profiles/Create");
+                }
+
+            Resources = await _context.Resources.ToListAsync();
             var pageSize = Configuration.GetValue("PageSize", 10);
             Resources = await PaginatedList<Resource>.CreateAsync(resourcesIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
             Console.WriteLine($"Resources loaded: {Resources.Count}");
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(string? sortOrder, int? pageIndex)
@@ -68,7 +78,13 @@ namespace HendrixSOSResources.Pages.Requests
             Console.WriteLine($"IsAuthenticated: {User.Identity?.IsAuthenticated}");
             Console.WriteLine($"User Name: {User.Identity?.Name}");
 
-            string? userEmail = User.Identity?.Name;
+            var userEmail = User.Identity?.Name;
+
+            var hasProfile = await _context.Profiles.AnyAsync(p => p.CampusEmail == userEmail);
+                if (!hasProfile)
+                {
+                    return RedirectToPage("/Profiles/Create");
+                }
 
             var resource = await _context.Resources.FindAsync(Request.ResourceId);
             if (resource == null)
@@ -96,11 +112,12 @@ namespace HendrixSOSResources.Pages.Requests
 
             Console.WriteLine($"Resource found: {resource.Name}");
 
-            Request.Email = userEmail;
+            ModelState.Remove("Request.CampusEmail");
+            ModelState.Remove("Request.Resource");
+
+            Request.CampusEmail = userEmail;
             Request.Resource = resource;
 
-            ModelState.Remove("Request.Email");
-            ModelState.Remove("Request.Resource");
 
             if (!ModelState.IsValid)
             {

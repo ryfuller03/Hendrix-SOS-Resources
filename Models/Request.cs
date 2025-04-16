@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SOSResources.Models
 {
@@ -27,8 +28,9 @@ namespace SOSResources.Models
         public int ResourceId { get; set; }
         public Resource Resource { get; set; }
 
-        [Display(Name = "Email Address")]
+        [Required]
         [EmailAddress]
-        public string Email { get; set; }
+        [ForeignKey("Profile")]
+        public string CampusEmail { get; set; }
     }
 }

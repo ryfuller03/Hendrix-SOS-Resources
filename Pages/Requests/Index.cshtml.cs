@@ -41,7 +41,7 @@ namespace HendrixSOSResources.Pages.Requests
             {
                 Requests = await _context.Requests
                     .Include(r => r.Resource)
-                    .Where(r => r.Email == userEmail)
+                    .Where(r => r.CampusEmail == userEmail)
                     .ToListAsync();
             }
         }
@@ -54,9 +54,17 @@ namespace HendrixSOSResources.Pages.Requests
             { 
                 return NotFound(); 
             } 
+            var resource = await _context.Resources.FindAsync(request.ResourceId);
+            if (resource == null) 
+            { 
+                return NotFound(); 
+            } 
  
             request.Status = RequestStatus.Approved; 
+            resource.Quantity -= 1;
+
             _context.Update(request); 
+            _context.Update(resource);
             await _context.SaveChangesAsync(); 
  
             return RedirectToPage(); 
