@@ -26,11 +26,19 @@ namespace HendrixSOSResources.Pages.Requests
 
         public IList<Resource> Resources { get; set; } = new List<Resource>();
 
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
             Console.WriteLine("OnGetAsync called");
+            var userEmail = User.Identity?.Name;
+            var hasProfile = await _context.Profiles.AnyAsync(p => p.CampusEmail == userEmail);
+                if (!hasProfile)
+                {
+                    return RedirectToPage("/Profiles/Create");
+                }
+
             Resources = await _context.Resources.ToListAsync();
             Console.WriteLine($"Resources loaded: {Resources.Count}");
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -39,7 +47,13 @@ namespace HendrixSOSResources.Pages.Requests
             Console.WriteLine($"IsAuthenticated: {User.Identity?.IsAuthenticated}");
             Console.WriteLine($"User Name: {User.Identity?.Name}");
 
-            string? userEmail = User.Identity?.Name;
+            var userEmail = User.Identity?.Name;
+
+            var hasProfile = await _context.Profiles.AnyAsync(p => p.CampusEmail == userEmail);
+                if (!hasProfile)
+                {
+                    return RedirectToPage("/Profiles/Create");
+                }
 
             var resource = await _context.Resources.FindAsync(Request.ResourceId);
             if (resource == null)
@@ -51,11 +65,12 @@ namespace HendrixSOSResources.Pages.Requests
 
             Console.WriteLine($"Resource found: {resource.Name}");
 
-            Request.Email = userEmail;
+            ModelState.Remove("Request.CampusEmail");
+            ModelState.Remove("Request.Resource");
+
+            Request.CampusEmail = userEmail;
             Request.Resource = resource;
 
-            ModelState.Remove("Request.Email");
-            ModelState.Remove("Request.Resource");
 
             if (!ModelState.IsValid)
             {

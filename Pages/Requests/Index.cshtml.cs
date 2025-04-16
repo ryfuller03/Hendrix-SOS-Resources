@@ -41,7 +41,7 @@ namespace HendrixSOSResources.Pages.Requests
             {
                 Requests = await _context.Requests
                     .Include(r => r.Resource)
-                    .Where(r => r.Email == userEmail)
+                    .Where(r => r.CampusEmail == userEmail)
                     .ToListAsync();
             }
         }

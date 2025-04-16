@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HendrixSOSResources.Migrations
 {
     [DbContext(typeof(SOSContext))]
-    [Migration("20250312171043_InitialCreate")]
+    [Migration("20250416150805_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -20,21 +20,109 @@ namespace HendrixSOSResources.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
 
-            modelBuilder.Entity("SOSResources.Models.Request", b =>
+            modelBuilder.Entity("SOSResources.Models.Profile", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("CampusEmail")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CampusAddress")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Classification")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<string>("CurrentEmployer")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CurrentEmployerPhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("EmEmail")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("EmFirstName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("EmLastName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("EmPhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("EmRelationship")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("FinAidStatement")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("HendrixID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("JobPosition")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal?>("MonthlyWages")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Pay")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("PayPeriod")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ReferredBy")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CampusEmail");
+
+                    b.ToTable("Profiles");
+                });
+
+            modelBuilder.Entity("SOSResources.Models.Request", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CampusEmail")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
                     b.Property<bool>("NeedWithin24Hours")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("ProfileCampusEmail")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Reason")
                         .IsRequired()
@@ -47,6 +135,8 @@ namespace HendrixSOSResources.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProfileCampusEmail");
 
                     b.HasIndex("ResourceId");
 
@@ -164,6 +254,10 @@ namespace HendrixSOSResources.Migrations
 
             modelBuilder.Entity("SOSResources.Models.Request", b =>
                 {
+                    b.HasOne("SOSResources.Models.Profile", null)
+                        .WithMany("Requests")
+                        .HasForeignKey("ProfileCampusEmail");
+
                     b.HasOne("SOSResources.Models.Resource", "Resource")
                         .WithMany()
                         .HasForeignKey("ResourceId")
@@ -171,6 +265,11 @@ namespace HendrixSOSResources.Migrations
                         .IsRequired();
 
                     b.Navigation("Resource");
+                });
+
+            modelBuilder.Entity("SOSResources.Models.Profile", b =>
+                {
+                    b.Navigation("Requests");
                 });
 #pragma warning restore 612, 618
         }

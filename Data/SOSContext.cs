@@ -18,10 +18,15 @@ namespace HendrixSOSResources.Data
 
         public DbSet<SOSResources.Models.Resource> Resources { get; set; } = default!;
         public DbSet<SOSResources.Models.Request> Requests { get; set; } = default!;
+        public DbSet<SOSResources.Models.Profile> Profiles { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Profile>()
+                .HasAlternateKey(p => p.CampusEmail);
+
 
             modelBuilder.Entity<Resource>().HasData(
                 new Resource { ID = 1, Name = "Bandages", Type = ResourceType.FirstAidSupplies, Description = "Various sizes of bandages", Quantity = 100 },

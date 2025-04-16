@@ -14,6 +14,37 @@ namespace HendrixSOSResources.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Profiles",
+                columns: table => new
+                {
+                    CampusEmail = table.Column<string>(type: "TEXT", nullable: false),
+                    HendrixID = table.Column<int>(type: "INTEGER", nullable: false),
+                    FirstName = table.Column<string>(type: "TEXT", nullable: false),
+                    LastName = table.Column<string>(type: "TEXT", nullable: false),
+                    Email = table.Column<string>(type: "TEXT", nullable: false),
+                    Classification = table.Column<int>(type: "INTEGER", nullable: false),
+                    CampusAddress = table.Column<string>(type: "TEXT", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "TEXT", nullable: false),
+                    EmFirstName = table.Column<string>(type: "TEXT", nullable: false),
+                    EmLastName = table.Column<string>(type: "TEXT", nullable: false),
+                    EmEmail = table.Column<string>(type: "TEXT", nullable: false),
+                    EmPhoneNumber = table.Column<string>(type: "TEXT", nullable: false),
+                    EmRelationship = table.Column<string>(type: "TEXT", nullable: false),
+                    CurrentEmployer = table.Column<string>(type: "TEXT", nullable: false),
+                    CurrentEmployerPhoneNumber = table.Column<string>(type: "TEXT", nullable: false),
+                    JobPosition = table.Column<string>(type: "TEXT", nullable: false),
+                    Pay = table.Column<int>(type: "INTEGER", nullable: false),
+                    PayPeriod = table.Column<int>(type: "INTEGER", nullable: false),
+                    MonthlyWages = table.Column<decimal>(type: "TEXT", nullable: true),
+                    FinAidStatement = table.Column<string>(type: "TEXT", nullable: false),
+                    ReferredBy = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Profiles", x => x.CampusEmail);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Resources",
                 columns: table => new
                 {
@@ -40,11 +71,17 @@ namespace HendrixSOSResources.Migrations
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Status = table.Column<int>(type: "INTEGER", nullable: false),
                     ResourceId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Email = table.Column<string>(type: "TEXT", nullable: false)
+                    CampusEmail = table.Column<string>(type: "TEXT", nullable: false),
+                    ProfileCampusEmail = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Requests", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Requests_Profiles_ProfileCampusEmail",
+                        column: x => x.ProfileCampusEmail,
+                        principalTable: "Profiles",
+                        principalColumn: "CampusEmail");
                     table.ForeignKey(
                         name: "FK_Requests_Resources_ResourceId",
                         column: x => x.ResourceId,
@@ -71,6 +108,11 @@ namespace HendrixSOSResources.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Requests_ProfileCampusEmail",
+                table: "Requests",
+                column: "ProfileCampusEmail");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Requests_ResourceId",
                 table: "Requests",
                 column: "ResourceId");
@@ -81,6 +123,9 @@ namespace HendrixSOSResources.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Requests");
+
+            migrationBuilder.DropTable(
+                name: "Profiles");
 
             migrationBuilder.DropTable(
                 name: "Resources");
