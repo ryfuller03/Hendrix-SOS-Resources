@@ -15,6 +15,8 @@ namespace HendrixSOSResources.Pages.Resources
     {
         private readonly HendrixSOSResources.Data.SOSContext _context;
 
+        public required SelectList ResourceTypeList { get; set; }
+
         public EditModel(HendrixSOSResources.Data.SOSContext context)
         {
             _context = context;
@@ -35,6 +37,7 @@ namespace HendrixSOSResources.Pages.Resources
             {
                 return NotFound();
             }
+            ResourceTypeList = new SelectList(Enum.GetValues(typeof(ResourceType)).Cast<ResourceType>());
             Resource = resource;
             return Page();
         }

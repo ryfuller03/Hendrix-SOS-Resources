@@ -122,7 +122,6 @@ namespace HendrixSOSResources.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Reason")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("ResourceId")
