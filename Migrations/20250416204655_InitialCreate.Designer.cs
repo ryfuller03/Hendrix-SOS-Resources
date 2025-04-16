@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HendrixSOSResources.Migrations
 {
     [DbContext(typeof(SOSContext))]
-    [Migration("20250416170038_InitialCreate")]
+    [Migration("20250416204655_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -103,6 +103,80 @@ namespace HendrixSOSResources.Migrations
                     b.HasKey("CampusEmail");
 
                     b.ToTable("Profiles");
+
+                    b.HasData(
+                        new
+                        {
+                            CampusEmail = "student1@hendrix.edu",
+                            CampusAddress = "Veasey Hall 101",
+                            Classification = 0,
+                            CurrentEmployer = "null",
+                            CurrentEmployerPhoneNumber = "null",
+                            EmEmail = "bob.smith@email.com",
+                            EmFirstName = "Bob",
+                            EmLastName = "Smith",
+                            EmPhoneNumber = "501-987-6543",
+                            EmRelationship = "Father",
+                            Email = "alice.smith@email.com",
+                            FinAidStatement = "Receiving partial financial aid.",
+                            FirstName = "Alice",
+                            HendrixID = 1001,
+                            JobPosition = "null",
+                            LastName = "Smith",
+                            MonthlyWages = 15m,
+                            Pay = 0,
+                            PayPeriod = 7,
+                            PhoneNumber = "501-123-4567",
+                            ReferredBy = "Orientation Leader"
+                        },
+                        new
+                        {
+                            CampusEmail = "staff.jones@hendrix.edu",
+                            CampusAddress = "Admin Building, Office 210",
+                            Classification = 6,
+                            CurrentEmployer = "Hendrix College",
+                            CurrentEmployerPhoneNumber = "501-450-1000",
+                            EmEmail = "diana.jones@email.com",
+                            EmFirstName = "Diana",
+                            EmLastName = "Jones",
+                            EmPhoneNumber = "501-777-8899",
+                            EmRelationship = "Spouse",
+                            Email = "charlie.jones@work.com",
+                            FinAidStatement = "null",
+                            FirstName = "Charlie",
+                            HendrixID = 2005,
+                            JobPosition = "Administrative Assistant",
+                            LastName = "Jones",
+                            MonthlyWages = 3500.00m,
+                            Pay = 1,
+                            PayPeriod = 4,
+                            PhoneNumber = "501-555-1212",
+                            ReferredBy = "Human Resources"
+                        },
+                        new
+                        {
+                            CampusEmail = "prof.evans@hendrix.edu",
+                            CampusAddress = "Ellis Hall, Room 305",
+                            Classification = 5,
+                            CurrentEmployer = "Hendrix College",
+                            CurrentEmployerPhoneNumber = "501-450-1000",
+                            EmEmail = "frank.evans@email.com",
+                            EmFirstName = "Frank",
+                            EmLastName = "Evans",
+                            EmPhoneNumber = "501-222-3344",
+                            EmRelationship = "Brother",
+                            Email = "emily.evans@hendrix.edu",
+                            FinAidStatement = "null",
+                            FirstName = "Emily",
+                            HendrixID = 3010,
+                            JobPosition = "Professor of Biology",
+                            LastName = "Evans",
+                            MonthlyWages = 6000.00m,
+                            Pay = 1,
+                            PayPeriod = 6,
+                            PhoneNumber = "501-333-9999",
+                            ReferredBy = "Department Chair"
+                        });
                 });
 
             modelBuilder.Entity("SOSResources.Models.Request", b =>
@@ -140,6 +214,48 @@ namespace HendrixSOSResources.Migrations
                     b.HasIndex("ResourceId");
 
                     b.ToTable("Requests");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CampusEmail = "student1@hendrix.edu",
+                            CreatedAt = new DateTime(2025, 4, 14, 15, 46, 54, 941, DateTimeKind.Local).AddTicks(6100),
+                            NeedWithin24Hours = true,
+                            Reason = "Scraped my knee playing intramurals.",
+                            ResourceId = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CampusEmail = "student1@hendrix.edu",
+                            CreatedAt = new DateTime(2025, 4, 11, 15, 46, 54, 941, DateTimeKind.Local).AddTicks(6110),
+                            NeedWithin24Hours = false,
+                            Reason = "Ran out of toothpaste.",
+                            ResourceId = 5,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CampusEmail = "staff.jones@hendrix.edu",
+                            CreatedAt = new DateTime(2025, 4, 15, 15, 46, 54, 941, DateTimeKind.Local).AddTicks(6140),
+                            NeedWithin24Hours = false,
+                            Reason = "Dealing with a headache.",
+                            ResourceId = 3,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CampusEmail = "prof.evans@hendrix.edu",
+                            CreatedAt = new DateTime(2025, 4, 9, 15, 46, 54, 941, DateTimeKind.Local).AddTicks(6170),
+                            NeedWithin24Hours = false,
+                            Reason = "For my lab's first aid kit.",
+                            ResourceId = 2,
+                            Status = 1
+                        });
                 });
 
             modelBuilder.Entity("SOSResources.Models.Resource", b =>
@@ -175,7 +291,7 @@ namespace HendrixSOSResources.Migrations
                             Description = "Various sizes of bandages",
                             Name = "Bandages",
                             Quantity = 100,
-                            Type = 0
+                            Type = 4
                         },
                         new
                         {
@@ -183,7 +299,7 @@ namespace HendrixSOSResources.Migrations
                             Description = "Alcohol-based antiseptic wipes",
                             Name = "Antiseptic Wipes",
                             Quantity = 200,
-                            Type = 0
+                            Type = 4
                         },
                         new
                         {
@@ -191,7 +307,7 @@ namespace HendrixSOSResources.Migrations
                             Description = "Ibuprofen and acetaminophen",
                             Name = "Pain Relievers",
                             Quantity = 150,
-                            Type = 1
+                            Type = 4
                         },
                         new
                         {
@@ -199,7 +315,7 @@ namespace HendrixSOSResources.Migrations
                             Description = "Cough suppressant syrup",
                             Name = "Cough Syrup",
                             Quantity = 50,
-                            Type = 1
+                            Type = 4
                         },
                         new
                         {
@@ -207,7 +323,7 @@ namespace HendrixSOSResources.Migrations
                             Description = "Fluoride toothpaste",
                             Name = "Toothpaste",
                             Quantity = 75,
-                            Type = 2
+                            Type = 1
                         },
                         new
                         {
@@ -215,7 +331,7 @@ namespace HendrixSOSResources.Migrations
                             Description = "Gentle shampoo for daily use",
                             Name = "Shampoo",
                             Quantity = 60,
-                            Type = 2
+                            Type = 1
                         },
                         new
                         {
@@ -223,7 +339,7 @@ namespace HendrixSOSResources.Migrations
                             Description = "Antiperspirant deodorant",
                             Name = "Deodorant",
                             Quantity = 80,
-                            Type = 3
+                            Type = 1
                         },
                         new
                         {
@@ -231,7 +347,7 @@ namespace HendrixSOSResources.Migrations
                             Description = "Moisturizing lotion",
                             Name = "Lotion",
                             Quantity = 90,
-                            Type = 3
+                            Type = 1
                         },
                         new
                         {
@@ -239,7 +355,7 @@ namespace HendrixSOSResources.Migrations
                             Description = "Advanced calculus textbook",
                             Name = "Calculus Textbook",
                             Quantity = 30,
-                            Type = 4
+                            Type = 7
                         },
                         new
                         {
@@ -247,7 +363,7 @@ namespace HendrixSOSResources.Migrations
                             Description = "Introductory biology textbook",
                             Name = "Biology Textbook",
                             Quantity = 40,
-                            Type = 4
+                            Type = 7
                         });
                 });
 
