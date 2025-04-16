@@ -37,8 +37,7 @@ namespace HendrixSOSResources.Pages.Requests
 
         public PaginatedList<Resource> Resources { get; set; }
 
-        public async Task<IActionResult> OnGetAsync()
-        public async Task OnGetAsync(string sortOrder, int? pageIndex)
+        public async Task<IActionResult> OnGetAsync(string sortOrder, int? pageIndex)
         {
             NameSort = string.IsNullOrEmpty(sortOrder) ? "name" : "";
             TypeSort = sortOrder == "Type" ? "type" : "Type";
@@ -65,7 +64,6 @@ namespace HendrixSOSResources.Pages.Requests
                     return RedirectToPage("/Profiles/Create");
                 }
 
-            Resources = await _context.Resources.ToListAsync();
             var pageSize = Configuration.GetValue("PageSize", 10);
             Resources = await PaginatedList<Resource>.CreateAsync(resourcesIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
             Console.WriteLine($"Resources loaded: {Resources.Count}");

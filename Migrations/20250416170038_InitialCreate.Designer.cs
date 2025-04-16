@@ -11,11 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HendrixSOSResources.Migrations
 {
     [DbContext(typeof(SOSContext))]
-<<<<<<<< HEAD:Migrations/20250416150805_InitialCreate.Designer.cs
-    [Migration("20250416150805_InitialCreate")]
-========
-    [Migration("20250409193200_InitialCreate")]
->>>>>>>> DiscoTrayStudios/main:Migrations/20250409193200_InitialCreate.Designer.cs
+    [Migration("20250416170038_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

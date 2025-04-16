@@ -100,6 +100,80 @@ namespace HendrixSOSResources.Migrations
                     b.HasKey("CampusEmail");
 
                     b.ToTable("Profiles");
+
+                    b.HasData(
+                        new
+                        {
+                            CampusEmail = "student1@hendrix.edu",
+                            CampusAddress = "Veasey Hall 101",
+                            Classification = 0,
+                            CurrentEmployer = "null",
+                            CurrentEmployerPhoneNumber = "null",
+                            EmEmail = "bob.smith@email.com",
+                            EmFirstName = "Bob",
+                            EmLastName = "Smith",
+                            EmPhoneNumber = "501-987-6543",
+                            EmRelationship = "Father",
+                            Email = "alice.smith@email.com",
+                            FinAidStatement = "Receiving partial financial aid.",
+                            FirstName = "Alice",
+                            HendrixID = 1001,
+                            JobPosition = "null",
+                            LastName = "Smith",
+                            MonthlyWages = 15m,
+                            Pay = 0,
+                            PayPeriod = 7,
+                            PhoneNumber = "501-123-4567",
+                            ReferredBy = "Orientation Leader"
+                        },
+                        new
+                        {
+                            CampusEmail = "staff.jones@hendrix.edu",
+                            CampusAddress = "Admin Building, Office 210",
+                            Classification = 6,
+                            CurrentEmployer = "Hendrix College",
+                            CurrentEmployerPhoneNumber = "501-450-1000",
+                            EmEmail = "diana.jones@email.com",
+                            EmFirstName = "Diana",
+                            EmLastName = "Jones",
+                            EmPhoneNumber = "501-777-8899",
+                            EmRelationship = "Spouse",
+                            Email = "charlie.jones@work.com",
+                            FinAidStatement = "null",
+                            FirstName = "Charlie",
+                            HendrixID = 2005,
+                            JobPosition = "Administrative Assistant",
+                            LastName = "Jones",
+                            MonthlyWages = 3500.00m,
+                            Pay = 1,
+                            PayPeriod = 4,
+                            PhoneNumber = "501-555-1212",
+                            ReferredBy = "Human Resources"
+                        },
+                        new
+                        {
+                            CampusEmail = "prof.evans@hendrix.edu",
+                            CampusAddress = "Ellis Hall, Room 305",
+                            Classification = 5,
+                            CurrentEmployer = "Hendrix College",
+                            CurrentEmployerPhoneNumber = "501-450-1000",
+                            EmEmail = "frank.evans@email.com",
+                            EmFirstName = "Frank",
+                            EmLastName = "Evans",
+                            EmPhoneNumber = "501-222-3344",
+                            EmRelationship = "Brother",
+                            Email = "emily.evans@hendrix.edu",
+                            FinAidStatement = "null",
+                            FirstName = "Emily",
+                            HendrixID = 3010,
+                            JobPosition = "Professor of Biology",
+                            LastName = "Evans",
+                            MonthlyWages = 6000.00m,
+                            Pay = 1,
+                            PayPeriod = 6,
+                            PhoneNumber = "501-333-9999",
+                            ReferredBy = "Department Chair"
+                        });
                 });
 
             modelBuilder.Entity("SOSResources.Models.Request", b =>
@@ -137,6 +211,48 @@ namespace HendrixSOSResources.Migrations
                     b.HasIndex("ResourceId");
 
                     b.ToTable("Requests");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CampusEmail = "student1@hendrix.edu",
+                            CreatedAt = new DateTime(2025, 4, 14, 12, 14, 16, 110, DateTimeKind.Local).AddTicks(4470),
+                            NeedWithin24Hours = true,
+                            Reason = "Scraped my knee playing intramurals.",
+                            ResourceId = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CampusEmail = "student1@hendrix.edu",
+                            CreatedAt = new DateTime(2025, 4, 11, 12, 14, 16, 110, DateTimeKind.Local).AddTicks(4490),
+                            NeedWithin24Hours = false,
+                            Reason = "Ran out of toothpaste.",
+                            ResourceId = 5,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CampusEmail = "staff.jones@hendrix.edu",
+                            CreatedAt = new DateTime(2025, 4, 15, 12, 14, 16, 110, DateTimeKind.Local).AddTicks(4520),
+                            NeedWithin24Hours = false,
+                            Reason = "Dealing with a headache.",
+                            ResourceId = 3,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CampusEmail = "prof.evans@hendrix.edu",
+                            CreatedAt = new DateTime(2025, 4, 9, 12, 14, 16, 110, DateTimeKind.Local).AddTicks(4550),
+                            NeedWithin24Hours = false,
+                            Reason = "For my lab's first aid kit.",
+                            ResourceId = 2,
+                            Status = 1
+                        });
                 });
 
             modelBuilder.Entity("SOSResources.Models.Resource", b =>
