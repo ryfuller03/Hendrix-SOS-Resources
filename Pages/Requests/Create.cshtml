@@ -14,6 +14,27 @@
     document.addEventListener("DOMContentLoaded", function() {
         var resourceSelect = document.getElementById("resourceSelect");
         resourceSelect.addEventListener("change", filterTable);
+
+        var resourceSelect = document.getElementById("resourceSelect");
+        
+        const savedSelection = localStorage.getItem("selectedResourceType");
+        if (savedSelection) {  // if it exists, restore value
+            resourceSelect.value = savedSelection;
+        }
+
+        var submitButton = document.getElementById("submitButton");
+        submitButton.addEventListener("change", function() {
+            var reasonBox = document.getElementById("reasonForm");
+            if (reasonBox.value != "") {
+                reasonBox.value = "";
+            }
+        });
+        
+        resourceSelect.addEventListener("change", function() {
+            // save whenever it's changed
+            localStorage.setItem("selectedResourceType", resourceSelect.value);
+            filterTable();
+        });
         
         function filterTable() {
             var selectedType = resourceSelect.value;
@@ -82,7 +103,7 @@
                             @Html.DisplayNameFor(model => model.Resources[0].Type)
                     </th>
                     <th>
-                        Author/Edition
+                        Notes
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Resources[0].Quantity)
@@ -146,7 +167,7 @@
         </div>
 
         <p class="fade-in" style="margin-top: 10px">For what reason do you need this resource? Be as specific as you are able:</p>
-        <textarea id="reasonForm" class="fade-in" style="margin-bottom: 10px;" asp-for="Request.Reason" rows="10" cols="72"></textarea><br>
-        <input type="submit" id="submitButton" value="Submit" class="submit-button fade-in">
+        <textarea name="reasonForm" id="reasonForm" class="fade-in" style="margin-bottom: 10px;" asp-for="Request.Reason" rows="10" cols="72"></textarea><br>
+        <input type="submit" name="submitButton" id="submitButton" value="Submit" class="submit-button fade-in">
     </form>
 </body>
