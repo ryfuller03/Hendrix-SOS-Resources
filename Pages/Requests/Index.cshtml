@@ -20,22 +20,21 @@
             <th>@Html.DisplayNameFor(model => model.Requests[0].NeedWithin24Hours)</th>
             <th>@Html.DisplayNameFor(model => model.Requests[0].Reason)</th>
             <th>@Html.DisplayNameFor(model => model.Requests[0].CreatedAt)</th>
-            <th>Profile</th>
+            @if ((await AuthorizationService.AuthorizeAsync(User, "RequireAdministratorRole")).Succeeded)
+                {
             <th>Actions</th>
+            }
         </tr>
     </thead>
     <tbody>
     @foreach (var item in Model.Requests.Where(r => r.Status == SOSResources.Models.RequestStatus.Pending))
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => item.CampusEmail)</td>
+            <td><a asp-page="/Profiles/Details" asp-route-id="@item.CampusEmail">@Html.DisplayFor(modelItem => item.CampusEmail)</a></td>
             <td>@Html.DisplayFor(modelItem => item.Resource.Name)</td>
             <td>@Html.DisplayFor(modelItem => item.NeedWithin24Hours)</td>
             <td>@Html.DisplayFor(modelItem => item.Reason)</td>
             <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
-            <td>
-                <a asp-page="/Profiles/Details" asp-route-id="@item.CampusEmail">View</a>
-            </td>
             <td>
                 @if ((await AuthorizationService.AuthorizeAsync(User, "RequireAdministratorRole")).Succeeded)
                 {
@@ -65,7 +64,6 @@
             <th>@Html.DisplayNameFor(model => model.Requests[0].NeedWithin24Hours)</th>
             <th>@Html.DisplayNameFor(model => model.Requests[0].Reason)</th>
             <th>@Html.DisplayNameFor(model => model.Requests[0].CreatedAt)</th>
-            <th>Profile</th>
         </tr>
     </thead>
     <tbody>
@@ -77,9 +75,6 @@
             <td>@Html.DisplayFor(modelItem => item.NeedWithin24Hours)</td>
             <td>@Html.DisplayFor(modelItem => item.Reason)</td>
             <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
-            <td>
-                <a asp-page="/Profiles/Details" asp-route-id="@item.CampusEmail">View</a>
-            </td>
         </tr>
     }
     </tbody>
@@ -94,7 +89,6 @@
             <th>@Html.DisplayNameFor(model => model.Requests[0].NeedWithin24Hours)</th>
             <th>@Html.DisplayNameFor(model => model.Requests[0].Reason)</th>
             <th>@Html.DisplayNameFor(model => model.Requests[0].CreatedAt)</th>
-            <th>Profile</th>
         </tr>
     </thead>
     <tbody>
@@ -106,9 +100,6 @@
             <td>@Html.DisplayFor(modelItem => item.NeedWithin24Hours)</td>
             <td>@Html.DisplayFor(modelItem => item.Reason)</td>
             <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
-            <td>
-                <a asp-page="/Profiles/Details" asp-route-id="@item.CampusEmail">View</a>
-            </td>
         </tr>
     }
     </tbody>
