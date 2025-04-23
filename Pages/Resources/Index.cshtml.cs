@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using HendrixSOSResources.Data;
 using SOSResources.Models;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace HendrixSOSResources.Pages.Resources
 {
+    [Authorize(Policy = "RequireAdministratorRole")]
     public class IndexModel : PageModel
     {
         private readonly HendrixSOSResources.Data.SOSContext _context;

@@ -1,4 +1,5 @@
 @page
+@using SOSResources.Models
 @model HendrixSOSResources.Pages.Profiles.DetailsModel
 
 @{
@@ -140,3 +141,83 @@
     <a asp-page="./Edit" asp-route-id="@Model.Profile.CampusEmail">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>
+
+<hr />
+<h4>Requests</h4>
+
+@if (!Model.Requests.Any())
+{
+    <p>No requests found for this profile.</p>
+}
+else
+{
+    <h5>Pending Requests</h5>
+    <table class="table table-striped table-hover mb-4">
+        <thead>
+            <tr>
+                <th>Resource</th>
+                <th>Need Within 24h</th>
+                <th>Reason</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var r in Model.Requests.Where(r => r.Status == RequestStatus.Pending))
+        {
+            <tr>
+                <td>@r.Resource.Name</td>
+                <td>@(r.NeedWithin24Hours ? "Yes" : "No")</td>
+                <td>@r.Reason</td>
+                <td>@r.CreatedAt.ToString("g")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <h5>Approved Requests</h5>
+    <table class="table table-striped table-hover mb-4">
+        <thead>
+            <tr>
+                <th>Resource</th>
+                <th>Need Within 24h</th>
+                <th>Reason</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var r in Model.Requests.Where(r => r.Status == RequestStatus.Approved))
+        {
+            <tr>
+                <td>@r.Resource.Name</td>
+                <td>@(r.NeedWithin24Hours ? "Yes" : "No")</td>
+                <td>@r.Reason</td>
+                <td>@r.CreatedAt.ToString("g")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <h5>Denied Requests</h5>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Resource</th>
+                <th>Need Within 24h</th>
+                <th>Reason</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var r in Model.Requests.Where(r => r.Status == RequestStatus.Denied))
+        {
+            <tr>
+                <td>@r.Resource.Name</td>
+                <td>@(r.NeedWithin24Hours ? "Yes" : "No")</td>
+                <td>@r.Reason</td>
+                <td>@r.CreatedAt.ToString("g")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+

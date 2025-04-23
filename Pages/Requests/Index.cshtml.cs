@@ -12,6 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace HendrixSOSResources.Pages.Requests
 {
+    [Authorize(Policy = "RequireAdministratorRole")]
     public class IndexModel : PageModel
     {
         private readonly HendrixSOSResources.Data.SOSContext _context;
