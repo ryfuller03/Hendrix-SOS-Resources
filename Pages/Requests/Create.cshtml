@@ -21,14 +21,6 @@
         if (savedSelection) {  // if it exists, restore value
             resourceSelect.value = savedSelection;
         }
-
-        var submitButton = document.getElementById("submitButton");
-        submitButton.addEventListener("change", function() {
-            var reasonBox = document.getElementById("reasonForm");
-            if (reasonBox.value != "") {
-                reasonBox.value = "";
-            }
-        });
         
         resourceSelect.addEventListener("change", function() {
             // save whenever it's changed
