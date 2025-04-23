@@ -70,7 +70,7 @@
     @foreach (var item in Model.Requests.Where(r => r.Status == SOSResources.Models.RequestStatus.Approved))
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => item.CampusEmail)</td>
+            <td><a asp-page="/Profiles/Details" asp-route-id="@item.CampusEmail">@Html.DisplayFor(modelItem => item.CampusEmail)</a></td>
             <td>@Html.DisplayFor(modelItem => item.Resource.Name)</td>
             <td>@Html.DisplayFor(modelItem => item.NeedWithin24Hours)</td>
             <td>@Html.DisplayFor(modelItem => item.Reason)</td>
@@ -95,7 +95,7 @@
     @foreach (var item in Model.Requests.Where(r => r.Status == SOSResources.Models.RequestStatus.Denied))
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => item.CampusEmail)</td>
+            <td><a asp-page="/Profiles/Details" asp-route-id="@item.CampusEmail">@Html.DisplayFor(modelItem => item.CampusEmail)</a></td>
             <td>@Html.DisplayFor(modelItem => item.Resource.Name)</td>
             <td>@Html.DisplayFor(modelItem => item.NeedWithin24Hours)</td>
             <td>@Html.DisplayFor(modelItem => item.Reason)</td>
