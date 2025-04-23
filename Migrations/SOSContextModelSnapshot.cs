@@ -217,7 +217,7 @@ namespace HendrixSOSResources.Migrations
                         {
                             Id = 1,
                             CampusEmail = "student1@hendrix.edu",
-                            CreatedAt = new DateTime(2025, 4, 21, 15, 24, 20, 743, DateTimeKind.Local).AddTicks(5750),
+                            CreatedAt = new DateTime(2025, 4, 21, 15, 34, 34, 727, DateTimeKind.Local).AddTicks(160),
                             NeedWithin24Hours = true,
                             Reason = "Scraped my knee playing intramurals.",
                             ResourceId = 1,
@@ -227,7 +227,7 @@ namespace HendrixSOSResources.Migrations
                         {
                             Id = 2,
                             CampusEmail = "student1@hendrix.edu",
-                            CreatedAt = new DateTime(2025, 4, 18, 15, 24, 20, 743, DateTimeKind.Local).AddTicks(5770),
+                            CreatedAt = new DateTime(2025, 4, 18, 15, 34, 34, 727, DateTimeKind.Local).AddTicks(170),
                             NeedWithin24Hours = false,
                             Reason = "Ran out of toothpaste.",
                             ResourceId = 5,
@@ -237,7 +237,7 @@ namespace HendrixSOSResources.Migrations
                         {
                             Id = 3,
                             CampusEmail = "staff.jones@hendrix.edu",
-                            CreatedAt = new DateTime(2025, 4, 22, 15, 24, 20, 743, DateTimeKind.Local).AddTicks(5800),
+                            CreatedAt = new DateTime(2025, 4, 22, 15, 34, 34, 727, DateTimeKind.Local).AddTicks(200),
                             NeedWithin24Hours = false,
                             Reason = "Dealing with a headache.",
                             ResourceId = 3,
@@ -247,7 +247,7 @@ namespace HendrixSOSResources.Migrations
                         {
                             Id = 4,
                             CampusEmail = "prof.evans@hendrix.edu",
-                            CreatedAt = new DateTime(2025, 4, 16, 15, 24, 20, 743, DateTimeKind.Local).AddTicks(5830),
+                            CreatedAt = new DateTime(2025, 4, 16, 15, 34, 34, 727, DateTimeKind.Local).AddTicks(220),
                             NeedWithin24Hours = false,
                             Reason = "For my lab's first aid kit.",
                             ResourceId = 2,

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace HendrixSOSResources.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class getBack : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -122,10 +122,10 @@ namespace HendrixSOSResources.Migrations
                 columns: new[] { "Id", "CampusEmail", "CreatedAt", "NeedWithin24Hours", "ProfileCampusEmail", "Reason", "ResourceId", "Status" },
                 values: new object[,]
                 {
-                    { 1, "student1@hendrix.edu", new DateTime(2025, 4, 14, 15, 46, 54, 941, DateTimeKind.Local).AddTicks(6100), true, null, "Scraped my knee playing intramurals.", 1, 0 },
-                    { 2, "student1@hendrix.edu", new DateTime(2025, 4, 11, 15, 46, 54, 941, DateTimeKind.Local).AddTicks(6110), false, null, "Ran out of toothpaste.", 5, 1 },
-                    { 3, "staff.jones@hendrix.edu", new DateTime(2025, 4, 15, 15, 46, 54, 941, DateTimeKind.Local).AddTicks(6140), false, null, "Dealing with a headache.", 3, 0 },
-                    { 4, "prof.evans@hendrix.edu", new DateTime(2025, 4, 9, 15, 46, 54, 941, DateTimeKind.Local).AddTicks(6170), false, null, "For my lab's first aid kit.", 2, 1 }
+                    { 1, "student1@hendrix.edu", new DateTime(2025, 4, 21, 15, 34, 34, 727, DateTimeKind.Local).AddTicks(160), true, null, "Scraped my knee playing intramurals.", 1, 0 },
+                    { 2, "student1@hendrix.edu", new DateTime(2025, 4, 18, 15, 34, 34, 727, DateTimeKind.Local).AddTicks(170), false, null, "Ran out of toothpaste.", 5, 1 },
+                    { 3, "staff.jones@hendrix.edu", new DateTime(2025, 4, 22, 15, 34, 34, 727, DateTimeKind.Local).AddTicks(200), false, null, "Dealing with a headache.", 3, 0 },
+                    { 4, "prof.evans@hendrix.edu", new DateTime(2025, 4, 16, 15, 34, 34, 727, DateTimeKind.Local).AddTicks(220), false, null, "For my lab's first aid kit.", 2, 1 }
                 });
 
             migrationBuilder.CreateIndex(

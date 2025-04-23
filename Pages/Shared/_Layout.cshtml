@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -23,6 +23,8 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Requests/Create">Request Form</a>
                         </li>
+                        @if ((await AuthorizationService.AuthorizeAsync(User, "RequireAdministratorRole")).Succeeded)
+                        {
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Resources/Index">Resources</a>
                         </li>
@@ -32,6 +34,7 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Profiles/Index">Profiles</a>
                         </li>
+                        }
                         <li class="nav-item"></li>
                             <a class="nav-link" asp-area="" asp-page="/Profiles/Details" asp-route-id="@User.Identity?.Name">My Profile</a>
                         </li>
