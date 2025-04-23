@@ -25,30 +25,7 @@
         resourceSelect.addEventListener("change", function() {
             // save whenever it's changed
             localStorage.setItem("selectedResourceType", resourceSelect.value);
-            filterTable();
         });
-        
-        function filterTable() {
-            var selectedType = resourceSelect.value;
-            console.log("Selected Type: '" + selectedType + "'");
-            var rows = document.querySelectorAll("#resourceTable tbody tr");
-
-            rows.forEach(function(row) {
-                var typeCell = row.querySelector("td:nth-child(2)");
-                var typeValue = typeCell.textContent.trim();
-                console.log("Row type: '" + typeValue + "'");
-                
-                if (selectedType === "" || 
-                selectedType === typeValue ||
-                document.querySelector(`option[value="${selectedType}"]`).textContent === typeValue) {
-                row.style.display = "";
-                } else {
-                    row.style.display = "none";
-                }
-            });
-        }
-        
-        filterTable();
     });
     </script>
 </head>
@@ -61,7 +38,7 @@
         <b>Use the below fields to submit a request for a resource you need.</b>
     </p>
 
-    <form id="resourceForm" method="post">
+    <form id="resourceType" method="get">
         <div class="row" style="display: flex; align-items: center;">
             <div class="col"></div>
             <div class="col fade-in" style="display: flex; margin-bottom: 10px;">
@@ -81,10 +58,12 @@
                         <option value="@type">@displayName</option>
                     }
                 </select>
+                <input type="submit" name="submitButton" id="submitButton" value="Submit" class="submit-button fade-in">
             </div>
             <div class="col"></div>
         </div>
-
+    </form>
+    <form id="resourceForm" method="post">
         <table id="resourceTable" class="table table-striped table-hover fade-in">
             <thead>
                 <tr>
