@@ -7,16 +7,19 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using HendrixSOSResources.Data;
 using SOSResources.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HendrixSOSResources.Pages.Profiles
 {
     public class DetailsModel : PageModel
     {
         private readonly SOSContext _context;
+        private IAuthorizationService _authService;
 
-        public DetailsModel(SOSContext context)
+        public DetailsModel(SOSContext context, IAuthorizationService authorizationService)
         {
             _context = context;
+            _authService = authorizationService;
         }
 
         public Profile Profile { get; set; } = default!;
@@ -26,11 +29,14 @@ namespace HendrixSOSResources.Pages.Profiles
         {
             if (string.IsNullOrEmpty(id))
             {
-                return RedirectToPage("/Profiles/Create");
+                return NotFound();
             }
 
             var userEmail = User.Identity?.Name;
-            if (id != userEmail)
+            var isAdmin = (await _authService.AuthorizeAsync(User, "RequireAdministratorRole")).Succeeded;
+
+
+            if (id != userEmail && !isAdmin)
             {
                 return RedirectToPage("../Index");
             }
@@ -40,7 +46,7 @@ namespace HendrixSOSResources.Pages.Profiles
 
             if (Profile == null)
             {
-                return NotFound();
+                return RedirectToPage("/Profiles/Create");
             }
 
             Requests = await _context.Requests
