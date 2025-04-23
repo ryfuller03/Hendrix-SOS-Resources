@@ -26,7 +26,13 @@ namespace HendrixSOSResources.Pages.Profiles
         {
             if (string.IsNullOrEmpty(id))
             {
-                return NotFound();
+                return RedirectToPage("/Profiles/Create");
+            }
+
+            var userEmail = User.Identity?.Name;
+            if (id != userEmail)
+            {
+                return RedirectToPage("../Index");
             }
 
             Profile = await _context.Profiles
