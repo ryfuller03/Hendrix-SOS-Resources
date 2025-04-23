@@ -29,7 +29,6 @@ namespace SOSResources.Models
         public Resource Resource { get; set; }
 
         [Required]
-        [EmailAddress]
         [ForeignKey("Profile")]
         public string CampusEmail { get; set; }
     }

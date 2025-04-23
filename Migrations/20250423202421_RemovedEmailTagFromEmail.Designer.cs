@@ -3,6 +3,7 @@ using System;
 using HendrixSOSResources.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HendrixSOSResources.Migrations
 {
     [DbContext(typeof(SOSContext))]
-    partial class SOSContextModelSnapshot : ModelSnapshot
+    [Migration("20250423202421_RemovedEmailTagFromEmail")]
+    partial class RemovedEmailTagFromEmail
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
