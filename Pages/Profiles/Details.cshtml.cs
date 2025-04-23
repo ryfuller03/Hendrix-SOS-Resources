@@ -12,32 +12,44 @@ namespace HendrixSOSResources.Pages.Profiles
 {
     public class DetailsModel : PageModel
     {
-        private readonly HendrixSOSResources.Data.SOSContext _context;
+        private readonly SOSContext _context;
 
-        public DetailsModel(HendrixSOSResources.Data.SOSContext context)
+        public DetailsModel(SOSContext context)
         {
             _context = context;
         }
 
         public Profile Profile { get; set; } = default!;
+        public List<Request> Requests { get; set; } = new();
 
         public async Task<IActionResult> OnGetAsync(string? id)
         {
-            if (id == null)
+            if (string.IsNullOrEmpty(id))
+            {
+                return RedirectToPage("/Profiles/Create");
+            }
+
+            var userEmail = User.Identity?.Name;
+            if (id != userEmail)
+            {
+                return RedirectToPage("../Index");
+            }
+
+            Profile = await _context.Profiles
+                .FirstOrDefaultAsync(p => p.CampusEmail == id);
+
+            if (Profile == null)
             {
                 return NotFound();
             }
 
-            var profile = await _context.Profiles.FirstOrDefaultAsync(m => m.CampusEmail == id);
+            Requests = await _context.Requests
+                .Where(r => r.CampusEmail == id)
+                .Include(r => r.Resource)
+                .ToListAsync();
 
-            if (profile is not null)
-            {
-                Profile = profile;
-
-                return Page();
-            }
-
-            return NotFound();
+            return Page();
         }
     }
+
 }

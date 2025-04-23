@@ -105,22 +105,24 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.Resources) {
+                @for (int i = 0; i < Model.Resources.Count; i++)
+                {
+                    var item = Model.Resources[i];
                     <tr id="resourceRow_@item.ID" data-resource-type="@item.Type">
+                        <td>@item.Name</td>
+                        <td>@item.Type</td>
+                        <td>@item.Description</td>
+                        <td>@item.Quantity</td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Name)
+                            <input type="checkbox" name="Requests[@i].IsSelected" value="true" />
+                            <input type="hidden" name="Requests[@i].ResourceId" value="@item.ID" />
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Type)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Quantity)
-                        </td>
-                        <td>
-                            <input type="radio" name="Request.ResourceId" id="resourceRadio_@item.ID" value="@item.ID" style="display: flex; margin-left: 60px; accent-color: #e96b10">
+                            <input type="text" name="Requests[@i].Reason" placeholder="Reason" class="form-control" />
+                            <label style="margin-left: 10px;">
+                                <input type="checkbox" name="Requests[@i].NeedWithin24Hours" value="true" />
+                                <span style="margin-left: 3px;">Need within 24h</span>
+                            </label>
                         </td>
                     </tr>
                 }
@@ -146,20 +148,7 @@
             Previous
         </a>
 
-        <div class="row" style="display: flex; align-items: center;">
-            <div class="col"></div>
-            <div class="col fade-in" style="display: flex; margin-bottom: 10px;">
-                <p style="margin-right: 100px; white-space: nowrap;">I need this within 24 hours:</p>
-                <label for="needHours" style="margin-right: 5px;">Yes</label>
-                <input type="radio" asp-for="Request.NeedWithin24Hours" value="true" style="display: flex; margin-top: 6.5px; margin-right: 45px; accent-color: #e96b10">
-                <label for="notNeedHours" style="margin-right: 5px;">No</label>
-                <input type="radio" asp-for="Request.NeedWithin24Hours" value="false" checked style="display: flex; margin-top: 6.5px; accent-color: #e96b10">
-            </div>
-            <div class="col"></div>
-        </div>
-
-        <p class="fade-in" style="margin-top: 10px">For what reason do you need this resource? Be as specific as you are able:</p>
-        <textarea name="reasonForm" id="reasonForm" class="fade-in" style="margin-bottom: 10px;" asp-for="Request.Reason" rows="10" cols="72"></textarea><br>
+        
         <input type="submit" name="submitButton" id="submitButton" value="Submit" class="submit-button fade-in">
     </form>
 </body>

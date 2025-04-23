@@ -32,8 +32,18 @@ namespace HendrixSOSResources.Pages.Requests
             Configuration = configuration;
         }
 
+        public class RequestInputModel
+        {
+            public bool IsSelected { get; set; }
+            public int ResourceId { get; set; }
+            public string? Reason { get; set; }
+            public bool NeedWithin24Hours { get; set; }
+        }
+
+
         [BindProperty]
-        public Request Request { get; set; } = default!;
+        public List<RequestInputModel> Requests { get; set; } = new();
+
 
         public PaginatedList<Resource> Resources { get; set; }
 
@@ -73,101 +83,64 @@ namespace HendrixSOSResources.Pages.Requests
         public async Task<IActionResult> OnPostAsync(string? sortOrder, int? pageIndex)
         {
             Console.WriteLine("OnPostAsync called");
-            Console.WriteLine($"IsAuthenticated: {User.Identity?.IsAuthenticated}");
-            Console.WriteLine($"User Name: {User.Identity?.Name}");
-
             var userEmail = User.Identity?.Name;
 
-            var hasProfile = await _context.Profiles.AnyAsync(p => p.CampusEmail == userEmail);
-                if (!hasProfile)
-                {
-                    return RedirectToPage("/Profiles/Create");
-                }
-
-            var resource = await _context.Resources.FindAsync(Request.ResourceId);
-            if (resource == null)
+            if (!await _context.Profiles.AnyAsync(p => p.CampusEmail == userEmail))
             {
-                Console.WriteLine("Resource not found: " + Request.ResourceId);
-                ModelState.AddModelError("Request.ResourceId", "Resource not found.");
-                var pageSize = Configuration.GetValue("PageSize", 10);
-                IQueryable<Resource> resourcesIQ = from s in _context.Resources
-                                           select s;
-                switch (sortOrder)
-                {
-                    case "name":
-                        resourcesIQ = resourcesIQ.OrderBy(s => s.Name);
-                        break;
-                    case "type":
-                        resourcesIQ = resourcesIQ.OrderBy(s => s.Type);
-                        break;
-                    default:
-                        resourcesIQ = resourcesIQ.OrderBy(s => s.Name);
-                        break;
-                }
-                Resources = await PaginatedList<Resource>.CreateAsync(resourcesIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
+                return RedirectToPage("/Profiles/Create");
+            }
+
+            var selectedRequests = Requests.Where(r => r.IsSelected).ToList();
+
+            if (!selectedRequests.Any())
+            {
+                await LoadResourcesAsync(sortOrder, pageIndex);
                 return Page();
             }
 
-            Console.WriteLine($"Resource found: {resource.Name}");
-
-            ModelState.Remove("Request.CampusEmail");
-            ModelState.Remove("Request.Resource");
-
-            Request.CampusEmail = userEmail;
-            Request.Resource = resource;
-
-
-            if (!ModelState.IsValid)
+            foreach (var req in selectedRequests)
             {
-                Console.WriteLine("Model state is invalid");
-                foreach (var state in ModelState)
+                var resource = await _context.Resources.FindAsync(req.ResourceId);
+                if (resource == null) continue;
+
+                var request = new Request
                 {
-                    if (state.Value.Errors.Count > 0)
-                    {
-                        Console.WriteLine($"Field: {state.Key}, Errors: {string.Join(", ", state.Value.Errors.Select(e => e.ErrorMessage))}");
-                    }
-                }
-                var pageSize = Configuration.GetValue("PageSize", 10);
-                IQueryable<Resource> resourcesIQ = from s in _context.Resources
-                                           select s;
-                switch (sortOrder)
-                {
-                    case "name":
-                        resourcesIQ = resourcesIQ.OrderBy(s => s.Name);
-                        break;
-                    case "type":
-                        resourcesIQ = resourcesIQ.OrderBy(s => s.Type);
-                        break;
-                    default:
-                        resourcesIQ = resourcesIQ.OrderBy(s => s.Name);
-                        break;
-                }
-                Resources = await PaginatedList<Resource>.CreateAsync(resourcesIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
-                return Page();
+                    CampusEmail = userEmail!,
+                    ResourceId = resource.ID,
+                    Reason = req.Reason,
+                    NeedWithin24Hours = req.NeedWithin24Hours,
+                    CreatedAt = DateTime.Now,
+                    Status = RequestStatus.Pending
+                };
+
+                _context.Requests.Add(request);
             }
 
-            _context.Requests.Add(Request);
             await _context.SaveChangesAsync();
-
-            Console.WriteLine("Request saved to database");
-
-            var _pageSize = Configuration.GetValue("PageSize", 10);
-                IQueryable<Resource> _resourcesIQ = from s in _context.Resources
-                                           select s;
-                switch (sortOrder)
-                {
-                    case "name":
-                        _resourcesIQ = _resourcesIQ.OrderBy(s => s.Name);
-                        break;
-                    case "type":
-                        _resourcesIQ = _resourcesIQ.OrderBy(s => s.Type);
-                        break;
-                    default:
-                        _resourcesIQ = _resourcesIQ.OrderBy(s => s.Name);
-                        break;
-                }
-                Resources = await PaginatedList<Resource>.CreateAsync(_resourcesIQ.AsNoTracking(), pageIndex ?? 1, _pageSize);
-            return Page();
+            return RedirectToPage("./Index");
         }
+
+        private async Task LoadResourcesAsync(string? sortOrder, int? pageIndex)
+        {
+            IQueryable<Resource> resourcesIQ = from s in _context.Resources select s;
+
+            switch (sortOrder)
+            {
+                case "name":
+                    resourcesIQ = resourcesIQ.OrderBy(s => s.Name);
+                    break;
+                case "type":
+                    resourcesIQ = resourcesIQ.OrderBy(s => s.Type);
+                    break;
+                default:
+                    resourcesIQ = resourcesIQ.OrderBy(s => s.Name);
+                    break;
+            }
+
+            var pageSize = Configuration.GetValue("PageSize", 10);
+            Resources = await PaginatedList<Resource>.CreateAsync(resourcesIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
+        }
+
+
     }
 }
