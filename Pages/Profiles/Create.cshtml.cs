@@ -60,7 +60,7 @@ namespace HendrixSOSResources.Pages.Profiles
             _context.Profiles.Add(Profile);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Index");
         }
     }
 }
