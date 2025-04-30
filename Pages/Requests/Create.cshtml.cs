@@ -127,7 +127,8 @@ namespace HendrixSOSResources.Pages.Requests
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToPage("/Profiles/Details", new { id = userEmail.ToString()});
+            // return RedirectToPage("/Profiles/Details", new { id = userEmail.ToString()});
+            return Page();
         }
 
         private async Task LoadResourcesAsync(string? sortOrder, int? pageIndex)
