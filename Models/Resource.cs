@@ -6,11 +6,17 @@ namespace SOSResources.Models
 {
     public enum ResourceType
     {
+        [Display(Name = "Food Assistance")]
         FoodAssistance,
+        [Display(Name = "Personal Care Supplies")]
         PersonalCareSupplies,
+        [Display(Name = "Clothing Supplies")]
         ClothingSupplies,
+        [Display(Name = "School Supplies")]
         SchoolSupplies,
+        [Display(Name = "Medical Assistance")]
         MedicalAssistance,
+        [Display(Name = "Legal Assistance")]
         LegalAssistance,
         Transportation,
         Textbook

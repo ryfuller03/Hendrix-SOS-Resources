@@ -12,21 +12,15 @@
     <script src="~/js/site.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
-        var resourceSelect = document.getElementById("resourceSelect");
-        resourceSelect.addEventListener("change", filterTable);
-
-        var resourceSelect = document.getElementById("resourceSelect");
+        var resourceSelect = document.getElementById("SelectedType");
+    
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedType = urlParams.get('SelectedType');
         
-        const savedSelection = localStorage.getItem("selectedResourceType");
-        if (savedSelection) {  // if it exists, restore value
-            resourceSelect.value = savedSelection;
+        if (selectedType) {
+            resourceSelect.value = selectedType;
         }
-        
-        resourceSelect.addEventListener("change", function() {
-            // save whenever it's changed
-            localStorage.setItem("selectedResourceType", resourceSelect.value);
         });
-    });
     </script>
 </head>
 
@@ -38,29 +32,29 @@
         <b>Use the below fields to submit a request for a resource you need.</b>
     </p>
 
-    <form id="resourceType" method="get">
-        <div class="row" style="display: flex; align-items: center;">
-            <div class="col"></div>
-            <div class="col fade-in" style="display: flex; margin-bottom: 10px;">
-                <p style="white-space: nowrap; margin-right: 20px; padding-top: 2px;">Filter by type:</p>
-
-                @{
-                        var resourceTypes = Enum.GetValues(typeof(ResourceType)).Cast<ResourceType>();
+    <form id="resourceSelect" method="get">
+    <div class="row" style="display: flex; align-items: center;">
+        <div class="col"></div>
+        <div class="col fade-in" style="display: flex; margin-bottom: 10px;">
+            <p style="white-space: nowrap; margin-right: 20px; padding-top: 2px;">Filter by type:</p>
+            <select name="SelectedType" id="SelectedType" style="margin-top: 5px; display: flex;">
+                <option value="">All</option>
+                @foreach (var type in Enum.GetValues(typeof(SOSResources.Models.ResourceType)))
+                {
+                    var displayAttr = typeof(SOSResources.Models.ResourceType)
+                                       .GetField(type.ToString())
+                                       .GetCustomAttributes(typeof(DisplayAttribute), false)
+                                       .FirstOrDefault() as DisplayAttribute;
+                    
+                    var displayName = displayAttr?.Name ?? type.ToString();
+                    <option value="@type" selected="@(type.ToString() == Model.SelectedType?.ToString() ? "selected" : "")">
+                        @displayName
+                    </option>
                 }
-
-                <select name="resourceSelect" id="resourceSelect" style="margin-top: 5px; display: flex;">
-                    <option value="">All</option>
-                    @foreach (var type in resourceTypes) {
-                        var displayName = type.GetType()
-                                            .GetField(type.ToString())
-                                            .GetCustomAttribute<DisplayAttribute>()?
-                                            .GetName() ?? type.ToString();
-                        <option value="@type">@displayName</option>
-                    }
-                </select>
-                <input type="submit" name="submitButton" id="submitButton" value="Submit" class="submit-button fade-in">
-            </div>
-            <div class="col"></div>
+            </select>
+            <button style="margin-left: 10px; display: flex;" type="submit" class="submit-button fade-in">Filter</button>
+        </div>
+        <div class="col"></div>
         </div>
     </form>
     <form id="resourceForm" method="post">
@@ -87,9 +81,15 @@
                 @for (int i = 0; i < Model.Resources.Count; i++)
                 {
                     var item = Model.Resources[i];
+                    var typeDisplayAttr = typeof(SOSResources.Models.ResourceType)
+                                        .GetField(item.Type.ToString())
+                                        .GetCustomAttributes(typeof(DisplayAttribute), false)
+                                        .FirstOrDefault() as DisplayAttribute;
+                    
+                    var typeDisplayName = typeDisplayAttr?.Name ?? item.Type.ToString();
                     <tr id="resourceRow_@item.ID" data-resource-type="@item.Type">
                         <td>@item.Name</td>
-                        <td>@item.Type</td>
+                        <td>@typeDisplayName</td>
                         <td>@item.Description</td>
                         <td>@item.Quantity</td>
                         <td>
