@@ -1,0 +1,77 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<body id="background" class="background">
+    
+    <div class="row mb-auto">
+        <div class="col-md-4">
+            <div class="row no-gutters mb-4">
+                <div class="col p-4 mb-4">
+                <h3  class="orangeheader">Welcome to SOAR!</h3>
+                <p class = "card-text antiquewhite">
+                    Student Outreach Alternative Resources, or SOAR, is a unique and progressive program designed to support students as they transition from high school and home life to college and future life through a structured, collaborative, and confidential process. This is done via a holistic and total wellness conversation between the SOS representative and a student prior to the student being connected with needed programs, services, and individuals. 
+                </p>
+                <p class="card-text antiquewhite">
+                        The mission of SOAR is to engage all segments of the Hendrix College student population by connecting with mentors, services, resources, programs, networks, interventions, and/or preventions to increase successful holistic and positive student experiences throughout their time in the Hendrix community.
+                </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row no-gutters mb-4" >
+                <div class="col p-4 d-flex flex-column">
+                    <h3 class="orangeheader">Asking for Help</h3>
+                    <p class = "card-text antiquewhite">
+                        Sometimes questions arise for which there are no quick or obvious answers. Maybe a student has a unique, or special need to address, or fears about revealing a social or personal concern. Or maybe a student might need to self-solve a problem by just having someone listen as things are talked out.
+                    </p><p class = "card-text antiquewhite">
+                        Click <a class="antiquewhite" asp-area="" asp-page="/Requests/Create">here</a> to submit a request for a resource you do not see available--we will do our best to ensure your needs are met!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row no-gutters mb-4">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <h3  class="orangeheader">Legal Disclaimer</h3>
+                    <p class = "card-text antiquewhite">
+                        Due to legalities, the resources listed below are not available to check out through the SOAR Program:
+                    </p>
+                    <ul class="antiquewhite">
+                        <li>Diabetic Testing Supplies</li>
+                        <li>Emergency Contraception (Plan B or the morning-after pill</li>
+                        <li>Insulin</li>
+                        <li>Phone Chargers</li>
+                        <li>Prescription Medications</li>
+                        <li>Syringes</li>
+                        <li>Vitamins or Supplements/Energy Boosters</li>
+                        <li>Tests for COVID, Influenza, Pregnancy, or STIs/STDs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button id="indeximagebutton" class="indeximagebutton">Disable Background</button>
+    <form method="post" asp-page-handler="SendEmail">
+        <button type="submit" id="emailbutton" class="emailbutton">Send Email</button>
+    </form>
+    <script>
+        document.getElementById('indeximagebutton').addEventListener('click', function() {
+        var background = document.getElementById('background');
+        var currentStyle = window.getComputedStyle(background).backgroundImage;
+        if (currentStyle.includes('rgba(0, 0, 0, 0.65)')) {
+            background.style.backgroundImage = "linear-gradient( rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) ), url('../../images/background.jpg')";
+        } else {
+            background.style.backgroundImage = "linear-gradient( rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65) ), url('../../images/background.jpg')";
+        }
+    });
+    </script>
+
+</body>

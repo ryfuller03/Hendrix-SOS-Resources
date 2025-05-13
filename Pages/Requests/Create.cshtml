@@ -1,0 +1,184 @@
+@page
+@using Microsoft.Graph.Models
+@using SOSResources.Models
+@model HendrixSOSResources.Pages.Requests.CreateModel
+@using System.ComponentModel.DataAnnotations
+@using System.Reflection
+
+@{
+    ViewData["Title"] = "SOAR Request Form";
+}
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script src="~/js/site.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Existing code for URL parameter handling
+    var resourceSelect = document.getElementById("SelectedType");
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedType = urlParams.get('SelectedType');
+    
+    if (selectedType) {
+        resourceSelect.value = selectedType;
+    } else {
+        resourceSelect.value = "All".value;
+    }
+    
+    const checkboxes = document.querySelectorAll('input[name^="Requests"][name$=".IsSelected"]');
+    
+    checkboxes.forEach(function(checkbox, index) {
+        const reasonInput = document.querySelector(`input[name="Requests[${index}].Reason"]`);
+        const needWithin24Hours = document.querySelector(`input[name="Requests[${index}].NeedWithin24Hours"]`);
+        const needWithin24HoursLabel = needWithin24Hours.parentElement;
+        
+        if (reasonInput) {  // set it to none initially
+            reasonInput.style.display = "none";
+        }
+        if (needWithin24HoursLabel) {
+            needWithin24HoursLabel.style.display = "none";
+        }
+        
+        checkbox.addEventListener('change', function() {
+            if (this.checked) {  // if it's checked then make it appear
+                if (reasonInput) reasonInput.style.display = "block";
+                if (needWithin24HoursLabel) needWithin24HoursLabel.style.display = "inline-block";
+            } else {  // otherwise keep it as nothing
+                if (reasonInput) {
+                    reasonInput.style.display = "none";
+                    reasonInput.value = "";
+                }
+                if (needWithin24HoursLabel) {
+                    needWithin24HoursLabel.style.display = "none";
+                    needWithin24Hours.checked = false;
+                }
+            }
+        });
+        
+        if (checkbox.checked) {
+            if (reasonInput) reasonInput.style.display = "block";
+            if (needWithin24HoursLabel) needWithin24HoursLabel.style.display = "inline-block";
+        }
+    });
+}); 
+    </script>
+</head>
+
+<body style="text-align: center;">
+
+    <h1 class="fade-in" style="text-align: center; color: #e96b10;">@ViewData["Title"]</h1>
+
+    <p class="fade-in" style="text-align: center;">
+        <b>Use the below fields to submit a request for a resource you need.</b>
+    </p>
+
+    <form id="resourceSelect" method="get">
+    <div class="row" style="display: flex; align-items: center;">
+        <div class="col"></div>
+        <div class="col fade-in" style="display: flex; margin-bottom: 10px;">
+            <p style="white-space: nowrap; margin-right: 20px; margin-bottom: 0;">Filter by type:</p>
+            <select name="SelectedType" id="SelectedType" style="margin-right: 10px; margin-top: 5px;">
+                <option value="">All</option>
+                @foreach (var type in Enum.GetValues(typeof(SOSResources.Models.ResourceType)))
+                {
+                    var displayAttr = typeof(SOSResources.Models.ResourceType)
+                                       .GetField(type.ToString())
+                                       .GetCustomAttributes(typeof(DisplayAttribute), false)
+                                       .FirstOrDefault() as DisplayAttribute;
+                    
+                    var displayName = displayAttr?.Name ?? type.ToString();
+                    <option value="@type" selected="@(type.ToString() == Model.SelectedType?.ToString() ? "selected" : "")">
+                        @displayName
+                    </option>
+                }
+            </select>
+            <button class="submit-button fade-in" type="submit" class="submit-button fade-in">Filter</button>
+        </div>
+        <div class="col"></div>
+        </div>
+    </form>
+
+    
+    <form id="resourceForm" method="post">
+        @if ((await AuthorizationService.AuthorizeAsync(User, "RequireAdministratorRole")).Succeeded)
+        {
+            <div class="admin-section fade-in" style="margin-bottom: 20px;">
+                <div class="form-group">
+                    <label for="requestUserEmail">Create request on behalf of user (email):</label>
+                    <input type="email" id="requestUserEmail" name="RequestUserEmail" class="form-control" placeholder="Enter user email" />
+                </div>
+            </div>
+        }
+        <table id="resourceTable" class="table table-striped table-hover fade-in">
+            <thead>
+                <tr>
+                    <th>
+                        Resource
+                    </th>
+                    <th>
+                            @Html.DisplayNameFor(model => model.Resources[0].Type)
+                    </th>
+                    <th>
+                        Notes
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Resources[0].Quantity)
+                    </th>
+                    <th>Select</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Resources.Count; i++)
+                {
+                    var item = Model.Resources[i];
+                    var typeDisplayAttr = typeof(SOSResources.Models.ResourceType)
+                                        .GetField(item.Type.ToString())
+                                        .GetCustomAttributes(typeof(DisplayAttribute), false)
+                                        .FirstOrDefault() as DisplayAttribute;
+                    
+                    var typeDisplayName = typeDisplayAttr?.Name ?? item.Type.ToString();
+                    <tr id="resourceRow_@item.ID" data-resource-type="@item.Type">
+                        <td>@item.Name</td>
+                        <td>@typeDisplayName</td>
+                        <td>@item.Description</td>
+                        <td>@item.Quantity</td>
+                        <td>
+                            <input type="checkbox" name="Requests[@i].IsSelected" value="true" />
+                            <input type="hidden" name="Requests[@i].ResourceId" value="@item.ID" />
+                        </td>
+                        <td>
+                            <input type="text" name="Requests[@i].Reason" placeholder="Reason" class="form-control" />
+                            <label style="margin-left: 10px;">
+                                <input type="checkbox" name="Requests[@i].NeedWithin24Hours" value="true" />
+                                <span style="margin-left: 3px;">Need within 24h</span>
+                            </label>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @{
+            var prevDisabled = !Model.Resources.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.Resources.HasNextPage ? "disabled" : "";
+        }
+
+        <a asp-page="./Create"
+        asp-route-sortOrder="@Model.CurrentSort"
+        asp-route-pageIndex="@(Model.Resources.PageIndex + 1)"
+        asp-route-currentFilter="@Model.CurrentFilter"
+        class="submit-button fade-in extra @nextDisabled" style="float: right; padding: 5px; margin: 5px;">
+            Next
+        </a>
+        <a asp-page="./Create"
+        asp-route-sortOrder="@Model.CurrentSort"
+        asp-route-pageIndex="@(Model.Resources.PageIndex - 1)"
+        asp-route-currentFilter="@Model.CurrentFilter"
+        class="submit-button fade-in extra @prevDisabled" style="float: right; padding: 5px; margin: 5px;">
+            Previous
+        </a>
+
+        
+        <input class="submit-button fade-in" type="submit" name="submitButton" id="submitButton" value="Submit">
+    </form>
+</body>
