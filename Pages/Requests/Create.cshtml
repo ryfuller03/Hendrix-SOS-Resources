@@ -1,4 +1,5 @@
 @page
+@using Microsoft.Graph.Models
 @using SOSResources.Models
 @model HendrixSOSResources.Pages.Requests.CreateModel
 @using System.ComponentModel.DataAnnotations
@@ -63,7 +64,18 @@
             <div class="col"></div>
         </div>
     </form>
+
+    
     <form id="resourceForm" method="post">
+        @if ((await AuthorizationService.AuthorizeAsync(User, "RequireAdministratorRole")).Succeeded)
+        {
+            <div class="admin-section fade-in" style="margin-bottom: 20px;">
+                <div class="form-group">
+                    <label for="requestUserEmail">Create request on behalf of user (email):</label>
+                    <input type="email" id="requestUserEmail" name="RequestUserEmail" class="form-control" placeholder="Enter user email" />
+                </div>
+            </div>
+        }
         <table id="resourceTable" class="table table-striped table-hover fade-in">
             <thead>
                 <tr>

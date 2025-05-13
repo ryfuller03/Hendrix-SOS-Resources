@@ -13,6 +13,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SOSResources;
 using System.Linq.Dynamic.Core;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HendrixSOSResources.Pages.Requests
 {
@@ -20,17 +21,21 @@ namespace HendrixSOSResources.Pages.Requests
     {
         private readonly SOSContext _context;
         private readonly IConfiguration Configuration;
+        private readonly IAuthorizationService _authorizationService;
+
 
         public string NameSort { get; set; }
         public string TypeSort { get; set; }
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
 
-        public CreateModel(SOSContext context, IConfiguration configuration)
+        public CreateModel(SOSContext context, IConfiguration configuration, IAuthorizationService authorizationService)
         {
+            _authorizationService = authorizationService;
             _context = context;
             Configuration = configuration;
         }
+
 
         public class RequestInputModel
         {
@@ -43,6 +48,9 @@ namespace HendrixSOSResources.Pages.Requests
 
         [BindProperty]
         public List<RequestInputModel> Requests { get; set; } = new();
+
+        [BindProperty]
+        public string? RequestUserEmail { get; set; }
 
 
         public PaginatedList<Resource> Resources { get; set; }
@@ -83,17 +91,38 @@ namespace HendrixSOSResources.Pages.Requests
         public async Task<IActionResult> OnPostAsync(string? sortOrder, int? pageIndex)
         {
             Console.WriteLine("OnPostAsync called");
-            var userEmail = User.Identity?.Name;
-
-            if (!await _context.Profiles.AnyAsync(p => p.CampusEmail == userEmail))
+            var currentUserEmail = User.Identity?.Name;
+            var isAdmin = (await _authorizationService.AuthorizeAsync(User, "RequireAdministratorRole")).Succeeded;
+            
+            string requestEmail;
+            
+            if (isAdmin && !string.IsNullOrWhiteSpace(RequestUserEmail))
             {
-                return RedirectToPage("/Profiles/Create");
+                requestEmail = RequestUserEmail;
+                
+                var userExists = await _context.Profiles.AnyAsync(p => p.CampusEmail == requestEmail);
+                if (!userExists)
+                {
+                    ModelState.AddModelError("RequestUserEmail", "User with this email does not exist in the system.");
+                    await LoadResourcesAsync(sortOrder, pageIndex);
+                    return Page();
+                }
+            }
+            else
+            {
+                requestEmail = currentUserEmail;
+                
+                if (!await _context.Profiles.AnyAsync(p => p.CampusEmail == requestEmail))
+                {
+                    return RedirectToPage("/Profiles/Create");
+                }
             }
 
             var selectedRequests = Requests.Where(r => r.IsSelected).ToList();
 
-            if (!selectedRequests.Any())
+            if (selectedRequests.Count == 0)
             {
+                ModelState.AddModelError(string.Empty, "Please select at least one resource to request.");
                 await LoadResourcesAsync(sortOrder, pageIndex);
                 return Page();
             }
@@ -105,7 +134,7 @@ namespace HendrixSOSResources.Pages.Requests
 
                 var request = new Request
                 {
-                    CampusEmail = userEmail!,
+                    CampusEmail = requestEmail,
                     ResourceId = resource.ID,
                     Reason = req.Reason,
                     NeedWithin24Hours = req.NeedWithin24Hours,
@@ -117,7 +146,13 @@ namespace HendrixSOSResources.Pages.Requests
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToPage("/Profiles/Details", new { id = userEmail.ToString()});
+            
+            if (isAdmin && requestEmail != currentUserEmail)
+            {
+                return RedirectToPage("/Profiles/Details", new { id = requestEmail });
+            }
+            
+            return RedirectToPage("/Profiles/Details", new { id = requestEmail });
         }
 
         private async Task LoadResourcesAsync(string? sortOrder, int? pageIndex)
