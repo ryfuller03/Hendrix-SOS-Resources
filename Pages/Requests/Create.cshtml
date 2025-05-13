@@ -6,28 +6,61 @@
 @using System.Reflection
 
 @{
-    ViewData["Title"] = "SOS Request Form";
+    ViewData["Title"] = "SOAR Request Form";
 }
 <head>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <script src="~/js/site.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
-        var resourceSelect = document.getElementById("resourceSelect");
-        resourceSelect.addEventListener("change", filterTable);
-
-        var resourceSelect = document.getElementById("resourceSelect");
+    // Existing code for URL parameter handling
+    var resourceSelect = document.getElementById("SelectedType");
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedType = urlParams.get('SelectedType');
+    
+    if (selectedType) {
+        resourceSelect.value = selectedType;
+    } else {
+        resourceSelect.value = "All".value;
+    }
+    
+    const checkboxes = document.querySelectorAll('input[name^="Requests"][name$=".IsSelected"]');
+    
+    checkboxes.forEach(function(checkbox, index) {
+        const reasonInput = document.querySelector(`input[name="Requests[${index}].Reason"]`);
+        const needWithin24Hours = document.querySelector(`input[name="Requests[${index}].NeedWithin24Hours"]`);
+        const needWithin24HoursLabel = needWithin24Hours.parentElement;
         
-        const savedSelection = localStorage.getItem("selectedResourceType");
-        if (savedSelection) {  // if it exists, restore value
-            resourceSelect.value = savedSelection;
+        if (reasonInput) {  // set it to none initially
+            reasonInput.style.display = "none";
+        }
+        if (needWithin24HoursLabel) {
+            needWithin24HoursLabel.style.display = "none";
         }
         
-        resourceSelect.addEventListener("change", function() {
-            // save whenever it's changed
-            localStorage.setItem("selectedResourceType", resourceSelect.value);
+        checkbox.addEventListener('change', function() {
+            if (this.checked) {  // if it's checked then make it appear
+                if (reasonInput) reasonInput.style.display = "block";
+                if (needWithin24HoursLabel) needWithin24HoursLabel.style.display = "inline-block";
+            } else {  // otherwise keep it as nothing
+                if (reasonInput) {
+                    reasonInput.style.display = "none";
+                    reasonInput.value = "";
+                }
+                if (needWithin24HoursLabel) {
+                    needWithin24HoursLabel.style.display = "none";
+                    needWithin24Hours.checked = false;
+                }
+            }
         });
+        
+        if (checkbox.checked) {
+            if (reasonInput) reasonInput.style.display = "block";
+            if (needWithin24HoursLabel) needWithin24HoursLabel.style.display = "inline-block";
+        }
     });
+}); 
     </script>
 </head>
 
@@ -39,29 +72,29 @@
         <b>Use the below fields to submit a request for a resource you need.</b>
     </p>
 
-    <form id="resourceType" method="get">
-        <div class="row" style="display: flex; align-items: center;">
-            <div class="col"></div>
-            <div class="col fade-in" style="display: flex; margin-bottom: 10px;">
-                <p style="white-space: nowrap; margin-right: 20px; padding-top: 2px;">Filter by type:</p>
-
-                @{
-                        var resourceTypes = Enum.GetValues(typeof(ResourceType)).Cast<ResourceType>();
+    <form id="resourceSelect" method="get">
+    <div class="row" style="display: flex; align-items: center;">
+        <div class="col"></div>
+        <div class="col fade-in" style="display: flex; margin-bottom: 10px;">
+            <p style="white-space: nowrap; margin-right: 20px; margin-bottom: 0;">Filter by type:</p>
+            <select name="SelectedType" id="SelectedType" style="margin-right: 10px; margin-top: 5px;">
+                <option value="">All</option>
+                @foreach (var type in Enum.GetValues(typeof(SOSResources.Models.ResourceType)))
+                {
+                    var displayAttr = typeof(SOSResources.Models.ResourceType)
+                                       .GetField(type.ToString())
+                                       .GetCustomAttributes(typeof(DisplayAttribute), false)
+                                       .FirstOrDefault() as DisplayAttribute;
+                    
+                    var displayName = displayAttr?.Name ?? type.ToString();
+                    <option value="@type" selected="@(type.ToString() == Model.SelectedType?.ToString() ? "selected" : "")">
+                        @displayName
+                    </option>
                 }
-
-                <select name="resourceSelect" id="resourceSelect" style="margin-top: 5px; display: flex;">
-                    <option value="">All</option>
-                    @foreach (var type in resourceTypes) {
-                        var displayName = type.GetType()
-                                            .GetField(type.ToString())
-                                            .GetCustomAttribute<DisplayAttribute>()?
-                                            .GetName() ?? type.ToString();
-                        <option value="@type">@displayName</option>
-                    }
-                </select>
-                <input type="submit" name="submitButton" id="submitButton" value="Submit" class="submit-button fade-in">
-            </div>
-            <div class="col"></div>
+            </select>
+            <button class="submit-button fade-in" type="submit" class="submit-button fade-in">Filter</button>
+        </div>
+        <div class="col"></div>
         </div>
     </form>
 
@@ -99,9 +132,15 @@
                 @for (int i = 0; i < Model.Resources.Count; i++)
                 {
                     var item = Model.Resources[i];
+                    var typeDisplayAttr = typeof(SOSResources.Models.ResourceType)
+                                        .GetField(item.Type.ToString())
+                                        .GetCustomAttributes(typeof(DisplayAttribute), false)
+                                        .FirstOrDefault() as DisplayAttribute;
+                    
+                    var typeDisplayName = typeDisplayAttr?.Name ?? item.Type.ToString();
                     <tr id="resourceRow_@item.ID" data-resource-type="@item.Type">
                         <td>@item.Name</td>
-                        <td>@item.Type</td>
+                        <td>@typeDisplayName</td>
                         <td>@item.Description</td>
                         <td>@item.Quantity</td>
                         <td>
@@ -128,18 +167,18 @@
         asp-route-sortOrder="@Model.CurrentSort"
         asp-route-pageIndex="@(Model.Resources.PageIndex + 1)"
         asp-route-currentFilter="@Model.CurrentFilter"
-        class="btn btn-primary fade-in @nextDisabled" style="background-color: #e96b10; color: antiquewhite; outline-width: 0px; float: right">
+        class="submit-button fade-in extra @nextDisabled" style="float: right; padding: 5px; margin: 5px;">
             Next
         </a>
         <a asp-page="./Create"
         asp-route-sortOrder="@Model.CurrentSort"
         asp-route-pageIndex="@(Model.Resources.PageIndex - 1)"
         asp-route-currentFilter="@Model.CurrentFilter"
-        class="btn btn-primary fade-in @prevDisabled" style="background-color: #e96b10; color: antiquewhite; outline-width: 0px; float: right">
+        class="submit-button fade-in extra @prevDisabled" style="float: right; padding: 5px; margin: 5px;">
             Previous
         </a>
 
         
-        <input type="submit" name="submitButton" id="submitButton" value="Submit" class="submit-button fade-in">
+        <input class="submit-button fade-in" type="submit" name="submitButton" id="submitButton" value="Submit">
     </form>
 </body>

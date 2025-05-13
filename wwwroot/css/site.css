@@ -76,7 +76,7 @@ to {
 
 .submit-button {
   background-color: #e96b10;
-  color: white;
+  color: antiquewhite;
   border: none;
   text-align: center;
   text-decoration: none;
@@ -84,6 +84,8 @@ to {
   margin-top: 10px;
   cursor: pointer;
   }
+
+.submit-button.extra:hover {color: antiquewhite;}
 
 #successMessage {
   opacity: 0;

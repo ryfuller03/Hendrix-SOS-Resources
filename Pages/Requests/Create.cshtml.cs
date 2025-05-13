@@ -28,6 +28,9 @@ namespace HendrixSOSResources.Pages.Requests
         public string TypeSort { get; set; }
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
+        
+        [BindProperty(SupportsGet = true)]
+        public ResourceType? SelectedType { get; set; }
 
         public CreateModel(SOSContext context, IConfiguration configuration, IAuthorizationService authorizationService)
         {
@@ -61,7 +64,14 @@ namespace HendrixSOSResources.Pages.Requests
             TypeSort = sortOrder == "Type" ? "type" : "Type";
 
             IQueryable<Resource> resourcesIQ = from s in _context.Resources
-                                        select s;
+                                            select s;
+
+            if (SelectedType.HasValue)
+            {
+                resourcesIQ = resourcesIQ.Where(r => r.Type == SelectedType.Value);
+                Console.WriteLine($"Filtering by type: {SelectedType.Value}");
+            }
+            
             switch (sortOrder)
             {
                 case "name":
